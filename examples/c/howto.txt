@@ -1,0 +1,27 @@
+Building C Gig Performer Externals Examples
+Deskew Technologies, LLC
+------------------------------------------------------
+
+OS-X
+Make sure you have CMake installed (https://cmake.org/download/). You might have to add the path to the cmake executable by adding this line to your bash profile
+   export PATH=Applications/CMake.app/Contents/bin:$PATH
+
+You will also need to define the following variables with values appropriate for your system
+set(CMAKE_OSX_SYSROOT macosx11.1)
+set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9")
+
+
+Open CMakeLists.txt and update the following 
+set (GP_SDK_ROOT "../../../..") // Should point to the GP_SDK folder.
+set (PROJECT_VERSION "1.0") // Version
+set (PROJECT_NAME "GPLib")  // Name of the project/library that will be created
+
+From the main folder create a "build" subfolder and cd into it then...
+------------------------------------------------------
+cmake ..
+cmake --build . --config Release
+------------------------------------------------------
+
+* On Windows - make sure you use the x64 Native Command prompt to use the x64bit toolchain
+
+A simple shell script, build.sh, is provided and will, execute the commands above and move the compiled library into the appropriate target folder

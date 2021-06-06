@@ -1,0 +1,14 @@
+Building C++ Gig Performer Externals Examples
+Deskew Technologies, LLC
+------------------------------------------------------
+
+This is an example of building a GP External Library using the JUCE framework.
+
+Assuming that you installed JUCE and have the Projucer:
+- Open the .jucer project in Projucer.
+- Click Save project to generate all the project files
+- Open your project in XCode / VS etc.. and build
+- Copy the generated library to the appropriate GP Library folder.
+
+* IMPORTANT:  Your own library is implemented in the LibMain.h file of each library. 
+*             You do not need to change any other files except adjust paths in the .jucer file
