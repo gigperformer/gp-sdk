@@ -11,7 +11,7 @@ LibraryHandle Handle; // Unique identifier for this library. Must be passed
 
 // Get information about this library so that GP user can decide whether it
 // should be loaded
-EXPORTED void GPQueryLibrary(char *xmlInfoBuffer, int bufferLength)
+void GPQueryLibrary(char *xmlInfoBuffer, int bufferLength)
 {
     char buffer[] = "<Library>"
                     "  <Product"
@@ -28,7 +28,7 @@ EXPORTED void GPQueryLibrary(char *xmlInfoBuffer, int bufferLength)
 
 // You MUST implement this function call AND call the
 // InitializeImportedFunctions function
-EXPORTED void GPRegister(TGetGPFunctionType getGPFunctionAddress, LibraryHandle handle)
+void GPRegister(TGetGPFunctionType getGPFunctionAddress, LibraryHandle handle)
 {
     Handle = handle;
     InitializeImportedFunctions(handle, getGPFunctionAddress);
@@ -39,7 +39,7 @@ EXPORTED void GPRegister(TGetGPFunctionType getGPFunctionAddress, LibraryHandle 
 // The rest of these are optional but make sure that any function you register
 // with GP_RegisterCallback are actually implemented or you will get an
 // immediate crash
-EXPORTED void OnSongChanged(int oldIndex, int newIndex)
+void OnSongChanged(int oldIndex, int newIndex)
 {
     char str[255];
     sprintf(str, "Song changed from: %d, to: %d", oldIndex, newIndex);

@@ -20,7 +20,7 @@ extern "C"
 {
 #endif
 
-    EXPORTED void GPQueryLibrary(char *xmlInfoBuffer, int bufferLength);
+    void GPQueryLibrary(char *xmlInfoBuffer, int bufferLength);
 
     // If the user decides that this library should be used then it will call
     // GPRegister It passes in the address of a function that the library
@@ -30,22 +30,22 @@ extern "C"
     // pass in that handle as the first parameter The XML buffer is used to let
     // the library developer provide multiple items of interest
 
-    EXPORTED void GPRegister(TGetGPFunctionType getGPFunctionAddress, LibraryHandle handle);
+    void GPRegister(TGetGPFunctionType getGPFunctionAddress, LibraryHandle handle);
 
     // Optional calls that DLL may provide depending on functionality.
     // Note that for the strings, we return how long the strings NEED to be so
     // that GP can call again with a longer buffer if necessary Panel creation
-    EXPORTED int GetPanelCount();
-    EXPORTED int GetPanelName(int index, char *buffer,
-                              int bufferLength); // DLL fills in the buffer up to bufferLength (including
-    // 0 terminator)
-    EXPORTED int GetPanelXML(int index, char *buffer,
-                             int bufferLength); // Return panel layout in XML format
+    int GetPanelCount();
+    int GetPanelName(int index, char *buffer,
+                     int bufferLength); // DLL fills in the buffer up to bufferLength (including
+                                        // 0 terminator)
+    int GetPanelXML(int index, char *buffer,
+                    int bufferLength); // Return panel layout in XML format
 
     // For extension driven submenus to be inserted in Extensions toplevel menu
-    EXPORTED int GetMenuCount();
-    EXPORTED int GetMenuName(int index, char *buffer, int bufferLength);
-    EXPORTED void InvokeMenu(int index);
+    int GetMenuCount();
+    int GetMenuName(int index, char *buffer, int bufferLength);
+    void InvokeMenu(int index);
 
     // Callbacks from Gig Performer into the DLL
     // Only implement the callbacks in which you are interested
@@ -53,66 +53,66 @@ extern "C"
     // Called when a MIDI event arrives from a device for which the library has
     // registered its interest in listening Returns whether the midi event should
     // be passed on to the next handler
-    EXPORTED bool OnMidiIn(const char *deviceName, const uint8_t *data, int length);
+    bool OnMidiIn(const char *deviceName, const uint8_t *data, int length);
 
     // Called when Gig Performer is about to shut down
-    EXPORTED void OnClose();
+    void OnClose();
 
     // Called when user enters or exits editing mode.
-    EXPORTED void OnEditStateChanged(bool inEditState);
+    void OnEditStateChanged(bool inEditState);
 
     // called when the user switches into the diagram/connection mode
-    EXPORTED void OnSwitchToWiringView();
+    void OnSwitchToWiringView();
 
     // Called when the user switches into rackspace mode
-    EXPORTED void OnSwitchToPanelView();
+    void OnSwitchToPanelView();
 
     // Called when the user switches into or out of setlist mode - modes defined
     // in macros.h
-    EXPORTED void OnModeChanged(int mode);
+    void OnModeChanged(int mode);
 
     // Called when a new gig file has finished being loaded
-    EXPORTED void OnGigLoaded(); // Called when a new gig file has been loaded
+    void OnGigLoaded(); // Called when a new gig file has been loaded
 
     // Called when a MIDI device is connected or disconnected from the computer.
     // You get an array of strings for the midiin and midiout device list
     // respectively
-    EXPORTED void OnMidiDeviceListChanged(const char **inputs, int intputCount, const char **outputs,
-                                          int outputCount); // A midi device was added or removed - get the new list
+    void OnMidiDeviceListChanged(const char **inputs, int intputCount, const char **outputs,
+                                 int outputCount); // A midi device was added or removed - get the new list
 
     // Called when Gig Performer has finished initializing itself
-    EXPORTED void OnOpen();
+    void OnOpen();
 
     // Called when user switches to a new rackspace
-    EXPORTED void OnRackspaceChanged();
+    void OnRackspaceChanged();
 
     // Called when user switches to a new song in setlist mode
-    EXPORTED void OnSongChanged(int oldIndex,
-                                int newIndex); // Called when we have a new song
+    void OnSongChanged(int oldIndex,
+                       int newIndex); // Called when we have a new song
 
     // Called when user switches to a new song part within the current song in
     // setlist mode
-    EXPORTED void OnSongPartChanged(int oldIndex,
-                                    int newIndex); // Called when we switch to a new song part
+    void OnSongPartChanged(int oldIndex,
+                           int newIndex); // Called when we switch to a new song part
 
     // Called when the user switches in or out of tuner mode
-    EXPORTED void OnTunerModeChanged(bool visible);
+    void OnTunerModeChanged(bool visible);
 
     // Called when user switches from one variation to another
-    EXPORTED void OnVariationChanged(int oldIndex, int newIndex);
+    void OnVariationChanged(int oldIndex, int newIndex);
 
     // Called when a widget is turned or otherwise adjusted. The library must
     // register its interest in listening for such changes
-    EXPORTED void OnWidgetValueChanged(const char *widgetName, double newValue);
+    void OnWidgetValueChanged(const char *widgetName, double newValue);
 
     // Called when a widget is created (handle defined = 0) or destroyed (handle
     // removed = 1). The library must register its interest in listening for such
     // changes
-    EXPORTED void OnWidgetStateChanged(const char *widgetName, int newState);
+    void OnWidgetStateChanged(const char *widgetName, int newState);
 
     // Called when a widget caption changes. The library must register its
     // interest in listening for such changes
-    EXPORTED void OnWidgetCaptionChanged(const char *widgetName, const char *newCaption);
+    void OnWidgetCaptionChanged(const char *widgetName, const char *newCaption);
 
 #ifdef __cplusplus
 }
