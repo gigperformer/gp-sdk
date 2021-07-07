@@ -3,10 +3,6 @@
 #include "gigperformer/sdk/macros.h"
 #include "gigperformer/sdk/types.h"
 
-#ifdef __cplusplus
-using namespace DeskewGP;
-#endif
-
 /*
  GPQuery, which MUST be implemented by the library is the first thing called by
  Gig Performer. It is expecting back a short XML file with information specified

@@ -7,10 +7,6 @@
 
 #include "gigperformer/sdk/types.h"
 
-#ifdef __cplusplus
-using namespace DeskewGP;
-#endif
-
 typedef int (*TGP_GetPathToMe)(LibraryHandle h, char *returnBuffer, int bufferLength);
 
 typedef int (*TGP_GetWidgetList)(LibraryHandle h, char *returnBuffer, int bufferLength, bool useGlobalRackspace);
