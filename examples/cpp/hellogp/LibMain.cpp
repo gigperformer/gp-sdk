@@ -37,11 +37,10 @@ std::string LibMain::GetPanelXML(int index)
 {
     std::string text;
     if (index >= 0 && index < panelNames.size())
-        then
-        {
-            // We assume the panels are in the same folder as the library
-            GPUtils::loadTextFile(getPathToMe() + "/" + relativePanelLocations[index], text);
-        }
+    {
+        // We assume the panels are in the same folder as the library
+        GPUtils::loadTextFile(getPathToMe() + "/" + relativePanelLocations[index], text);
+    }
     return text;
 }
 
@@ -61,7 +60,9 @@ std::string LibMain::GetMenuName(int index)
 {
     std::string text;
     if (index >= 0 && index < menuNames.size())
-        then text = menuNames[index];
+    {
+        text = menuNames[index];
+    }
 
     return text;
 }
@@ -69,22 +70,21 @@ std::string LibMain::GetMenuName(int index)
 void LibMain::InvokeMenu(int index)
 {
     if (index >= 0 && index < menuNames.size())
-        then
+    {
+        switch (index)
         {
-            switch (index)
-            {
-            case 0:
-                switchToPanelView();
-                break;
-            case 1:
-                switchToWiringView();
-                break;
-            case 2:
-                switchToSetlistView();
-                break;
+        case 0:
+            switchToPanelView();
+            break;
+        case 1:
+            switchToWiringView();
+            break;
+        case 2:
+            switchToSetlistView();
+            break;
 
-            default:
-                break;
-            }
+        default:
+            break;
         }
+    }
 }

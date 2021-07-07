@@ -18,8 +18,6 @@ const std::string XMLProductDescription =
     "  <ImagePath>/Path/To/ImageFile/foo.jpg</ImagePath>"
     "</Library>";
 
-#define then
-
 // This needs to be initialized from the initialization section of the LibMain
 // class so it can be used in the standalone functions directly below Define
 // your class here - it MUST be called LibMain and it must inherit from
@@ -86,16 +84,19 @@ class LibMain : public GigPerformerAPI
         consoleLog("caption: " + caption);
         std::string value = getWidgetTextValue("abc");
         consoleLog("value: " + value);
-        /*
-    consoleLog(newValue > 0.5 ? "Yes" : "No");
-    if (newValue > 0.5)
-       then
-          {
-              if (widgetName == "abc")
-                 then next();
-                 else previous();
-          }
-    */
+
+        // consoleLog(newValue > 0.5 ? "Yes" : "No");
+        // if (newValue > 0.5)
+        // {
+        //     if (widgetName == "abc")
+        //     {
+        //         next();
+        //     }
+        //     else
+        //     {
+        //         previous();
+        //     }
+        // }
     }
 
     // A midi device was added or removed
