@@ -48,7 +48,7 @@ class LibMain : public GigPerformerAPI
 
     void OnModeChanged(int mode) override
     {
-        consoleLog(std::string("Switching to mode: ") + ((mode == SetlistMode) ? "Setlist" : "FrontBack"));
+        consoleLog(std::string("Switching to mode: ") + ((mode == GP_SetlistMode) ? "Setlist" : "FrontBack"));
     }
 
     void OnSwitchToPanelView() override

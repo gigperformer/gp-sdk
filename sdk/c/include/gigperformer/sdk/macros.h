@@ -30,5 +30,8 @@
 #endif
 
 // These are for the OnModeChanged callback
-#define SetlistMode 1
-#define FrontBackMode 0
+enum GP_Mode
+{
+    GP_FrontBackMode = 0,
+    GP_SetlistMode = 1,
+};
