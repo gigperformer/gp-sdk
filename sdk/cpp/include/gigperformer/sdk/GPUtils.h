@@ -3,6 +3,11 @@
 
 #include "gigperformer/sdk/types.h"
 
+namespace gigperformer
+{
+namespace sdk
+{
+
 class GPUtils
 {
   public:
@@ -18,3 +23,6 @@ class GPUtils
     static void loadTextFile(std::string filename,
                              std::string &text); // Load a text file into a string
 };
+
+} // namespace sdk
+} // namespace gigperformer

@@ -10,6 +10,11 @@
 #include "gigperformer/sdk/utils.h"
 #define then
 
+namespace gigperformer
+{
+namespace sdk
+{
+
 bool GPUtils::fileExists(std::string filename)
 {
     // bool exists = access( filename.c_str(), F_OK ) != -1;
@@ -72,3 +77,6 @@ std::string GPUtils::intToHex(uint8_t intValue)
 
     return hexStr;
 }
+
+} // namespace sdk
+} // namespace gigperformer

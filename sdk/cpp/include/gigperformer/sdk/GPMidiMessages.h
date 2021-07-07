@@ -4,6 +4,11 @@
 
 #include <string>
 
+namespace gigperformer
+{
+namespace sdk
+{
+
 // Leveraging some of the clever ideas from the JUCE MidiMessage class
 // However, having said that, we MIGHT want to change the model and assume some
 // maximum fixed size for SysexMessages so that we leverage a free pool for
@@ -73,3 +78,6 @@ class GPMidiMessage
     uint8_t *createSpaceForMessage(int requiredSize);
     void deleteIfLongMessage();
 };
+
+} // namespace sdk
+} // namespace gigperformer

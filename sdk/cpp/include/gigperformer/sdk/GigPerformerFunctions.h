@@ -6,6 +6,11 @@
 #include "GPMidiMessages.h"
 #include "gigperformer/sdk/imports.h"
 
+namespace gigperformer
+{
+namespace sdk
+{
+
 // These are the functions your library can call
 class GigPerformerFunctions
 {
@@ -85,3 +90,6 @@ class GigPerformerFunctions
   private:
     LibraryHandle fHandle;
 };
+
+} // namespace sdk
+} // namespace gigperformer

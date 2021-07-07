@@ -1,5 +1,7 @@
 #include "LibMain.h"
 
+using GPUtils = gigperformer::sdk::GPUtils;
+
 // List of panels
 std::vector<std::string> panelNames = {
     "Red",
@@ -89,7 +91,15 @@ void LibMain::InvokeMenu(int index)
     }
 }
 
+namespace gigperformer
+{
+namespace sdk
+{
+
 GigPerformerAPI *CreateGPExtension(LibraryHandle handle)
 {
     return new LibMain(handle);
 }
+
+} // namespace sdk
+} // namespace gigperformer

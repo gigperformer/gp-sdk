@@ -20,7 +20,7 @@ const std::string XMLProductDescription = "<Library>"
 // Define your class here - it MUST be called LibMain and it must inherit from
 // GigPerformerAPI
 
-class LibMain : public GigPerformerAPI
+class LibMain : public gigperformer::sdk::GigPerformerAPI
 {
   public:
     // These must be here but no need to do anything unless you want extra

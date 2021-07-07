@@ -11,6 +11,7 @@
 
 #include <vector>
 
+using namespace gigperformer::sdk;
 
 static GigPerformerAPI *subclass = nullptr;
 

@@ -6,6 +6,11 @@
 #include "gigperformer/sdk/GPMidiMessages.h"
 #include "gigperformer/sdk/GigPerformerAPI.h"
 
+namespace gigperformer
+{
+namespace sdk
+{
+
 GigPerformerFunctions::GigPerformerFunctions(LibraryHandle handle) : fHandle(handle)
 {
 }
@@ -372,3 +377,6 @@ void GigPerformerFunctions::next()
 {
     GP_Next(fHandle);
 }
+
+} // namespace sdk
+} // namespace gigperformer

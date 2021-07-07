@@ -18,7 +18,7 @@ const std::string XMLProductDescription =
     "  <ImagePath>/Path/To/ImageFile/foo.jpg</ImagePath>"
     "</Library>";
 
-class LibMain : public GigPerformerAPI
+class LibMain : public gigperformer::sdk::GigPerformerAPI
 {
   protected:
     int GetPanelCount() override;

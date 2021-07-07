@@ -7,6 +7,11 @@
 
 using namespace std;
 
+namespace gigperformer
+{
+namespace sdk
+{
+
 GPMidiMessage::GPMidiMessage()
 {
     // assert( sizeof(void*) >= 4 );  // Must have room for at least 3 bytes
@@ -207,3 +212,6 @@ void GPMidiMessage::deleteIfLongMessage()
             fLength = 0;
         }
 }
+
+} // namespace sdk
+} // namespace gigperformer

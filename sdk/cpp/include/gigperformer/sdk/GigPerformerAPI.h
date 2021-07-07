@@ -4,6 +4,11 @@
 
 #include "GigPerformerFunctions.h"
 
+namespace gigperformer
+{
+namespace sdk
+{
+
 // Override the desired callbacks defined here in your main class (e.g. LibMain)
 class GigPerformerAPI : public GigPerformerFunctions
 {
@@ -120,3 +125,6 @@ class GigPerformerAPI : public GigPerformerFunctions
 /// \param handle may be nullptr. If so, callbacks cannot be created.
 /// \return Pointer to a GigPerformerAPI implementation, created by new. The caller takes ownership of it.
 GigPerformerAPI *CreateGPExtension(LibraryHandle handle);
+
+} // namespace sdk
+} // namespace gigperformer
