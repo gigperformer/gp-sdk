@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "GPMidiMessages.h"
-#include "gigperformer/sdk/c/imports.h"
+#include "gigperformer/sdk/imports.h"
 
 // These are the functions your library can call
 class GigPerformerFunctions

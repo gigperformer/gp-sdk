@@ -1,9 +1,9 @@
 #pragma once
 
-#include "gigperformer/sdk/c/macros.h"
-#include "gigperformer/sdk/cpp/GPMidiMessages.h"
-#include "gigperformer/sdk/cpp/GPUtils.h"
-#include "gigperformer/sdk/cpp/GigPerformerAPI.h"
+#include "gigperformer/sdk/GPMidiMessages.h"
+#include "gigperformer/sdk/GPUtils.h"
+#include "gigperformer/sdk/GigPerformerAPI.h"
+#include "gigperformer/sdk/macros.h"
 
 // define an XML string describing your product
 const std::string XMLProductDescription =

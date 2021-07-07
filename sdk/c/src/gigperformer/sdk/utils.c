@@ -1,4 +1,4 @@
-#include "gigperformer/sdk/c/utils.h"
+#include "gigperformer/sdk/utils.h"
 
 #include <assert.h>
 #include <stdbool.h>

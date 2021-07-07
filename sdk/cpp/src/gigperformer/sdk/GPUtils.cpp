@@ -1,4 +1,4 @@
-#include "gigperformer/sdk/cpp/GPUtils.h"
+#include "gigperformer/sdk/GPUtils.h"
 
 #include <assert.h>
 
@@ -7,7 +7,7 @@
 #include <iomanip>
 #include <sstream>
 
-#include "gigperformer/sdk/c/utils.h"
+#include "gigperformer/sdk/utils.h"
 #define then
 
 bool GPUtils::fileExists(std::string filename)

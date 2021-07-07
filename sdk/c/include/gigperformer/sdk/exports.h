@@ -1,7 +1,7 @@
 #pragma once
 
-#include "gigperformer/sdk/c/GPTypes.h"
-#include "gigperformer/sdk/c/macros.h"
+#include "gigperformer/sdk/macros.h"
+#include "gigperformer/sdk/types.h"
 
 #ifdef __cplusplus
 using namespace DeskewGP;
