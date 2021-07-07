@@ -20,7 +20,7 @@ class LibMain : public gigperformer::sdk::GigPerformerAPI
 
   public:
     // These must be here but no need to do anything unless you want extra behavior
-    LibMain(LibraryHandle handle);
+    explicit LibMain(LibraryHandle handle);
     ~LibMain() override;
 
     void OnModeChanged(int mode) override;

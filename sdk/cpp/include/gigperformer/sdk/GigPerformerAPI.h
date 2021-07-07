@@ -57,8 +57,8 @@ class GigPerformerAPI : public GigPerformerFunctions
     virtual void InvokeMenu(int itemIndex);     // invoke the action associated with menu item at index
 
   public:
-    GigPerformerAPI(LibraryHandle handle);
-    virtual ~GigPerformerAPI();
+    explicit GigPerformerAPI(LibraryHandle handle);
+    ~GigPerformerAPI() override;
 };
 
 /// Create an instance of the user-defined class that implements GigPerformerAPI.

@@ -38,14 +38,14 @@ const uint8_t SysexEndByte = 0xF7;
 void GPMidiMessage::setValue(int offset, uint8_t value)
 {
     if (isSysexMessage())
-        then if (offset > 0 && offset < fLength) then fMidiData.longMessage[offset] = value;
+        then if (offset > 0 && static_cast<unsigned long>(offset) < fLength) then fMidiData.longMessage[offset] = value;
 }
 
 void GPMidiMessage::setValue(int offset,
                              uint16_t value) // 2 bytes (well, 14 bits worth)
 {
     if (isSysexMessage())
-        then if (offset > 0 && offset < fLength - 1) then
+        then if (offset > 0 && static_cast<unsigned long>(offset) < fLength - 1) then
         {
             fMidiData.longMessage[offset] = value & 0x7f;
             fMidiData.longMessage[offset + 1] = (value >> 7) & 0x7f;
@@ -133,12 +133,11 @@ GPMidiMessage GPMidiMessage::makeAftertouchMessage(int pressure, int channel)
     return result;
 }
 
-GPMidiMessage::GPMidiMessage(const char *bytes,
-                             int length) // Create a MIDI message from a sequence of bytes
+GPMidiMessage::GPMidiMessage(const char *bytes, int length)
 {
     uint8_t *thisTarget = createSpaceForMessage(length);
 
-    for (int i = 0; i < fLength; i++)
+    for (unsigned long i = 0; i < fLength; i++)
     {
         *thisTarget++ = *bytes++;
     }
@@ -158,7 +157,7 @@ GPMidiMessage::GPMidiMessage(const std::string &hexSource)
     uint8_t *thisObject = createSpaceForMessage((int)binaryString.size());
 
     const char *bytes = binaryString.c_str(); // Point to the beginning of the string
-    for (int i = 0; i < fLength; i++)
+    for (unsigned long i = 0; i < fLength; i++)
         *thisObject++ = *bytes++;
 }
 
@@ -167,7 +166,7 @@ GPMidiMessage::GPMidiMessage(const GPMidiMessage &source) // Copy another messag
     uint8_t *memory = createSpaceForMessage((int)source.fLength);
 
     uint8_t *sourceMemory = source.asBytes();
-    for (int i = 0; i < fLength; i++)
+    for (unsigned long i = 0; i < fLength; i++)
         *memory++ = *sourceMemory++;
 }
 
@@ -183,7 +182,7 @@ GPMidiMessage &GPMidiMessage::operator=(const GPMidiMessage &source) // Assignme
             uint8_t *memory = createSpaceForMessage((int)fLength);
 
             uint8_t *sourceMemory = source.asBytes();
-            for (int i = 0; i < fLength; i++)
+            for (unsigned long i = 0; i < fLength; i++)
                 *memory++ = *sourceMemory++;
         }
     return *this;
@@ -192,7 +191,7 @@ GPMidiMessage &GPMidiMessage::operator=(const GPMidiMessage &source) // Assignme
 uint8_t *GPMidiMessage::createSpaceForMessage(int requiredSize)
 {
     fLength = requiredSize;
-    if (requiredSize > sizeof(MidiData))
+    if (static_cast<unsigned long>(requiredSize) > sizeof(MidiData))
         then
         {
             fMidiData.longMessage = new uint8_t[requiredSize];
@@ -208,7 +207,7 @@ void GPMidiMessage::deleteIfLongMessage()
         then
         {
             delete[] fMidiData.longMessage;
-            fMidiData.longMessage = 0;
+            fMidiData.longMessage = nullptr;
             fLength = 0;
         }
 }

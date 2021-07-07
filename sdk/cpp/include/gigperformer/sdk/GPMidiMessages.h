@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdint.h>
+#include <cstdint>
 
 #include <string>
 
@@ -21,7 +21,7 @@ class GPMidiMessage
 
     GPMidiMessage(const char *bytes,
                   int length);                   // Create a midi message from a sequence of bytes
-    GPMidiMessage(const std::string &hexSource); // Create a midi message from a hex string
+    explicit GPMidiMessage(const std::string &hexSource); // Create a midi message from a hex string
     // "F0 0a 0b F7" for example
 
     GPMidiMessage(const GPMidiMessage &source);            // Copy another message

@@ -15,7 +15,7 @@ namespace sdk
 class GigPerformerFunctions
 {
   public:
-    GigPerformerFunctions(LibraryHandle handle);
+    explicit GigPerformerFunctions(LibraryHandle handle);
     virtual ~GigPerformerFunctions();
 
     std::string getPathToMe();

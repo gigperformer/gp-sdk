@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstddef>
+
 #include "JuceHeader.h"
 #include "LogWindow.h"
 #include "gigperformer/sdk/GPMidiMessages.h"
@@ -63,11 +65,11 @@ class LibMain : public gigperformer::sdk::GigPerformerAPI
         LogWindow::log("MIDI Inputs/Outputs changed");
         LogWindow::log("===========================");
         LogWindow::log("INPUTS:");
-        for (int i = 0; i < inputs.size(); i++)
+        for (std::size_t i = 0; i < inputs.size(); i++)
             LogWindow::log("\t" + inputs[i]);
 
         LogWindow::log("\nOUTPUTS:");
-        for (int i = 0; i < outputs.size(); i++)
+        for (std::size_t i = 0; i < outputs.size(); i++)
             LogWindow::log("\t" + outputs[i]);
     }
 

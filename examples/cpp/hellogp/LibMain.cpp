@@ -1,5 +1,7 @@
 #include "LibMain.h"
 
+#include <cstdint>
+
 using GPUtils = gigperformer::sdk::GPUtils;
 
 /// Ignore a given value
@@ -45,7 +47,7 @@ int LibMain::GetPanelCount()
 std::string LibMain::GetPanelName(int index)
 {
     std::string text;
-    if (index >= 0 && index < panelNames.size())
+    if (index >= 0 && static_cast<std::size_t>(index) < panelNames.size())
     {
         text = panelNames[index];
     }
@@ -57,7 +59,7 @@ std::string LibMain::GetPanelName(int index)
 std::string LibMain::GetPanelXML(int index)
 {
     std::string text;
-    if (index >= 0 && index < panelNames.size())
+    if (index >= 0 && static_cast<std::size_t>(index) < panelNames.size())
     {
         // We assume the panels are in the same folder as the library
         GPUtils::loadTextFile(getPathToMe() + "/" + relativePanelLocations[index], text);
@@ -80,7 +82,7 @@ int LibMain::GetMenuCount()
 std::string LibMain::GetMenuName(int index)
 {
     std::string text;
-    if (index >= 0 && index < menuNames.size())
+    if (index >= 0 && static_cast<std::size_t>(index) < menuNames.size())
     {
         text = menuNames[index];
     }
@@ -90,7 +92,7 @@ std::string LibMain::GetMenuName(int index)
 
 void LibMain::InvokeMenu(int index)
 {
-    if (index >= 0 && index < menuNames.size())
+    if (index >= 0 && static_cast<std::size_t>(index) < menuNames.size())
     {
         switch (index)
         {
@@ -167,7 +169,7 @@ void LibMain::OnWidgetValueChanged(const std::string &widgetName, double newValu
 
 void LibMain::OnMidiDeviceListChanged(std::vector<std::string> &inputs, std::vector<std::string> &outputs)
 {
-    for (int i = 0; i < inputs.size(); i++)
+    for (std::size_t i = 0; i < inputs.size(); i++)
     {
         std::string &name = inputs[i];
         consoleLog("Input found: " + name);
