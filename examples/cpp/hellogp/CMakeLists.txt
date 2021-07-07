@@ -18,23 +18,14 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9")
 # Set the variable PROJ_NAME to whatever your library's name is, PROJECT_VERSION
 # should be a version string like "0.1"
 project(${PROJECT_NAME} VERSION ${PROJECT_VERSION})
+add_subdirectory(${GP_SDK_ROOT} ${CMAKE_CURRENT_BINARY_DIR}/gigperformer_sdk)
 
 # Create our library target
 add_library(${PROJECT_NAME} SHARED)
 
-target_sources(
-  ${PROJECT_NAME}
-  PUBLIC ${CMAKE_CURRENT_LIST_DIR}/LibMain.cpp
-  PUBLIC ${GP_SDK_ROOT}/gigperformer/sdk/cpp/GPUtils.cpp
-  PUBLIC ${GP_SDK_ROOT}/gigperformer/sdk/cpp/GigPerformerFunctions.cpp
-  PUBLIC ${GP_SDK_ROOT}/gigperformer/sdk/c/imports.c
-  PUBLIC ${GP_SDK_ROOT}/gigperformer/sdk/c/utils.c
-  PUBLIC ${GP_SDK_ROOT}/gigperformer/sdk/cpp/entry.cpp
-  PUBLIC ${GP_SDK_ROOT}/gigperformer/sdk/cpp/GPMidiMessages.cpp)
-
-include_directories(${GP_SDK_ROOT}) # So that the interface files can be found
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}) # So that the LibMain.h can be
-                                                 # found
+target_sources(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_LIST_DIR}/LibMain.cpp)
+target_link_libraries(${PROJECT_NAME} PRIVATE gigperformer::sdk::cpp)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 set_target_properties(
   ${PROJECT_NAME}

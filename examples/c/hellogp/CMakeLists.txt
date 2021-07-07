@@ -18,18 +18,13 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9")
 # Set the variable PROJ_NAME to whatever your library's name is, PROJECT_VERSION
 # should be a version string like "0.1"
 project(${PROJECT_NAME} VERSION ${PROJECT_VERSION})
+add_subdirectory(${GP_SDK_ROOT} ${CMAKE_CURRENT_BINARY_DIR}/gigperformer_sdk)
 
 # Create our library target
 add_library(${PROJECT_NAME} SHARED)
 
 target_sources(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/main.c)
-
-target_sources(
-  ${PROJECT_NAME}
-  PUBLIC ${GP_SDK_ROOT}/gigperformer/sdk/c/imports.c
-  PUBLIC ${GP_SDK_ROOT}/gigperformer/sdk/c/utils.c)
-
-include_directories(${GP_SDK_ROOT}) # So that the interface files can be found
+target_link_libraries(${PROJECT_NAME} PRIVATE gigperformer::sdk::c)
 
 # This will name your output .so files "libsomething.1.0" which is pretty useful
 # set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION}

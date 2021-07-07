@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="FLhIIQ" name="HelloGP-JUCE" projectType="dll" jucerVersion="5.4.7" headerPath="../../../../../sdk">
+<JUCERPROJECT id="FLhIIQ" name="HelloGP-JUCE" projectType="dll" jucerVersion="5.4.7" headerPath="../../../../../sdk/c/include;../../../../../sdk/cpp/include">
   <MAINGROUP id="YlVLAa" name="HelloGP-JUCE">
     <GROUP id="{0E48A269-5FBE-9E88-07C5-603CA4C689B5}" name="GigPerformer SDK">
       <GROUP id="{671D08A8-F771-43DC-2723-69EB5F189FF5}" name="C">
-        <FILE id="vB1YMf" name="exports.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/c/exports.h" />
-        <FILE id="yCWPop" name="GPTypes.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/c/GPTypes.h" />
-        <FILE id="fb4PIe" name="imports.c" compile="1" resource="0" file="../../../sdk/gigperformer/sdk/c/imports.c" />
-        <FILE id="uoGr70" name="imports.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/c/imports.h" />
-        <FILE id="FS2QXE" name="macros.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/c/macros.h" />
-        <FILE id="bRozeS" name="utils.c" compile="1" resource="0" file="../../../sdk/gigperformer/sdk/c/utils.c" />
-        <FILE id="t2Tbsu" name="utils.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/c/utils.h" />
+        <FILE id="vB1YMf" name="exports.h" compile="0" resource="0" file="../../../sdk/c/include/gigperformer/sdk/c/exports.h" />
+        <FILE id="yCWPop" name="GPTypes.h" compile="0" resource="0" file="../../../sdk/c/include/gigperformer/sdk/c/GPTypes.h" />
+        <FILE id="fb4PIe" name="imports.c" compile="1" resource="0" file="../../../sdk/c/src/gigperformer/sdk/c/imports.c" />
+        <FILE id="uoGr70" name="imports.h" compile="0" resource="0" file="../../../sdk/c/include/gigperformer/sdk/c/imports.h" />
+        <FILE id="FS2QXE" name="macros.h" compile="0" resource="0" file="../../../sdk/c/include/gigperformer/sdk/c/macros.h" />
+        <FILE id="bRozeS" name="utils.c" compile="1" resource="0" file="../../../sdk/c/src/gigperformer/sdk/c/utils.c" />
+        <FILE id="t2Tbsu" name="utils.h" compile="0" resource="0" file="../../../sdk/c/include/gigperformer/sdk/c/utils.h" />
       </GROUP>
       <GROUP id="{E5B1D837-B710-4BE5-FD32-4813DD9CC1EE}" name="C++">
-        <FILE id="qHiomV" name="entry.cpp" compile="1" resource="0" file="../../../sdk/gigperformer/sdk/cpp/entry.cpp" />
-        <FILE id="xCuUcP" name="GigPerformerAPI.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/cpp/GigPerformerAPI.h" />
-        <FILE id="SS0hDu" name="GigPerformerFunctions.cpp" compile="1" resource="0" file="../../../sdk/gigperformer/sdk/cpp/GigPerformerFunctions.cpp" />
-        <FILE id="jyXgCb" name="GigPerformerFunctions.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/cpp/GigPerformerFunctions.h" />
-        <FILE id="fLh96W" name="GPMidiMessages.cpp" compile="1" resource="0" file="../../../sdk/gigperformer/sdk/cpp/GPMidiMessages.cpp" />
-        <FILE id="v7AGGC" name="GPMidiMessages.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/cpp/GPMidiMessages.h" />
-        <FILE id="soPnez" name="GPUtils.cpp" compile="1" resource="0" file="../../../sdk/gigperformer/sdk/cpp/GPUtils.cpp" />
-        <FILE id="UhX3Nb" name="GPUtils.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/cpp/GPUtils.h" />
+        <FILE id="qHiomV" name="entry.cpp" compile="1" resource="0" file="../../../sdk/cpp/src/gigperformer/sdk/cpp/entry.cpp" />
+        <FILE id="xCuUcP" name="GigPerformerAPI.h" compile="0" resource="0" file="../../../sdk/cpp/include/gigperformer/sdk/cpp/GigPerformerAPI.h" />
+        <FILE id="SS0hDu" name="GigPerformerFunctions.cpp" compile="1" resource="0" file="../../../sdk/cpp/src/gigperformer/sdk/cpp/GigPerformerFunctions.cpp" />
+        <FILE id="jyXgCb" name="GigPerformerFunctions.h" compile="0" resource="0" file="../../../sdk/cpp/include/gigperformer/sdk/cpp/GigPerformerFunctions.h" />
+        <FILE id="fLh96W" name="GPMidiMessages.cpp" compile="1" resource="0" file="../../../sdk/cpp/src/gigperformer/sdk/cpp/GPMidiMessages.cpp" />
+        <FILE id="v7AGGC" name="GPMidiMessages.h" compile="0" resource="0" file="../../../sdk/cpp/include/gigperformer/sdk/cpp/GPMidiMessages.h" />
+        <FILE id="soPnez" name="GPUtils.cpp" compile="1" resource="0" file="../../../sdk/cpp/src/gigperformer/sdk/cpp/GPUtils.cpp" />
+        <FILE id="UhX3Nb" name="GPUtils.h" compile="0" resource="0" file="../../../sdk/cpp/include/gigperformer/sdk/cpp/GPUtils.h" />
       </GROUP>
     </GROUP>
     <GROUP id="{B69C72AB-3D55-EB88-E18C-0385EE3CA1FE}" name="Source">

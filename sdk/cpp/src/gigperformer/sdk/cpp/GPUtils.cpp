@@ -1,4 +1,4 @@
-#include "GPUtils.h"
+#include "gigperformer/sdk/cpp/GPUtils.h"
 
 #include <assert.h>
 

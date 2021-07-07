@@ -1,7 +1,7 @@
-#include "GPMidiMessages.h"
+#include "gigperformer/sdk/cpp/GPMidiMessages.h"
 
-#include "GPUtils.h"
 #include "gigperformer/sdk/c/imports.h"
+#include "gigperformer/sdk/cpp/GPUtils.h"
 
 #define then
 

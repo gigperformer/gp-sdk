@@ -1,10 +1,10 @@
-#include "GigPerformerFunctions.h"
+#include "gigperformer/sdk/cpp/GigPerformerFunctions.h"
 
 #include <sstream>
 #include <string>
 
-#include "GPMidiMessages.h"
-#include "GigPerformerAPI.h"
+#include "gigperformer/sdk/cpp/GPMidiMessages.h"
+#include "gigperformer/sdk/cpp/GigPerformerAPI.h"
 
 GigPerformerFunctions::GigPerformerFunctions(LibraryHandle handle) : fHandle(handle)
 {
