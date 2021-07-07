@@ -8,15 +8,17 @@ set(GP_SDK_ROOT "../../..")
 set(PROJECT_VERSION "1.0")
 set(PROJECT_NAME "HelloGP-CPP")
 
-# Set the variable PROJ_NAME to whatever your library's name is, PROJECT_VERSION
-# should be a version string like "0.1"
-project(${PROJECT_NAME} VERSION ${PROJECT_VERSION})
-
 # To build shared libraries in Windows, we set CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS
 # to TRUE. See also:
 # https://cmake.org/cmake/help/v3.4/variable/CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS.html
 # https://blog.kitware.com/create-dlls-on-windows-without-declspec-using-new-cmake-export-all-feature/
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
+set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9")
+
+# Set the variable PROJ_NAME to whatever your library's name is, PROJECT_VERSION
+# should be a version string like "0.1"
+project(${PROJECT_NAME} VERSION ${PROJECT_VERSION})
 
 # Create our library target
 add_library(${PROJECT_NAME} SHARED)

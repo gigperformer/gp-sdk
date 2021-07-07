@@ -1,16 +1,5 @@
 # CMakeLists.txt
 
-# For OS X you need to define the following two entries The first one will
-# depend on what SDKs are available on your system
-set(CMAKE_OSX_SYSROOT macosx10.15)
-set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9")
-
-# Note - depending on the version of Xcode that you are using, you might have to
-# copy an SDK to the appropriate location Look in
-# /Library/Developer/CommandLineTools/SDKs for SDKs As of Xcode 10.12, the SDKs
-# seems to need to live at
-# /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
-
 # Always set the cmake min version.
 cmake_minimum_required(VERSION 3.0)
 
@@ -19,15 +8,17 @@ set(GP_SDK_ROOT "../../..")
 set(PROJECT_VERSION "1.0")
 set(PROJECT_NAME "HelloGP-C")
 
-# Set the variable PROJ_NAME to whatever your library's name is, PROJECT_VERSION
-# should be a version string like "0.1"
-project(${PROJECT_NAME} VERSION ${PROJECT_VERSION})
-
 # To build shared libraries in Windows, we set CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS
 # to TRUE. See also:
 # https://cmake.org/cmake/help/v3.4/variable/CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS.html
 # https://blog.kitware.com/create-dlls-on-windows-without-declspec-using-new-cmake-export-all-feature/
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
+set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9")
+
+# Set the variable PROJ_NAME to whatever your library's name is, PROJECT_VERSION
+# should be a version string like "0.1"
+project(${PROJECT_NAME} VERSION ${PROJECT_VERSION})
 
 # Create our library target
 add_library(${PROJECT_NAME} SHARED)
