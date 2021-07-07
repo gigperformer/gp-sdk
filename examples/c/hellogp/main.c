@@ -1,6 +1,6 @@
-#include <interfaces/C/exports.h>
-#include <interfaces/C/imports.h>
-#include <interfaces/C/macros.h>
+#include "gigperformer/sdk/c/exports.h"
+#include "gigperformer/sdk/c/imports.h"
+#include "gigperformer/sdk/c/macros.h"
 #include <stdio.h>
 
 LibraryHandle Handle; // Unique identifier for this library. Must be passed

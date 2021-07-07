@@ -1,4 +1,4 @@
-#include "imports.h"
+#include "gigperformer/sdk/c/imports.h"
 
 #include <assert.h>
 #include <stdio.h>

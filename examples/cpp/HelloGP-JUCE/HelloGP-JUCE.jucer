@@ -1,98 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="FLhIIQ" name="HelloGP-JUCE" projectType="dll" jucerVersion="5.4.7">
+<JUCERPROJECT id="FLhIIQ" name="HelloGP-JUCE" projectType="dll" jucerVersion="5.4.7" headerPath="../../../../../sdk">
   <MAINGROUP id="YlVLAa" name="HelloGP-JUCE">
-    <GROUP id="{0E48A269-5FBE-9E88-07C5-603CA4C689B5}" name="interfaces">
+    <GROUP id="{0E48A269-5FBE-9E88-07C5-603CA4C689B5}" name="GigPerformer SDK">
       <GROUP id="{671D08A8-F771-43DC-2723-69EB5F189FF5}" name="C">
-        <FILE id="vB1YMf" name="exports.h" compile="0" resource="0" file="../../../interfaces/C/exports.h"/>
-        <FILE id="yCWPop" name="GPTypes.h" compile="0" resource="0" file="../../../interfaces/C/GPTypes.h"/>
-        <FILE id="fb4PIe" name="imports.c" compile="1" resource="0" file="../../../interfaces/C/imports.c"/>
-        <FILE id="uoGr70" name="imports.h" compile="0" resource="0" file="../../../interfaces/C/imports.h"/>
-        <FILE id="FS2QXE" name="macros.h" compile="0" resource="0" file="../../../interfaces/C/macros.h"/>
-        <FILE id="bRozeS" name="utils.c" compile="1" resource="0" file="../../../interfaces/C/utils.c"/>
-        <FILE id="t2Tbsu" name="utils.h" compile="0" resource="0" file="../../../interfaces/C/utils.h"/>
+        <FILE id="vB1YMf" name="exports.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/c/exports.h" />
+        <FILE id="yCWPop" name="GPTypes.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/c/GPTypes.h" />
+        <FILE id="fb4PIe" name="imports.c" compile="1" resource="0" file="../../../sdk/gigperformer/sdk/c/imports.c" />
+        <FILE id="uoGr70" name="imports.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/c/imports.h" />
+        <FILE id="FS2QXE" name="macros.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/c/macros.h" />
+        <FILE id="bRozeS" name="utils.c" compile="1" resource="0" file="../../../sdk/gigperformer/sdk/c/utils.c" />
+        <FILE id="t2Tbsu" name="utils.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/c/utils.h" />
       </GROUP>
-      <GROUP id="{E5B1D837-B710-4BE5-FD32-4813DD9CC1EE}" name="CPP">
-        <FILE id="qHiomV" name="entry.cpp" compile="1" resource="0" file="../../../interfaces/CPP/entry.cpp"/>
-        <FILE id="xCuUcP" name="GigPerformerAPI.h" compile="0" resource="0"
-              file="../../../interfaces/CPP/GigPerformerAPI.h"/>
-        <FILE id="SS0hDu" name="GigPerformerFunctions.cpp" compile="1" resource="0"
-              file="../../../interfaces/CPP/GigPerformerFunctions.cpp"/>
-        <FILE id="jyXgCb" name="GigPerformerFunctions.h" compile="0" resource="0"
-              file="../../../interfaces/CPP/GigPerformerFunctions.h"/>
-        <FILE id="fLh96W" name="GPMidiMessages.cpp" compile="1" resource="0"
-              file="../../../interfaces/CPP/GPMidiMessages.cpp"/>
-        <FILE id="v7AGGC" name="GPMidiMessages.h" compile="0" resource="0"
-              file="../../../interfaces/CPP/GPMidiMessages.h"/>
-        <FILE id="soPnez" name="GPUtils.cpp" compile="1" resource="0" file="../../../interfaces/CPP/GPUtils.cpp"/>
-        <FILE id="UhX3Nb" name="GPUtils.h" compile="0" resource="0" file="../../../interfaces/CPP/GPUtils.h"/>
+      <GROUP id="{E5B1D837-B710-4BE5-FD32-4813DD9CC1EE}" name="C++">
+        <FILE id="qHiomV" name="entry.cpp" compile="1" resource="0" file="../../../sdk/gigperformer/sdk/cpp/entry.cpp" />
+        <FILE id="xCuUcP" name="GigPerformerAPI.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/cpp/GigPerformerAPI.h" />
+        <FILE id="SS0hDu" name="GigPerformerFunctions.cpp" compile="1" resource="0" file="../../../sdk/gigperformer/sdk/cpp/GigPerformerFunctions.cpp" />
+        <FILE id="jyXgCb" name="GigPerformerFunctions.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/cpp/GigPerformerFunctions.h" />
+        <FILE id="fLh96W" name="GPMidiMessages.cpp" compile="1" resource="0" file="../../../sdk/gigperformer/sdk/cpp/GPMidiMessages.cpp" />
+        <FILE id="v7AGGC" name="GPMidiMessages.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/cpp/GPMidiMessages.h" />
+        <FILE id="soPnez" name="GPUtils.cpp" compile="1" resource="0" file="../../../sdk/gigperformer/sdk/cpp/GPUtils.cpp" />
+        <FILE id="UhX3Nb" name="GPUtils.h" compile="0" resource="0" file="../../../sdk/gigperformer/sdk/cpp/GPUtils.h" />
       </GROUP>
     </GROUP>
     <GROUP id="{B69C72AB-3D55-EB88-E18C-0385EE3CA1FE}" name="Source">
-      <FILE id="v52Kkt" name="LibMain.h" compile="0" resource="0" file="Source/LibMain.h"/>
-      <FILE id="Teg3bU" name="LogWindow.cpp" compile="1" resource="0" file="Source/LogWindow.cpp"/>
-      <FILE id="Ud6MRX" name="LogWindow.h" compile="0" resource="0" file="Source/LogWindow.h"/>
+      <FILE id="v52Kkt" name="LibMain.h" compile="0" resource="0" file="Source/LibMain.h" />
+      <FILE id="Teg3bU" name="LogWindow.cpp" compile="1" resource="0" file="Source/LogWindow.cpp" />
+      <FILE id="Ud6MRX" name="LogWindow.h" compile="0" resource="0" file="Source/LogWindow.h" />
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" targetName="libHelloGP-JUCE" headerPath="../../../../../&#10;../../Source"/>
-        <CONFIGURATION isDebug="0" name="Release" headerPath="../../../../../" targetName="libHelloGP-JUCE"/>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="libHelloGP-JUCE" headerPath="../../../../../&#10;../../Source" />
+        <CONFIGURATION isDebug="0" name="Release" headerPath="../../../../../" targetName="libHelloGP-JUCE" />
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_audio_basics" path="../../../../../../../../../Downloads/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="../../../../../../../../../Downloads/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="../../../../../../../../../Downloads/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="../../../../../../../../../Downloads/JUCE/modules"/>
-        <MODULEPATH id="juce_core" path="../../../../../../../../../Downloads/JUCE/modules"/>
-        <MODULEPATH id="juce_cryptography" path="../../../../../../../../../Downloads/JUCE/modules"/>
-        <MODULEPATH id="juce_data_structures" path="../../../../../../../../../Downloads/JUCE/modules"/>
-        <MODULEPATH id="juce_events" path="../../../../../../../../../Downloads/JUCE/modules"/>
-        <MODULEPATH id="juce_graphics" path="../../../../../../../../../Downloads/JUCE/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="../../../../../../../../../Downloads/JUCE/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="../../../../../../../../../Downloads/JUCE/modules"/>
-        <MODULEPATH id="juce_opengl" path="../../../../../../../../../Downloads/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../../../../../../../Downloads/JUCE/modules" />
+        <MODULEPATH id="juce_audio_devices" path="../../../../../../../../../Downloads/JUCE/modules" />
+        <MODULEPATH id="juce_audio_formats" path="../../../../../../../../../Downloads/JUCE/modules" />
+        <MODULEPATH id="juce_audio_processors" path="../../../../../../../../../Downloads/JUCE/modules" />
+        <MODULEPATH id="juce_core" path="../../../../../../../../../Downloads/JUCE/modules" />
+        <MODULEPATH id="juce_cryptography" path="../../../../../../../../../Downloads/JUCE/modules" />
+        <MODULEPATH id="juce_data_structures" path="../../../../../../../../../Downloads/JUCE/modules" />
+        <MODULEPATH id="juce_events" path="../../../../../../../../../Downloads/JUCE/modules" />
+        <MODULEPATH id="juce_graphics" path="../../../../../../../../../Downloads/JUCE/modules" />
+        <MODULEPATH id="juce_gui_basics" path="../../../../../../../../../Downloads/JUCE/modules" />
+        <MODULEPATH id="juce_gui_extra" path="../../../../../../../../../Downloads/JUCE/modules" />
+        <MODULEPATH id="juce_opengl" path="../../../../../../../../../Downloads/JUCE/modules" />
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2019 targetFolder="Builds/VisualStudio2019" extraDefs="WIN_EXPORT">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" headerPath="..\..\..\..\..\"/>
-        <CONFIGURATION isDebug="0" name="Release" headerPath="..\..\..\..\..\"/>
+        <CONFIGURATION isDebug="1" name="Debug" headerPath="..\..\..\..\..\" />
+        <CONFIGURATION isDebug="0" name="Release" headerPath="..\..\..\..\..\" />
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_audio_basics" path="..\..\..\..\..\..\..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_devices" path="..\..\..\..\..\..\..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_formats" path="..\..\..\..\..\..\..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_processors" path="..\..\..\..\..\..\..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_core" path="..\..\..\..\..\..\..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_cryptography" path="..\..\..\..\..\..\..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_data_structures" path="..\..\..\..\..\..\..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_events" path="..\..\..\..\..\..\..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_graphics" path="..\..\..\..\..\..\..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_gui_basics" path="..\..\..\..\..\..\..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_gui_extra" path="..\..\..\..\..\..\..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_opengl" path="..\..\..\..\..\..\..\..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_basics" path="..\..\..\..\..\..\..\..\JUCE\modules" />
+        <MODULEPATH id="juce_audio_devices" path="..\..\..\..\..\..\..\..\JUCE\modules" />
+        <MODULEPATH id="juce_audio_formats" path="..\..\..\..\..\..\..\..\JUCE\modules" />
+        <MODULEPATH id="juce_audio_processors" path="..\..\..\..\..\..\..\..\JUCE\modules" />
+        <MODULEPATH id="juce_core" path="..\..\..\..\..\..\..\..\JUCE\modules" />
+        <MODULEPATH id="juce_cryptography" path="..\..\..\..\..\..\..\..\JUCE\modules" />
+        <MODULEPATH id="juce_data_structures" path="..\..\..\..\..\..\..\..\JUCE\modules" />
+        <MODULEPATH id="juce_events" path="..\..\..\..\..\..\..\..\JUCE\modules" />
+        <MODULEPATH id="juce_graphics" path="..\..\..\..\..\..\..\..\JUCE\modules" />
+        <MODULEPATH id="juce_gui_basics" path="..\..\..\..\..\..\..\..\JUCE\modules" />
+        <MODULEPATH id="juce_gui_extra" path="..\..\..\..\..\..\..\..\JUCE\modules" />
+        <MODULEPATH id="juce_opengl" path="..\..\..\..\..\..\..\..\JUCE\modules" />
       </MODULEPATHS>
     </VS2019>
   </EXPORTFORMATS>
   <MODULES>
-    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1" />
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1" />
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1" />
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1" />
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1" />
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="1" />
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1" />
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1" />
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1" />
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1" />
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1" />
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1" />
   </MODULES>
   <LIVE_SETTINGS>
-    <OSX/>
-    <WINDOWS/>
+    <OSX />
+    <WINDOWS />
   </LIVE_SETTINGS>
-  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" />
 </JUCERPROJECT>

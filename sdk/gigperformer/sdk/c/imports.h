@@ -5,7 +5,7 @@
    DLL
 */
 
-#include "GPTypes.h"
+#include "gigperformer/sdk/c/GPTypes.h"
 
 #ifdef __cplusplus
 using namespace DeskewGP;

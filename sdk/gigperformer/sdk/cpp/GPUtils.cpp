@@ -7,7 +7,7 @@
 #include <iomanip>
 #include <sstream>
 
-#include "../C/utils.h"
+#include "gigperformer/sdk/c/utils.h"
 #define then
 
 bool GPUtils::fileExists(std::string filename)

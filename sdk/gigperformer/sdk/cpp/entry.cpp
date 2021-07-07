@@ -4,9 +4,9 @@
 // * The developer does not need to touch this file                           *
 // ****************************************************************************
 
-#include <interfaces/C/exports.h>
-#include <interfaces/C/imports.h>
-#include <interfaces/CPP/GigPerformerAPI.h>
+#include "gigperformer/sdk/c/exports.h"
+#include "gigperformer/sdk/c/imports.h"
+#include "gigperformer/sdk/cpp/GigPerformerAPI.h"
 #include <stdio.h>
 
 #include <vector>

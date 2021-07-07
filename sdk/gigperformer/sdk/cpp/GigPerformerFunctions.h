@@ -3,8 +3,8 @@
 #include <string>
 #include <vector>
 
-#include "../C/imports.h"
 #include "GPMidiMessages.h"
+#include "gigperformer/sdk/c/imports.h"
 
 // These are the functions your library can call
 class GigPerformerFunctions

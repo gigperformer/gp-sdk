@@ -3,8 +3,7 @@
 # Always set the cmake min version.
 cmake_minimum_required(VERSION 3.0)
 
-# Set the GP_SDK_ROOT variable to the GP_SDK folder
-set(GP_SDK_ROOT "../../..")
+set(GP_SDK_ROOT "${CMAKE_CURRENT_LIST_DIR}/../../../sdk")
 set(PROJECT_VERSION "1.0")
 set(PROJECT_NAME "HelloGP-C")
 
@@ -27,8 +26,8 @@ target_sources(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/main.c)
 
 target_sources(
   ${PROJECT_NAME}
-  PUBLIC ${GP_SDK_ROOT}/interfaces/C/imports.c
-  PUBLIC ${GP_SDK_ROOT}/interfaces/C/utils.c)
+  PUBLIC ${GP_SDK_ROOT}/gigperformer/sdk/c/imports.c
+  PUBLIC ${GP_SDK_ROOT}/gigperformer/sdk/c/utils.c)
 
 include_directories(${GP_SDK_ROOT}) # So that the interface files can be found
 

@@ -3,8 +3,7 @@
 # Always set the cmake min version.
 cmake_minimum_required(VERSION 3.0)
 
-# Set the GP_SDK_ROOT variable to the GP_SDK folder
-set(GP_SDK_ROOT "../../..")
+set(GP_SDK_ROOT "${CMAKE_CURRENT_LIST_DIR}/../../../sdk")
 set(PROJECT_VERSION "1.0")
 set(PROJECT_NAME "HelloGP-CPP")
 
@@ -25,13 +24,13 @@ add_library(${PROJECT_NAME} SHARED)
 
 target_sources(
   ${PROJECT_NAME}
-  PUBLIC ${GP_SDK_ROOT}/examples/cpp/hellogp/LibMain.cpp
-  PUBLIC ${GP_SDK_ROOT}/interfaces/CPP/GPUtils.cpp
-  PUBLIC ${GP_SDK_ROOT}/interfaces/CPP/GigPerformerFunctions.cpp
-  PUBLIC ${GP_SDK_ROOT}/interfaces/C/imports.c
-  PUBLIC ${GP_SDK_ROOT}/interfaces/C/utils.c
-  PUBLIC ${GP_SDK_ROOT}/interfaces/CPP/entry.cpp
-  PUBLIC ${GP_SDK_ROOT}/interfaces/CPP/GPMidiMessages.cpp)
+  PUBLIC ${CMAKE_CURRENT_LIST_DIR}/LibMain.cpp
+  PUBLIC ${GP_SDK_ROOT}/gigperformer/sdk/cpp/GPUtils.cpp
+  PUBLIC ${GP_SDK_ROOT}/gigperformer/sdk/cpp/GigPerformerFunctions.cpp
+  PUBLIC ${GP_SDK_ROOT}/gigperformer/sdk/c/imports.c
+  PUBLIC ${GP_SDK_ROOT}/gigperformer/sdk/c/utils.c
+  PUBLIC ${GP_SDK_ROOT}/gigperformer/sdk/cpp/entry.cpp
+  PUBLIC ${GP_SDK_ROOT}/gigperformer/sdk/cpp/GPMidiMessages.cpp)
 
 include_directories(${GP_SDK_ROOT}) # So that the interface files can be found
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}) # So that the LibMain.h can be

@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-#include "../C/GPTypes.h"
+#include "gigperformer/sdk/c/GPTypes.h"
 
 class GPUtils
 {
