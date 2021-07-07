@@ -14,6 +14,7 @@
       </GROUP>
       <GROUP id="{E5B1D837-B710-4BE5-FD32-4813DD9CC1EE}" name="C++">
         <FILE id="qHiomV" name="entry.cpp" compile="1" resource="0" file="../../../sdk/cpp/src/gigperformer/sdk/entry.cpp" />
+        <FILE id="r47b3r" name="GigPerformerAPI.cpp" compile="1" resource="0" file="../../../sdk/cpp/src/gigperformer/sdk/GigPerformerAPI.cpp" />
         <FILE id="xCuUcP" name="GigPerformerAPI.h" compile="0" resource="0" file="../../../sdk/cpp/include/gigperformer/sdk/GigPerformerAPI.h" />
         <FILE id="SS0hDu" name="GigPerformerFunctions.cpp" compile="1" resource="0" file="../../../sdk/cpp/src/gigperformer/sdk/GigPerformerFunctions.cpp" />
         <FILE id="jyXgCb" name="GigPerformerFunctions.h" compile="0" resource="0" file="../../../sdk/cpp/include/gigperformer/sdk/GigPerformerFunctions.h" />

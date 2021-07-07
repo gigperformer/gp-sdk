@@ -10,6 +10,7 @@ target_sources(
     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/gigperformer/sdk/GPUtils.h>
     # Sources
     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src/gigperformer/sdk/entry.cpp>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src/gigperformer/sdk/GigPerformerAPI.cpp>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src/gigperformer/sdk/GigPerformerFunctions.cpp>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src/gigperformer/sdk/GPMidiMessages.cpp>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src/gigperformer/sdk/GPUtils.cpp>
