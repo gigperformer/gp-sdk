@@ -22,52 +22,48 @@
 
 #include "LogWindow.h"
 
-
 //[MiscUserDefs] You can add your own user definitions and misc code here...
-LogWindow* LogWindow::sfInstance = nullptr;
+LogWindow *LogWindow::sfInstance = nullptr;
 //[/MiscUserDefs]
 
 //==============================================================================
-LogWindow::LogWindow ()
+LogWindow::LogWindow()
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    label.reset (new Label ("new label",
-                            TRANS("Hello Gig Performer From an Extension - JUCE")));
-    addAndMakeVisible (label.get());
-    label->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
-    label->setJustificationType (Justification::centredLeft);
-    label->setEditable (false, false, false);
-    label->setColour (TextEditor::textColourId, Colours::black);
-    label->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    label.reset(new Label("new label", TRANS("Hello Gig Performer From an Extension - JUCE")));
+    addAndMakeVisible(label.get());
+    label->setFont(Font(15.00f, Font::plain).withTypefaceStyle("Regular"));
+    label->setJustificationType(Justification::centredLeft);
+    label->setEditable(false, false, false);
+    label->setColour(TextEditor::textColourId, Colours::black);
+    label->setColour(TextEditor::backgroundColourId, Colour(0x00000000));
 
-    label->setBounds (8, 8, 336, 24);
+    label->setBounds(8, 8, 336, 24);
 
-    txtLog.reset (new TextEditor ("txtLog"));
-    addAndMakeVisible (txtLog.get());
-    txtLog->setMultiLine (true);
-    txtLog->setReturnKeyStartsNewLine (true);
-    txtLog->setReadOnly (false);
-    txtLog->setScrollbarsShown (true);
-    txtLog->setCaretVisible (true);
-    txtLog->setPopupMenuEnabled (true);
-    txtLog->setText (String());
+    txtLog.reset(new TextEditor("txtLog"));
+    addAndMakeVisible(txtLog.get());
+    txtLog->setMultiLine(true);
+    txtLog->setReturnKeyStartsNewLine(true);
+    txtLog->setReadOnly(false);
+    txtLog->setScrollbarsShown(true);
+    txtLog->setCaretVisible(true);
+    txtLog->setPopupMenuEnabled(true);
+    txtLog->setText(String());
 
-    btnClear.reset (new TextButton ("btnClear"));
-    addAndMakeVisible (btnClear.get());
-    btnClear->setButtonText (TRANS("Clear"));
-    btnClear->addListener (this);
-
+    btnClear.reset(new TextButton("btnClear"));
+    addAndMakeVisible(btnClear.get());
+    btnClear->setButtonText(TRANS("Clear"));
+    btnClear->addListener(this);
 
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (600, 400);
-
+    setSize(600, 400);
 
     //[Constructor] You can add your own custom stuff here..
-    fWindow.reset(new DocumentWindow("HelloGP-JUCE", Colours::black, DocumentWindow::closeButton) );
+    fWindow.reset(new DocumentWindow("HelloGP-JUCE", Colours::black, DocumentWindow::closeButton));
     fWindow->setContentNonOwned(this, true);
     fWindow->setResizable(true, true);
     fWindow->setUsingNativeTitleBar(true);
@@ -83,18 +79,17 @@ LogWindow::~LogWindow()
     txtLog = nullptr;
     btnClear = nullptr;
 
-
     //[Destructor]. You can add your own custom destruction code here..
     //[/Destructor]
 }
 
 //==============================================================================
-void LogWindow::paint (Graphics& g)
+void LogWindow::paint(Graphics &g)
 {
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
 
-    g.fillAll (Colour (0xff323e44));
+    g.fillAll(Colour(0xff323e44));
 
     //[UserPaint] Add your own custom painting code here..
     //[/UserPaint]
@@ -105,13 +100,13 @@ void LogWindow::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    txtLog->setBounds (16, 40, getWidth() - 33, getHeight() - 83);
-    btnClear->setBounds (getWidth() - 121, getHeight() - 35, 102, 24);
+    txtLog->setBounds(16, 40, getWidth() - 33, getHeight() - 83);
+    btnClear->setBounds(getWidth() - 121, getHeight() - 35, 102, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
 
-void LogWindow::buttonClicked (Button* buttonThatWasClicked)
+void LogWindow::buttonClicked(Button *buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
     //[/UserbuttonClicked_Pre]
@@ -127,32 +122,31 @@ void LogWindow::buttonClicked (Button* buttonThatWasClicked)
     //[/UserbuttonClicked_Post]
 }
 
-
-
-//[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+//[MiscUserCode] You can add your own definitions of your custom methods or any
+// other code here...
 void LogWindow::show()
 {
     MessageManager::getInstance()->callAsync([]() {
-                                                        if (sfInstance == nullptr)
-                                                        {
-                                                            sfInstance = new LogWindow();
-                                                            sfInstance->fWindow->setTopLeftPosition(100, 100);
-                                                            LogWindow::log("HelloGP-JUCE library loaded and initialized.\n");
-                                                        }
+        if (sfInstance == nullptr)
+        {
+            sfInstance = new LogWindow();
+            sfInstance->fWindow->setTopLeftPosition(100, 100);
+            LogWindow::log("HelloGP-JUCE library loaded and initialized.\n");
+        }
 
-                                                        jassert(sfInstance != nullptr);
-                                                        sfInstance->fWindow->setVisible(true);
-                                                    });
+        jassert(sfInstance != nullptr);
+        sfInstance->fWindow->setVisible(true);
+    });
 }
 
-void LogWindow::log(const String& text)
+void LogWindow::log(const String &text)
 {
     if (sfInstance != nullptr)
     {
         MessageManager::getInstance()->callAsync([text]() {
-                                                                sfInstance->txtLog->insertTextAtCaret(text);
-                                                                sfInstance->txtLog->insertTextAtCaret("\n");
-                                                            });
+            sfInstance->txtLog->insertTextAtCaret(text);
+            sfInstance->txtLog->insertTextAtCaret("\n");
+        });
     }
 }
 
@@ -165,7 +159,6 @@ void LogWindow::finalize()
     }
 }
 //[/MiscUserCode]
-
 
 //==============================================================================
 #if 0
@@ -199,7 +192,5 @@ END_JUCER_METADATA
 */
 #endif
 
-
 //[EndFile] You can add extra defines here...
 //[/EndFile]
-

@@ -23,8 +23,6 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 //[/Headers]
 
-
-
 //==============================================================================
 /**
                                                                     //[Comments]
@@ -33,30 +31,28 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class LogWindow  : public Component,
-                   public Button::Listener
+class LogWindow : public Component, public Button::Listener
 {
-public:
+  public:
     //==============================================================================
-    LogWindow ();
+    LogWindow();
     ~LogWindow() override;
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
     void static show(); // Call this to show the component
-    void static log(const String& text);
-    void static finalize(); // Call this when library is about to be unloaded to free resources
+    void static log(const String &text);
+    void static finalize(); // Call this when library is about to be unloaded to
+                            // free resources
     //[/UserMethods]
 
-    void paint (Graphics& g) override;
+    void paint(Graphics &g) override;
     void resized() override;
-    void buttonClicked (Button* buttonThatWasClicked) override;
+    void buttonClicked(Button *buttonThatWasClicked) override;
 
-
-
-private:
+  private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    static LogWindow* sfInstance;
+    static LogWindow *sfInstance;
 
     std::unique_ptr<DocumentWindow> fWindow;
     //[/UserVariables]
@@ -66,11 +62,9 @@ private:
     std::unique_ptr<TextEditor> txtLog;
     std::unique_ptr<TextButton> btnClear;
 
-
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LogWindow)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(LogWindow)
 };
 
 //[EndFile] You can add extra defines here...
 //[/EndFile]
-

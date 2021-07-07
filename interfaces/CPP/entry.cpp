@@ -7,213 +7,202 @@
 #include <interfaces/C/exports.h>
 #include <interfaces/C/imports.h>
 #include <interfaces/CPP/GigPerformerAPI.h>
-#include <vector>
 #include <stdio.h>
+
+#include <vector>
 
 #include "LibMain.h"
 
-static GigPerformerAPI* subclass = nullptr;
+static GigPerformerAPI *subclass = nullptr;
 
+// You must implement this function so that GP can get information about this
+// library to determine whether it should be loaded for user These functions are
+// all declared in the C interface file called exports.h
 
-    // You must implement this function so that GP can get information about this library 
-    // to determine whether it should be loaded for user
-    // These functions are all declared in the C interface file called exports.h
-
-extern "C"    EXPORTED void GPQueryLibrary(char* xmlInfoBuffer, int bufferLength)
-    {
-
-       subclass = new LibMain(nullptr);
-       std::string info = subclass->GetProductDescription();
-       snprintf(xmlInfoBuffer, bufferLength, "%s", info.c_str());
-       delete subclass;
-
-    }
-
-    // You MUST implement this function call AND call the InitializeImportedFunctions function 
-extern "C"    EXPORTED void GPRegister(TGetGPFunctionType getGPFunctionAddress, LibraryHandle handle)
-    {
-       InitializeImportedFunctions(handle, getGPFunctionAddress);
-       subclass = new LibMain(handle);
-       subclass->Initialization();        
-        
-    }
-    
-
-extern "C"   EXPORTED int GetPanelCount()
+extern "C" EXPORTED void GPQueryLibrary(char *xmlInfoBuffer, int bufferLength)
 {
-   return subclass->GetPanelCount();
+    subclass = new LibMain(nullptr);
+    std::string info = subclass->GetProductDescription();
+    snprintf(xmlInfoBuffer, bufferLength, "%s", info.c_str());
+    delete subclass;
 }
 
-extern "C"   EXPORTED int GetPanelName(int index, char* buffer, int bufferLength)
+// You MUST implement this function call AND call the
+// InitializeImportedFunctions function
+extern "C" EXPORTED void GPRegister(TGetGPFunctionType getGPFunctionAddress, LibraryHandle handle)
 {
-   std::string s = subclass->GetPanelName(index);
-   int requiredLength = snprintf(buffer, bufferLength, "%s", s.c_str());
-   return requiredLength;
+    InitializeImportedFunctions(handle, getGPFunctionAddress);
+    subclass = new LibMain(handle);
+    subclass->Initialization();
 }
 
-// One may in fact have to call this one twice - the first time to find out how large the buffer REALLY needs to be
-extern "C"  EXPORTED int GetPanelXML(int index, char* buffer, int bufferLength)
+extern "C" EXPORTED int GetPanelCount()
 {
-   std::string xml = subclass->GetPanelXML(index);
-   int requiredLength = snprintf(buffer, bufferLength, "%s", xml.c_str());
-   return requiredLength;
-
+    return subclass->GetPanelCount();
 }
 
-extern "C"   EXPORTED int GetMenuCount()
+extern "C" EXPORTED int GetPanelName(int index, char *buffer, int bufferLength)
 {
-   return subclass->GetMenuCount();
+    std::string s = subclass->GetPanelName(index);
+    int requiredLength = snprintf(buffer, bufferLength, "%s", s.c_str());
+    return requiredLength;
 }
 
-extern "C"   EXPORTED int GetMenuName(int index, char* buffer, int bufferLength)
+// One may in fact have to call this one twice - the first time to find out how
+// large the buffer REALLY needs to be
+extern "C" EXPORTED int GetPanelXML(int index, char *buffer, int bufferLength)
 {
-   std::string s = subclass->GetMenuName(index);
-   int requiredLength = snprintf(buffer, bufferLength, "%s", s.c_str());
-   return requiredLength;
+    std::string xml = subclass->GetPanelXML(index);
+    int requiredLength = snprintf(buffer, bufferLength, "%s", xml.c_str());
+    return requiredLength;
 }
 
-extern "C"  EXPORTED void InvokeMenu(int index)
+extern "C" EXPORTED int GetMenuCount()
 {
-   subclass->InvokeMenu(index);
+    return subclass->GetMenuCount();
+}
+
+extern "C" EXPORTED int GetMenuName(int index, char *buffer, int bufferLength)
+{
+    std::string s = subclass->GetMenuName(index);
+    int requiredLength = snprintf(buffer, bufferLength, "%s", s.c_str());
+    return requiredLength;
+}
+
+extern "C" EXPORTED void InvokeMenu(int index)
+{
+    subclass->InvokeMenu(index);
 }
 
 /////
 
-extern "C" EXPORTED bool OnMidiIn(const char*  deviceName, const uint8_t* data, int length)
+extern "C" EXPORTED bool OnMidiIn(const char *deviceName, const uint8_t *data, int length)
 {
-   std::string name = deviceName;
+    std::string name = deviceName;
 
-   return subclass->OnMidiIn(name, data,  length);
+    return subclass->OnMidiIn(name, data, length);
 }
-
 
 // Called when Gig Performer is about to shut down
 extern "C" EXPORTED void OnClose()
 {
-   subclass->OnClose();
-   delete subclass; // Just for tidyness
+    subclass->OnClose();
+    delete subclass; // Just for tidyness
 }
 
-
-// Called when user enters or exits editing mode. 
+// Called when user enters or exits editing mode.
 extern "C" EXPORTED void OnEditStateChanged(bool inEditMode)
 {
-   subclass->OnEditStateChanged( inEditMode);
+    subclass->OnEditStateChanged(inEditMode);
 }
-
 
 // called when the user switches into the diagram/connection mode
 extern "C" EXPORTED void OnSwitchToWiringView()
 {
-   subclass->OnSwitchToWiringView();
+    subclass->OnSwitchToWiringView();
 }
-
 
 // Called when the user switches into rackspace mode
 extern "C" EXPORTED void OnSwitchToPanelView()
 {
-   subclass->OnSwitchToPanelView();
+    subclass->OnSwitchToPanelView();
 }
-
 
 // Called when the user switches into setlist mode
 extern "C" EXPORTED void OnModeChanged(int mode)
 {
-   subclass->OnModeChanged(mode);
+    subclass->OnModeChanged(mode);
 }
-
 
 // Called when a new gig file has finished being loaded
 extern "C" EXPORTED void OnGigLoaded()
 {
-   subclass->OnGigLoaded();
+    subclass->OnGigLoaded();
 }
- // Called when a new gig file has been loaded
+// Called when a new gig file has been loaded
 
 // Called when a MIDI device is connected or disconnected from the computer
-extern "C" EXPORTED void OnMidiDeviceListChanged(const char** inputs, int inputCount, const char** outputs, int outputCount)
+extern "C" EXPORTED void OnMidiDeviceListChanged(const char **inputs, int inputCount, const char **outputs,
+                                                 int outputCount)
 {
-   std::vector<std::string> inputDevices;
+    std::vector<std::string> inputDevices;
 
-   for (int i = 0; i < inputCount; i++)
-      inputDevices.push_back(inputs[i]);
+    for (int i = 0; i < inputCount; i++)
+        inputDevices.push_back(inputs[i]);
 
-   std::vector<std::string> outputDevices;
+    std::vector<std::string> outputDevices;
 
-   for (int i = 0; i < outputCount; i++)
-      outputDevices.push_back(outputs[i]);
+    for (int i = 0; i < outputCount; i++)
+        outputDevices.push_back(outputs[i]);
 
-
-   subclass->OnMidiDeviceListChanged(inputDevices, outputDevices);
+    subclass->OnMidiDeviceListChanged(inputDevices, outputDevices);
 }
- // A midi device was added or removed
+// A midi device was added or removed
 
 // Called when Gig Performer has finished initializing itself
 extern "C" EXPORTED void OnOpen()
 {
-   subclass->OnOpen();
+    subclass->OnOpen();
 }
-
 
 // Called when user switches to a new rackspace
 extern "C" EXPORTED void OnRackspaceChanged()
 {
-   subclass->OnRackspaceChanged();
+    subclass->OnRackspaceChanged();
 }
-
 
 // Called when user switches to a new song in setlist mode
 extern "C" EXPORTED void OnSongChanged(int oldIndex, int newIndex)
 {
-   subclass->OnSongChanged( oldIndex,  newIndex);
+    subclass->OnSongChanged(oldIndex, newIndex);
 }
- // Called when we have a new song
+// Called when we have a new song
 
-// Called when user switches to a new song part within the current song in setlist mode
+// Called when user switches to a new song part within the current song in
+// setlist mode
 extern "C" EXPORTED void OnSongPartChanged(int oldIndex, int newIndex)
 {
-   subclass->OnSongPartChanged( oldIndex,  newIndex);
+    subclass->OnSongPartChanged(oldIndex, newIndex);
 }
- // Called when we switch to a new song part
+// Called when we switch to a new song part
 
 // Called when the user switches in or out of tuner mode
 extern "C" EXPORTED void OnTunerModeChanged(bool visible)
 {
-   subclass->OnTunerModeChanged( visible);
+    subclass->OnTunerModeChanged(visible);
 }
 
 extern "C" EXPORTED void OnGlobalPlayStateChanged(bool playing)
 {
-   subclass->OnGlobalPlayStateChanged(playing);
+    subclass->OnGlobalPlayStateChanged(playing);
 }
 
 // Called when user switches from one variation to another
 extern "C" EXPORTED void OnVariationChanged(int oldIndex, int newIndex)
 {
-   subclass->OnVariationChanged( oldIndex,  newIndex);
+    subclass->OnVariationChanged(oldIndex, newIndex);
 }
 
-
-// Called when a widget is turned or otherwise adjusted. The library must register its interest in listening for such changes
-extern "C" EXPORTED void OnWidgetValueChanged(const char*  widgetName, double newValue)
+// Called when a widget is turned or otherwise adjusted. The library must
+// register its interest in listening for such changes
+extern "C" EXPORTED void OnWidgetValueChanged(const char *widgetName, double newValue)
 {
-   std::string name = widgetName;
-   subclass->OnWidgetValueChanged(  name,  newValue);
+    std::string name = widgetName;
+    subclass->OnWidgetValueChanged(name, newValue);
 }
 
-
-// Called when a widget caption is changed. The library must register its interest in listening for such changes
-extern "C" EXPORTED void OnWidgetCaptionChanged(const char*  widgetName, const char*  newCaption)
+// Called when a widget caption is changed. The library must register its
+// interest in listening for such changes
+extern "C" EXPORTED void OnWidgetCaptionChanged(const char *widgetName, const char *newCaption)
 {
-   std::string name = widgetName;
-   subclass->OnWidgetCaptionChanged(  name,  newCaption);
+    std::string name = widgetName;
+    subclass->OnWidgetCaptionChanged(name, newCaption);
 }
 
-
-
-// Called when a widget is turned or otherwise adjusted. The library must register its interest in listening for such changes
-extern "C" EXPORTED void OnWidgetStateChanged(const char*  widgetName, int newState)
+// Called when a widget is turned or otherwise adjusted. The library must
+// register its interest in listening for such changes
+extern "C" EXPORTED void OnWidgetStateChanged(const char *widgetName, int newState)
 {
-   std::string name = widgetName;
-   subclass->OnWidgetStateChanged(  name,  newState);
+    std::string name = widgetName;
+    subclass->OnWidgetStateChanged(name, newState);
 }
