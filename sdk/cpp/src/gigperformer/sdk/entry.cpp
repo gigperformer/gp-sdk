@@ -11,7 +11,6 @@
 
 #include <vector>
 
-#include "LibMain.h"
 
 static GigPerformerAPI *subclass = nullptr;
 
@@ -21,7 +20,7 @@ static GigPerformerAPI *subclass = nullptr;
 
 extern "C" void GPQueryLibrary(char *xmlInfoBuffer, int bufferLength)
 {
-    subclass = new LibMain(nullptr);
+    subclass = CreateGPExtension(nullptr);
     std::string info = subclass->GetProductDescription();
     snprintf(xmlInfoBuffer, bufferLength, "%s", info.c_str());
     delete subclass;
@@ -32,7 +31,7 @@ extern "C" void GPQueryLibrary(char *xmlInfoBuffer, int bufferLength)
 extern "C" void GPRegister(TGetGPFunctionType getGPFunctionAddress, LibraryHandle handle)
 {
     InitializeImportedFunctions(handle, getGPFunctionAddress);
-    subclass = new LibMain(handle);
+    subclass = CreateGPExtension(handle);
     subclass->Initialization();
 }
 

@@ -88,3 +88,8 @@ void LibMain::InvokeMenu(int index)
         }
     }
 }
+
+GigPerformerAPI *CreateGPExtension(LibraryHandle handle)
+{
+    return new LibMain(handle);
+}

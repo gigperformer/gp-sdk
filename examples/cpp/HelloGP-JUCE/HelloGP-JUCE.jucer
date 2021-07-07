@@ -24,6 +24,7 @@
       </GROUP>
     </GROUP>
     <GROUP id="{B69C72AB-3D55-EB88-E18C-0385EE3CA1FE}" name="Source">
+      <FILE id="gVroFC" name="LibMain.cpp" compile="1" resource="0" file="Source/LibMain.cpp" />
       <FILE id="v52Kkt" name="LibMain.h" compile="0" resource="0" file="Source/LibMain.h" />
       <FILE id="Teg3bU" name="LogWindow.cpp" compile="1" resource="0" file="Source/LogWindow.cpp" />
       <FILE id="Ud6MRX" name="LogWindow.h" compile="0" resource="0" file="Source/LogWindow.h" />

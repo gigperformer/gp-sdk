@@ -4,7 +4,7 @@
 
 #include "GigPerformerFunctions.h"
 
-// Override the desired callbacks defined here in your main class (DLLMain.h)
+// Override the desired callbacks defined here in your main class (e.g. LibMain)
 class GigPerformerAPI : public GigPerformerFunctions
 {
   public:
@@ -114,3 +114,9 @@ class GigPerformerAPI : public GigPerformerFunctions
     {
     }
 };
+
+/// Create an instance of the user-defined class that implements GigPerformerAPI.
+/// Must be implemented by the library user.
+/// \param handle may be nullptr. If so, callbacks cannot be created.
+/// \return Pointer to a GigPerformerAPI implementation, created by new. The caller takes ownership of it.
+GigPerformerAPI *CreateGPExtension(LibraryHandle handle);

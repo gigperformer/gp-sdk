@@ -18,11 +18,6 @@ const std::string XMLProductDescription =
     "  <ImagePath>/Path/To/ImageFile/foo.jpg</ImagePath>"
     "</Library>";
 
-// This needs to be initialized from the initialization section of the LibMain
-// class so it can be used in the standalone functions directly below Define
-// your class here - it MUST be called LibMain and it must inherit from
-// GigPerformerAPI
-
 class LibMain : public GigPerformerAPI
 {
   protected:
