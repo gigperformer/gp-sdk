@@ -34,8 +34,7 @@ set_target_properties(
              CXX_EXTENSIONS NO)
 
 # Let's set compiler-specific flags
-if(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
-  # G++
+if(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang|GNU")
   target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
 elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
   # MSVC
