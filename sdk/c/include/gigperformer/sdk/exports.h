@@ -10,7 +10,7 @@
  this particular library should be used
 <Library>
     <Product name="My ControlSurface" Version="1.0" BuildDate="12/1/2019"></Product>
-    <Description>Thisproduct does blah blah blah</Description>
+    <Description>This product does blah blah blah</Description>
     <ImagePath>/Path/To/ImageFile/foo.jpg</ImagePath>
 </Library>
 */
@@ -75,9 +75,9 @@ extern "C"
     void OnGigLoaded(); // Called when a new gig file has been loaded
 
     // Called when a MIDI device is connected or disconnected from the computer.
-    // You get an array of strings for the midiin and midiout device list
+    // You get an array of strings for the MIDI in and MIDI out device list
     // respectively
-    void OnMidiDeviceListChanged(const char **inputs, int intputCount, const char **outputs,
+    void OnMidiDeviceListChanged(const char **inputs, int inputCount, const char **outputs,
                                  int outputCount); // A midi device was added or removed - get the new list
 
     // Called when Gig Performer has finished initializing itself
