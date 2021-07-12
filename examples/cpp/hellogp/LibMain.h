@@ -41,19 +41,20 @@ public:
 
     void OnModeChanged(int mode) override
     {
-       consoleLog(std::string("Switching to mode: ")  +  ((mode == SetlistMode) ? "Setlist" : "FrontBack" ));
+       //consoleLog(std::string("Switching to mode: ")  +  ((mode == SetlistMode) ? "Setlist" : "FrontBack" ));
     }
 
     void OnSwitchToPanelView() override
     {
         consoleLog("Switching to panel view");
-
+        setPlayheadState(true);
     }
 
 
     void OnSwitchToWiringView() override
     {
         consoleLog("Switching to wiring view");
+        setPlayheadState(false);
 
     }
 
@@ -63,7 +64,7 @@ public:
         consoleLog(std::string("playing = ") + (playing? " true" : "false"));
 
         //switchToSetlistView();
-        switchToWiringView();
+        //switchToWiringView();
 
     }
 

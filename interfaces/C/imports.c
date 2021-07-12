@@ -61,6 +61,8 @@ TGP_GetVariationName                      GP_GetVariationName;
 TGP_SwitchToRackspace                     GP_SwitchToRackspace;
 TGP_SwitchToRackspaceName                 GP_SwitchToRackspaceName;
 
+TGP_SetPlayheadState                      GP_SetPlayheadState;
+
 TGP_ShowTuner                             GP_ShowTuner;
 TGP_TunerShowing                          GP_TunerShowing;
 
@@ -112,6 +114,8 @@ void InitializeImportedFunctions(LibraryHandle handle, TGetGPFunctionType getGPF
    R(GP_SwitchToSetlistView);
    R(GP_SwitchToWiringView);
    R(GP_SwitchToPanelView);
+
+   R(GP_SetPlayheadState);
 
    R(GP_ShowTuner);
    R(GP_TunerShowing);

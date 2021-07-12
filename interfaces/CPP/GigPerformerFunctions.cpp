@@ -100,6 +100,11 @@
    }
 
 
+   void GigPerformerFunctions::setPlayheadState(bool play)
+   {
+       GP_SetPlayheadState(fHandle, play);
+   }
+
    void GigPerformerFunctions::showTuner(bool show)
    {
        GP_ShowTuner(fHandle, show);

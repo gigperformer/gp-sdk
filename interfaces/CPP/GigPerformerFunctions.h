@@ -79,6 +79,7 @@ public:
    void previous();
    void next();
 
+   void setPlayheadState(bool play);
 
    void showTuner(bool show);
    bool tunerShowing();

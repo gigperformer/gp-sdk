@@ -139,6 +139,11 @@ typedef
 typedef
    void (*TGP_SwitchToPanelView)(LibraryHandle h);
 
+
+typedef
+   void (*TGP_SetPlayheadState)(LibraryHandle h, bool play);
+
+
 typedef
    void (*TGP_ShowTuner)(LibraryHandle h, bool show);
 
@@ -187,6 +192,8 @@ extern TGP_GetPathToMe                           GP_GetPathToMe;
 
 extern TGP_ShowTuner                             GP_ShowTuner;
 extern TGP_TunerShowing                          GP_TunerShowing;
+
+extern TGP_SetPlayheadState                      GP_SetPlayheadState;
 
 extern TGP_SwitchToSetlistView                   GP_SwitchToSetlistView;
 extern TGP_SwitchToWiringView                    GP_SwitchToWiringView;
