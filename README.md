@@ -12,7 +12,7 @@ This SDK includes the source code that will need to be included in every third p
 
 ## Fundamentals
 
-1. GP will query all libraries found in `/Users/Shared/Gig Performer/ThirdParty` (macOS) and in `C:\Users\All Users\Gig Performer\ThirdParty` (Windows) to collection information (product name, build date, description, etc).
+1. GP will query all libraries found in `/Users/Shared/Gig Performer/Extensions` (macOS) and in `C:\Users\All Users\Gig Performer\Extensions` (Windows) to collection information (product name, build date, description, etc).
    This information will be displayed to the user who can decide which libraries should be loaded and used.
 2. GP will next load the desired libraries.
 3. GP exposes a collection of functions that a library can call to interact with the application.
