@@ -866,6 +866,7 @@ WARN_LOGFILE           =
 
 INPUT                  =
 INPUT                 += ./README.md
+INPUT                 += ./CHANGELOG.md
 INPUT                 += ./c/include
 INPUT                 += ./cpp/include
 
