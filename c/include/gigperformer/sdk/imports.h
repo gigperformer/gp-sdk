@@ -80,6 +80,7 @@ extern "C"
     typedef bool (*TGP_LoadGigByIndex)(LibraryHandle h, int indexNumber);
 
     typedef bool (*TGP_Tap)(LibraryHandle h);
+    typedef void (*TGP_SetPlayheadState)(LibraryHandle h, bool play);
     typedef bool (*TGP_Next)(LibraryHandle h);
     typedef bool (*TGP_Previous)(LibraryHandle h);
     typedef bool (*TGP_ResetWidgetToDefault)(LibraryHandle h, const char *widgetName, double newDefault);
@@ -278,6 +279,9 @@ extern "C"
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Miscellaneous
+
+    /// \brief   Enable or disable the global playhead.
+    extern TGP_SetPlayheadState GP_SetPlayheadState;
 
     /// \brief   Same as clicking the global "Tap Tempo" button.
     extern TGP_Tap GP_Tap;

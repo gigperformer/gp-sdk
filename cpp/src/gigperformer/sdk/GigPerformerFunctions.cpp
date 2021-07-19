@@ -363,6 +363,11 @@ bool GigPerformerFunctions::loadGigByIndex(int indexNumber)
     return success;
 }
 
+void GigPerformerFunctions::setPlayheadState(bool play)
+{
+    GP_SetPlayheadState(fHandle, play);
+}
+
 void GigPerformerFunctions::tap()
 {
     GP_Tap(fHandle);

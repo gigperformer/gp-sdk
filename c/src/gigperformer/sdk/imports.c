@@ -63,6 +63,7 @@ extern "C"
 
     TGP_SaveGigUnconditionally GP_SaveGigUnconditionally;
     TGP_LoadGigByIndex GP_LoadGigByIndex;
+    TGP_SetPlayheadState GP_SetPlayheadState;
     TGP_Tap GP_Tap;
     TGP_Previous GP_Previous;
     TGP_Next GP_Next;
@@ -152,6 +153,7 @@ extern "C"
 
         R(GP_SaveGigUnconditionally);
         R(GP_LoadGigByIndex);
+        R(GP_SetPlayheadState);
         R(GP_Tap);
         R(GP_Previous);
         R(GP_Next);

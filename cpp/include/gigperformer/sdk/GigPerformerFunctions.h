@@ -201,6 +201,9 @@ class GigPerformerFunctions
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Miscellaneous
 
+    /// \brief   Enable or disable the global playhead.
+    void setPlayheadState(bool play);
+
     /// \brief   Same as clicking the global "Tap Tempo" button.
     void tap();
 
