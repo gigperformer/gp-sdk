@@ -1,3 +1,6 @@
+/// \file    GPMidiMessages.h
+/// \brief   Contains the definition of the GPMidiMessage class
+
 #pragma once
 
 #include <cstdint>
@@ -9,23 +12,27 @@ namespace gigperformer
 namespace sdk
 {
 
-// Leveraging some of the clever ideas from the JUCE MidiMessage class
-// However, having said that, we MIGHT want to change the model and assume some
-// maximum fixed size for SysexMessages so that we leverage a free pool for
-// sysex MIDI messages
+/// \brief   Represents a MIDI message
+/// \details Leveraging some of the clever ideas from the JUCE MidiMessage class. However, having said that, we might
+///          want to change the model and assume some maximum fixed size for SysexMessages so that we leverage a free
+///          pool for sysex MIDI messages.
 class GPMidiMessage
 {
   public:
     GPMidiMessage();
     ~GPMidiMessage();
 
-    GPMidiMessage(const char *bytes,
-                  int length);                   // Create a midi message from a sequence of bytes
-    explicit GPMidiMessage(const std::string &hexSource); // Create a midi message from a hex string
-    // "F0 0a 0b F7" for example
+    /// \brief   Create a MIDI message from a sequence of bytes.
+    GPMidiMessage(const char *bytes, int length);
 
-    GPMidiMessage(const GPMidiMessage &source);            // Copy another message
-    GPMidiMessage &operator=(const GPMidiMessage &source); // Assignment
+    /// \brief   Create a midi message from a hex string.
+    /// \param   hexSource could be "F0 0a 0b F7" for example
+    explicit GPMidiMessage(const std::string &hexSource);
+
+    /// \brief   Copy another message.
+    GPMidiMessage(const GPMidiMessage &source);
+    /// \brief   Assign to a message.
+    GPMidiMessage &operator=(const GPMidiMessage &source);
 
     uint8_t *asBytes() const
     {
@@ -52,12 +59,20 @@ class GPMidiMessage
 
     bool isSysexMessage();
 
-    // These are intended for sysex messages where the values starting at some
-    // offset can be changed
+    /// \brief   Change a single byte in a MIDI message.
+    /// \details Intended for sysex messages where the values starting at some offset can be changed.
+    /// \param   offset position of the byte to change
+    /// \param   value the byte at the given position will be changed to it
     void setValue(int offset, uint8_t value);
-    void setValue(int offset, uint16_t value); // 2 bytes (well, 14 bits worth)
-    template <class T> void setValue(int offset,
-                                     T value) = delete; // Prevent any other type conversions
+
+    /// \brief   Change two bytes in a MIDI message.
+    /// \details Intended for sysex messages where the values starting at some offset can be changed.
+    /// \param   offset position of the first byte to change
+    /// \param   value the byte at offset and the one after it will be changed to the two bytes of value
+    void setValue(int offset, uint16_t value);
+
+    // Prevent any other type conversions
+    template <class T> void setValue(int offset, T value) = delete;
 
   private:
     union MidiData {
