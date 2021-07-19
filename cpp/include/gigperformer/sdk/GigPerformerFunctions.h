@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-#include "GPMidiMessages.h"
+#include "gigperformer/sdk/GPMidiMessages.h"
 #include "gigperformer/sdk/imports.h"
 
 namespace gigperformer
