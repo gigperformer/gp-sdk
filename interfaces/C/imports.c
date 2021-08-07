@@ -5,6 +5,8 @@
 #define then
 
 
+// Declare the function and initialize
+#define DeclareFunc(funcName)  T##funcName funcName = NULL
 
 // These are the functions that library developer can call 
 #ifdef __cplusplus
@@ -13,69 +15,74 @@ extern "C"
 #endif
 
 
-TGP_GetPathToMe                           GP_GetPathToMe;
+DeclareFunc(GP_GetPathToMe);
 
-TGP_SwitchToSetlistView                   GP_SwitchToSetlistView;
-TGP_SwitchToWiringView                    GP_SwitchToWiringView;
-TGP_SwitchToPanelView                     GP_SwitchToPanelView;
+DeclareFunc(GP_SwitchToSetlistView);
+DeclareFunc(GP_SwitchToWiringView);
+DeclareFunc(GP_SwitchToPanelView);
 
+DeclareFunc(GP_GetPluginList);
+DeclareFunc(GP_PluginExists);
+DeclareFunc(GP_SetPluginParameter);
+DeclareFunc(GP_GetPluginParameter);
 
-TGP_GetWidgetList                         GP_GetWidgetList;
-TGP_WidgetExists                          GP_WidgetExists;
-TGP_GetWidgetValue                        GP_GetWidgetValue;
-TGP_GetWidgetTextValue                    GP_GetWidgetTextValue;
-TGP_SetWidgetValue                        GP_SetWidgetValue;
-TGP_SetWidgetCaption                      GP_SetWidgetCaption;
-TGP_GetWidgetCaption                      GP_GetWidgetCaption;
-TGP_ListenForWidget                       GP_ListenForWidget;
-TGP_ListeningForWidget                    GP_ListeningForWidget;
-TGP_ListenForMidi                         GP_ListenForMidi;
-TGP_ListeningForMidi                      GP_ListeningForMidi;
-TGP_GetMidiInDeviceCount                  GP_GetMidiInDeviceCount;
-TGP_GetMidiInDeviceName                   GP_GetMidiInDeviceName;
-TGP_GetMidiOutDeviceCount                 GP_GetMidiOutDeviceCount;
-TGP_GetMidiOutDeviceName                  GP_GetMidiOutDeviceName;
-TGP_TextToHexString                       GP_TextToHexString;
-TGP_SendMidiMessageToMidiOutDevice        GP_SendMidiMessageToMidiOutDevice;
-TGP_InjectMidiMessageToMidiInputDevice    GP_InjectMidiMessageToMidiInputDevice;
-TGP_InjectMidiMessageToMidiInputAlias     GP_InjectMidiMessageToMidiInputAlias;
-TGP_GetSongCount                          GP_GetSongCount;
-TGP_GetSongName                           GP_GetSongName;
-TGP_GetCurrentSongIndex                   GP_GetCurrentSongIndex;
-TGP_GetSongpartCount                      GP_GetSongpartCount;
-TGP_GetSongpartName                       GP_GetSongpartName;
-TGP_GetCurrentSongpartIndex               GP_GetCurrentSongpartIndex;
-TGP_InSetlistMode                         GP_InSetlistMode;
-TGP_SwitchToSong                          GP_SwitchToSong;
-TGP_SwitchToSongPart                      GP_SwitchToSongPart;
-TGP_ConsoleLog                            GP_ConsoleLog;
-TGP_ScriptLog                             GP_ScriptLog;
+DeclareFunc(GP_GetWidgetList);
+DeclareFunc(GP_WidgetExists);
+DeclareFunc(GP_GetWidgetValue);
+DeclareFunc(GP_GetWidgetTextValue);
+DeclareFunc(GP_SetWidgetValue);
+DeclareFunc(GP_SetWidgetCaption);
+DeclareFunc(GP_GetWidgetCaption);
+DeclareFunc(GP_ListenForWidget);
+DeclareFunc(GP_ListeningForWidget);
+DeclareFunc(GP_ListenForMidi);
+DeclareFunc(GP_ListeningForMidi);
+DeclareFunc(GP_GetMidiInDeviceCount);
+DeclareFunc(GP_GetMidiInDeviceName);
+DeclareFunc(GP_GetMidiOutDeviceCount);
+DeclareFunc(GP_GetMidiOutDeviceName);
+DeclareFunc(GP_TextToHexString);
+DeclareFunc(GP_SendMidiMessageToMidiOutDevice);
+DeclareFunc(GP_InjectMidiMessageToMidiInputDevice);
+DeclareFunc(GP_InjectMidiMessageToMidiInputAlias);
+DeclareFunc(GP_GetSongCount);
+DeclareFunc(GP_GetSongName);
+DeclareFunc(GP_GetCurrentSongIndex);
+DeclareFunc(GP_GetSongpartCount);
+DeclareFunc(GP_GetSongpartName);
+DeclareFunc(GP_GetCurrentSongpartIndex);
+DeclareFunc(GP_InSetlistMode);
+DeclareFunc(GP_SwitchToSong);
+DeclareFunc(GP_SwitchToSongPart);
+DeclareFunc(GP_ConsoleLog);
+DeclareFunc(GP_ScriptLog);
 
-TGP_GetRackspaceCount                     GP_GetRackspaceCount;
-TGP_GetRackspaceName                      GP_GetRackspaceName;
-TGP_GetCurrentRackspaceIndex              GP_GetCurrentRackspaceIndex;
-TGP_GetCurrentVariationIndex              GP_GetCurrentVariationIndex;
-TGP_GetVariationCount                     GP_GetVariationCount;
-TGP_GetVariationName                      GP_GetVariationName;
+DeclareFunc(GP_GetRackspaceCount);
+DeclareFunc(GP_GetRackspaceName);
+DeclareFunc(GP_GetCurrentRackspaceIndex);
+DeclareFunc(GP_GetCurrentVariationIndex);
+DeclareFunc(GP_GetVariationCount);
+DeclareFunc(GP_GetVariationName);
     
-TGP_SwitchToRackspace                     GP_SwitchToRackspace;
-TGP_SwitchToRackspaceName                 GP_SwitchToRackspaceName;
+DeclareFunc(GP_SwitchToRackspace);
+DeclareFunc(GP_SwitchToRackspaceName);
 
-TGP_SetPlayheadState                      GP_SetPlayheadState;
+DeclareFunc(GP_SetPlayheadState);
+DeclareFunc(GP_GetPlayheadState);
 
-TGP_ShowTuner                             GP_ShowTuner;
-TGP_TunerShowing                          GP_TunerShowing;
+DeclareFunc(GP_ShowTuner);
+DeclareFunc(GP_TunerShowing);
 
-TGP_SaveGigUnconditionally                GP_SaveGigUnconditionally;
-TGP_LoadGigByIndex                        GP_LoadGigByIndex;
-TGP_Tap                                   GP_Tap;
-TGP_Previous                              GP_Previous;
-TGP_Next                                  GP_Next;
+DeclareFunc(GP_SaveGigUnconditionally);
+DeclareFunc(GP_LoadGigByIndex);
+DeclareFunc(GP_Tap);
+DeclareFunc(GP_Previous);
+DeclareFunc(GP_Next);
 
-TGP_ResetWidgetToDefault                  GP_ResetWidgetToDefault;
+DeclareFunc(GP_ResetWidgetToDefault);
 
-TGP_RegisterCallback                      GP_RegisterCallback;
-TGP_UnregisterCallback                    GP_UnregisterCallback;
+DeclareFunc(GP_RegisterCallback);
+DeclareFunc(GP_UnregisterCallback);
 
 
 static TGetGPFunctionType RequestGPFunctionByName;
@@ -116,9 +123,15 @@ void InitializeImportedFunctions(LibraryHandle handle, TGetGPFunctionType getGPF
    R(GP_SwitchToPanelView);
 
    R(GP_SetPlayheadState);
+   R(GP_GetPlayheadState);
 
    R(GP_ShowTuner);
    R(GP_TunerShowing);
+
+   R(GP_GetPluginList);
+   R(GP_PluginExists);
+   R(GP_SetPluginParameter);
+   R(GP_GetPluginParameter);
 
    R(GP_GetWidgetList);
    R(GP_WidgetExists);

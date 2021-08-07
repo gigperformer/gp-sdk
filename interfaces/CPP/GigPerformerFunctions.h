@@ -21,6 +21,15 @@ public:
    void switchToSetlistView();
    void switchToWiringView();
    void switchToPanelView();
+
+
+   void getPluginList(std::vector<std::string> & list , bool useGlobalRackspace);
+   bool pluginExists(const std::string & pluginHandle, bool useGlobalRackspace);
+    
+   void setPluginParameter(const std::string & pluginHandle, int parameterNumber, double value , bool useGlobalRackspace);
+   double getPluginParameter(const std::string & pluginHandle, int parameterNumber, bool useGlobalRackspace);
+
+
    void getWidgetList(std::vector<std::string> & list , bool useGlobalRackspace);
    bool widgetExists(const std::string & widgetName);
     
@@ -80,9 +89,12 @@ public:
    void next();
 
    void setPlayheadState(bool play);
+   bool getPlayheadState();
 
    void showTuner(bool show);
    bool tunerShowing();
+
+
 
 
    bool registerCallback(const std::string & callbackName);   

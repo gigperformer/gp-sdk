@@ -42,6 +42,15 @@
    }
 
 
+
+   bool  GigPerformerFunctions::GigPerformerFunctions::pluginExists(const std::string & pluginHandle, bool useGlobalRackspace)
+   {
+       return GP_PluginExists(fHandle, pluginHandle.c_str(), useGlobalRackspace);
+   }
+
+
+
+
    bool  GigPerformerFunctions::GigPerformerFunctions::widgetExists(const std::string & widgetName)
    {
        return GP_WidgetExists(fHandle, widgetName.c_str());
@@ -60,6 +69,20 @@
         std::string result(returnBuffer);
         return result;
     }
+
+
+   void GigPerformerFunctions::setPluginParameter(const std::string & pluginHandle, int parameterNumber, double value , bool useGlobalRackspace)
+   {
+      GP_SetPluginParameter(fHandle, pluginHandle.c_str(), parameterNumber, value, useGlobalRackspace);
+   }
+
+   double GigPerformerFunctions::getPluginParameter(const std::string & pluginHandle, int parameterNumber, bool useGlobalRackspace)
+   {
+      return GP_GetPluginParameter(fHandle, pluginHandle.c_str(), parameterNumber, useGlobalRackspace);
+   }
+
+
+
 
    bool  GigPerformerFunctions::setWidgetValue(const std::string & widgetName, double newValue)
    {
@@ -100,9 +123,39 @@
    }
 
 
+
+   void GigPerformerFunctions::getPluginList(std::vector<std::string> & list, bool useGlobalRackspace )
+   {
+       list.clear();
+
+       const int bufferLength = 150000; // Plenty - just temporary
+       char returnBuffer[bufferLength] = {0};
+
+       int actualLength = GP_GetPluginList(fHandle, returnBuffer, bufferLength, useGlobalRackspace);
+
+       if (actualLength > 0) // sanity check
+          {
+              std::stringstream lines(returnBuffer);
+              std::string line;
+              while (std::getline(lines, line, '\n'))
+                 {
+                     list.push_back(line);
+                 }
+          }
+   }
+
+
+
+
    void GigPerformerFunctions::setPlayheadState(bool play)
    {
        GP_SetPlayheadState(fHandle, play);
+   }
+
+
+   bool GigPerformerFunctions::getPlayheadState()
+   {
+      return GP_GetPlayheadState(fHandle);
    }
 
    void GigPerformerFunctions::showTuner(bool show)

@@ -16,6 +16,21 @@ using namespace DeskewGP;
 typedef
     int (*TGP_GetPathToMe)(LibraryHandle h, char* returnBuffer, int bufferLength);
 
+
+typedef
+    int (*TGP_GetPluginList)(LibraryHandle h, char* returnBuffer, int bufferLength, bool useGlobalRackspace);
+    
+typedef
+   bool (*TGP_PluginExists)(LibraryHandle h, const char*  pluginHandle, bool useGlobalRackspace);
+
+typedef
+   void (*TGP_SetPluginParameter)(LibraryHandle h, const char* pluginHandle, int parameterIndex, double value, bool useGlobalRackspace);
+
+typedef
+   double (*TGP_GetPluginParameter)(LibraryHandle h, const char* pluginHandle, int parameterIndex, bool useGlobalRackspace);
+
+////////////////////
+
 typedef
     int (*TGP_GetWidgetList)(LibraryHandle h, char* returnBuffer, int bufferLength, bool useGlobalRackspace);
     
@@ -143,6 +158,10 @@ typedef
 typedef
    void (*TGP_SetPlayheadState)(LibraryHandle h, bool play);
 
+typedef
+   bool (*TGP_GetPlayheadState)(LibraryHandle h);
+
+
 
 typedef
    void (*TGP_ShowTuner)(LibraryHandle h, bool show);
@@ -194,10 +213,16 @@ extern TGP_ShowTuner                             GP_ShowTuner;
 extern TGP_TunerShowing                          GP_TunerShowing;
 
 extern TGP_SetPlayheadState                      GP_SetPlayheadState;
+extern TGP_GetPlayheadState                      GP_GetPlayheadState;
 
 extern TGP_SwitchToSetlistView                   GP_SwitchToSetlistView;
 extern TGP_SwitchToWiringView                    GP_SwitchToWiringView;
 extern TGP_SwitchToPanelView                     GP_SwitchToPanelView;
+
+extern TGP_GetPluginList                         GP_GetPluginList;
+extern TGP_PluginExists                          GP_PluginExists;
+extern TGP_SetPluginParameter                    GP_SetPluginParameter;
+extern TGP_GetPluginParameter                    GP_GetPluginParameter;
 
 extern TGP_GetWidgetList                         GP_GetWidgetList;
 extern TGP_WidgetExists                          GP_WidgetExists;

@@ -79,10 +79,16 @@ public:
         //const std::string device = "MIDI Monitor (Untitled)";
         //sendMidiMessageToMidiOutDevice(device, n);
 
-        std::string caption = getWidgetCaption("abc");        
-        consoleLog("caption: " + caption);
-        std::string value = getWidgetTextValue("abc");
-        consoleLog("value: " + value);
+        //std::string caption = getWidgetCaption("abc");        
+        //consoleLog("caption: " + caption);
+        //std::string value = getWidgetTextValue("abc");
+        //consoleLog("value: " + value);
+        if (widgetName == "abc")
+           then
+              {
+                 consoleLog(std::to_string(newValue)); 
+                 setPluginParameter("TheLegend", 34, newValue, false );
+              }
         /*
         consoleLog(newValue > 0.5 ? "Yes" : "No");
         if (newValue > 0.5)
