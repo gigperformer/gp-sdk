@@ -185,6 +185,23 @@ class GigPerformerFunctions
     /// \brief   Move to next variation or rackspace.
     void next();
 
+    /// \brief   Get a list of all plugins defined (i.e, with handles) in the currently active rackspace or in the
+    ///          global rackspace.
+    void getPluginList(std::vector<std::string> &list, bool useGlobalRackspace);
+
+    /// \brief   Indicates whether the plugin with the given handle exists in the currently active rackspace or in the
+    ///          global rackspace.
+    bool pluginExists(const std::string &pluginHandle, bool useGlobalRackspace);
+
+    /// \brief   Set a parameter value for a plugin with the given handle in the currently active rackspace or in the
+    ///          global rackspace.
+    void setPluginParameter(const std::string &pluginHandle, int parameterNumber, double value,
+                            bool useGlobalRackspace);
+
+    /// \brief   Returns the value of the given parameter in the plugin with the given handle in the currently active
+    ///          rackspace or in the global rackspace.
+    double getPluginParameter(const std::string &pluginHandle, int parameterNumber, bool useGlobalRackspace);
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with gig files
 
@@ -200,6 +217,9 @@ class GigPerformerFunctions
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Miscellaneous
+
+    /// \brief   Get the global playhead state
+    bool getPlayheadState();
 
     /// \brief   Enable or disable the global playhead.
     void setPlayheadState(bool play);

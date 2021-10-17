@@ -19,6 +19,16 @@ extern "C"
 
     typedef int (*TGP_GetPathToMe)(LibraryHandle h, char *returnBuffer, int bufferLength);
 
+    typedef int (*TGP_GetPluginList)(LibraryHandle h, char *returnBuffer, int bufferLength, bool useGlobalRackspace);
+
+    typedef bool (*TGP_PluginExists)(LibraryHandle h, const char *pluginHandle, bool useGlobalRackspace);
+
+    typedef void (*TGP_SetPluginParameter)(LibraryHandle h, const char *pluginHandle, int parameterIndex, double value,
+                                           bool useGlobalRackspace);
+
+    typedef double (*TGP_GetPluginParameter)(LibraryHandle h, const char *pluginHandle, int parameterIndex,
+                                             bool useGlobalRackspace);
+
     typedef int (*TGP_GetWidgetList)(LibraryHandle h, char *returnBuffer, int bufferLength, bool useGlobalRackspace);
     typedef bool (*TGP_WidgetExists)(LibraryHandle h, const char *widgetName);
     typedef double (*TGP_GetWidgetValue)(LibraryHandle h, const char *widgetName);
@@ -81,6 +91,7 @@ extern "C"
 
     typedef bool (*TGP_Tap)(LibraryHandle h);
     typedef void (*TGP_SetPlayheadState)(LibraryHandle h, bool play);
+    typedef bool (*TGP_GetPlayheadState)(LibraryHandle h);
     typedef bool (*TGP_Next)(LibraryHandle h);
     typedef bool (*TGP_Previous)(LibraryHandle h);
     typedef bool (*TGP_ResetWidgetToDefault)(LibraryHandle h, const char *widgetName, double newDefault);
@@ -119,9 +130,30 @@ extern "C"
     extern TGP_InSetlistMode GP_InSetlistMode;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// \name    Interacting with plugins
+
+    /// \brief   Get a list of all plugins defined (i.e, with handles) in the currently active rackspace or in the
+    ///          global rackspace.
+    /// \return  The actual number of characters needed to store the return value.
+    extern TGP_GetPluginList GP_GetPluginList;
+
+    /// \brief   Indicates whether a plugin with the given handle exists in the currently active rackspace or in the
+    ///          global rackspace.
+    extern TGP_PluginExists GP_PluginExists;
+
+    /// \brief   Set a parameter value for a plugin with the given handle in the currently active rackspace or in the
+    ///          global rackspace.
+    extern TGP_SetPluginParameter GP_SetPluginParameter;
+
+    /// \brief   Returns the value of the given parameter in the plugin with the given handle in the currently active
+    ///          rackspace or in the global rackspace.
+    extern TGP_GetPluginParameter GP_GetPluginParameter;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with Widgets
 
     /// \brief   Get a list of all widgets defined (i.e, with handles) in the currently active or the global rackspace.
+    /// \return  The actual number of characters needed to store the return value.
     extern TGP_GetWidgetList GP_GetWidgetList;
 
     /// \brief   Query GP to see if a widget with the given name exists in the currently active rackspace
@@ -282,6 +314,9 @@ extern "C"
 
     /// \brief   Enable or disable the global playhead.
     extern TGP_SetPlayheadState GP_SetPlayheadState;
+
+    /// \brief   Get the global playhead state.
+    extern TGP_GetPlayheadState GP_GetPlayheadState;
 
     /// \brief   Same as clicking the global "Tap Tempo" button.
     extern TGP_Tap GP_Tap;
