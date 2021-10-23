@@ -185,6 +185,9 @@ class GigPerformerFunctions
     /// \brief   Move to next variation or rackspace.
     void next();
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// \name    Interacting with plugins
+
     /// \brief   Get a list of all plugins defined (i.e, with handles) in the currently active rackspace or in the
     ///          global rackspace.
     void getPluginList(std::vector<std::string> &list, bool useGlobalRackspace);
@@ -201,6 +204,14 @@ class GigPerformerFunctions
     /// \brief   Returns the value of the given parameter in the plugin with the given handle in the currently active
     ///          rackspace or in the global rackspace.
     double getPluginParameter(const std::string &pluginHandle, int parameterNumber, bool useGlobalRackspace);
+
+    /// \brief   Returns the number of parameters exposed by the plugin with the given handle in the currently active
+    ///          rackspace or in the global rackspace.
+    int getPluginParameterCount(const std::string &pluginHandle, bool useGlobalRackspace);
+
+    /// \brief   Returns the name of the parameter at the specified parameter number of the plugin with the given handle
+    ///          in the currently active rackspace or in the global rackspace.
+    std::string getPluginParameterName(const std::string &pluginHandle, int parameterIndex, bool useGlobalRackspace);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with gig files

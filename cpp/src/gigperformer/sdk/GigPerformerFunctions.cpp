@@ -80,6 +80,23 @@ double GigPerformerFunctions::getPluginParameter(const std::string &pluginHandle
     return GP_GetPluginParameter(fHandle, pluginHandle.c_str(), parameterNumber, useGlobalRackspace);
 }
 
+int GigPerformerFunctions::getPluginParameterCount(const std::string &pluginHandle, bool useGlobalRackspace)
+{
+    return GP_GetPluginParameterCount(fHandle, pluginHandle.c_str(), useGlobalRackspace);
+}
+
+std::string GigPerformerFunctions::getPluginParameterName(const std::string &pluginHandle, int parameterIndex,
+                                                          bool useGlobalRackspace)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+
+    /* int actualLength = */ GP_GetPluginParameterName(fHandle, pluginHandle.c_str(), parameterIndex, returnBuffer,
+                                                       bufferLength, useGlobalRackspace);
+    std::string result(returnBuffer);
+    return result;
+}
+
 bool GigPerformerFunctions::setWidgetValue(const std::string &widgetName, double newValue)
 {
     return GP_SetWidgetValue(fHandle, widgetName.c_str(), newValue);

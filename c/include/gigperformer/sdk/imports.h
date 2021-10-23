@@ -28,6 +28,10 @@ extern "C"
 
     typedef double (*TGP_GetPluginParameter)(LibraryHandle h, const char *pluginHandle, int parameterIndex,
                                              bool useGlobalRackspace);
+    typedef int (*TGP_GetPluginParameterCount)(LibraryHandle h, const char *pluginHandle, bool useGlobalRackspace);
+
+    typedef int (*TGP_GetPluginParameterName)(LibraryHandle h, const char *pluginHandle, int parameterIndex,
+                                              char *returnBuffer, int bufferLength, bool useGlobalRackspace);
 
     typedef int (*TGP_GetWidgetList)(LibraryHandle h, char *returnBuffer, int bufferLength, bool useGlobalRackspace);
     typedef bool (*TGP_WidgetExists)(LibraryHandle h, const char *widgetName);
@@ -148,6 +152,14 @@ extern "C"
     /// \brief   Returns the value of the given parameter in the plugin with the given handle in the currently active
     ///          rackspace or in the global rackspace.
     extern TGP_GetPluginParameter GP_GetPluginParameter;
+
+    /// \brief   Returns the number of parameters exposed by the plugin with the given handle in the currently active
+    ///          rackspace or in the global rackspace.
+    extern TGP_GetPluginParameterCount GP_GetPluginParameterCount;
+
+    /// \brief   Returns the name of the parameter at the specified parameter number of the plugin with the given handle
+    ///          in the currently active rackspace or in the global rackspace.
+    extern TGP_GetPluginParameterName GP_GetPluginParameterName;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with Widgets
