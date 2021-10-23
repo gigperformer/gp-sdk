@@ -25,6 +25,8 @@ DeclareFunc(GP_GetPluginList);
 DeclareFunc(GP_PluginExists);
 DeclareFunc(GP_SetPluginParameter);
 DeclareFunc(GP_GetPluginParameter);
+DeclareFunc(GP_GetPluginParameterCount);
+DeclareFunc(GP_GetPluginParameterName);
 
 DeclareFunc(GP_GetWidgetList);
 DeclareFunc(GP_WidgetExists);
@@ -132,6 +134,8 @@ void InitializeImportedFunctions(LibraryHandle handle, TGetGPFunctionType getGPF
    R(GP_PluginExists);
    R(GP_SetPluginParameter);
    R(GP_GetPluginParameter);
+   R(GP_GetPluginParameterCount);
+   R(GP_GetPluginParameterName);
 
    R(GP_GetWidgetList);
    R(GP_WidgetExists);

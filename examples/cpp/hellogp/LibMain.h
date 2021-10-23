@@ -48,6 +48,12 @@ public:
     {
         consoleLog("Switching to panel view");
         setPlayheadState(true);
+
+        int count = getPluginParameterCount("Legend", false);
+        consoleLog(std::to_string(count));
+
+        std::string p1 = getPluginParameterName("Legend", 1, false);
+        consoleLog(p1);
     }
 
 

@@ -28,7 +28,8 @@ public:
     
    void setPluginParameter(const std::string & pluginHandle, int parameterNumber, double value , bool useGlobalRackspace);
    double getPluginParameter(const std::string & pluginHandle, int parameterNumber, bool useGlobalRackspace);
-
+   int getPluginParameterCount(const std::string & pluginHandle, bool useGlobalRackspace);
+   std::string getPluginParameterName(const std::string & pluginHandle, int parameterIndex, bool useGlobalRackspace);
 
    void getWidgetList(std::vector<std::string> & list , bool useGlobalRackspace);
    bool widgetExists(const std::string & widgetName);

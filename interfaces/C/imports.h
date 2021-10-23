@@ -29,6 +29,12 @@ typedef
 typedef
    double (*TGP_GetPluginParameter)(LibraryHandle h, const char* pluginHandle, int parameterIndex, bool useGlobalRackspace);
 
+typedef
+   int (*TGP_GetPluginParameterCount)(LibraryHandle h, const char* pluginHandle, bool useGlobalRackspace);
+
+typedef
+   int (*TGP_GetPluginParameterName)(LibraryHandle h, const char* pluginHandle, int parameterIndex, char* returnBuffer, int bufferLength, bool useGlobalRackspace);
+
 ////////////////////
 
 typedef
@@ -223,6 +229,8 @@ extern TGP_GetPluginList                         GP_GetPluginList;
 extern TGP_PluginExists                          GP_PluginExists;
 extern TGP_SetPluginParameter                    GP_SetPluginParameter;
 extern TGP_GetPluginParameter                    GP_GetPluginParameter;
+extern TGP_GetPluginParameterCount               GP_GetPluginParameterCount;
+extern TGP_GetPluginParameterName                GP_GetPluginParameterName;
 
 extern TGP_GetWidgetList                         GP_GetWidgetList;
 extern TGP_WidgetExists                          GP_WidgetExists;
