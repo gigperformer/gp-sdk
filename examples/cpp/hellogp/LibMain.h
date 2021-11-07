@@ -39,6 +39,11 @@ public:
     LibMain(LibraryHandle handle) : GigPerformerAPI(handle)  { }
     virtual ~LibMain() {}
 
+    void OnSetlistChanged(const std::string & newSetlistName) override
+    {
+        consoleLog("Setlist switched to: " + newSetlistName);
+    }
+
     void OnModeChanged(int mode) override
     {
        //consoleLog(std::string("Switching to mode: ")  +  ((mode == SetlistMode) ? "Setlist" : "FrontBack" ));
@@ -155,6 +160,7 @@ public:
             registerCallback("OnModeChanged");
             registerCallback("OnSwitchToPanelView");
             registerCallback("OnSwitchToWiringView");
+            registerCallback("OnSetlistChanged");
             listenForWidget("abc", true);           
             listenForWidget("def", true);   
 

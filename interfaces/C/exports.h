@@ -27,6 +27,8 @@ extern "C"
 
 EXPORTED void GPQueryLibrary(char* xmlInfoBuffer, int bufferLength);
 
+EXPORTED int GPGetSDKVersion(); // We test to make sure this is available, otherwise we know SDK is too old
+
 
 // If the user decides that this library should be used then it will call GPRegister
 // It passes in the address of a function
@@ -77,6 +79,9 @@ EXPORTED    void OnModeChanged(int mode);
 
 // Called when a new gig file has finished being loaded
 EXPORTED    void OnGigLoaded(); // Called when a new gig file has been loaded
+
+// Called when the user changes the setlist
+EXPORTED    void OnSetlistChanged(const char* newSetlistName); 
 
 // Called when a MIDI device is connected or disconnected from the computer. You get an array of strings for the midiin and midiout device list respectively
 EXPORTED    void OnMidiDeviceListChanged(const char** inputs, int intputCount, const char** outputs, int outputCount); // A midi device was added or removed - get the new list

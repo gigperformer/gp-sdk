@@ -194,6 +194,12 @@ extern "C" EXPORTED void OnVariationChanged(int oldIndex, int newIndex)
 }
 
 
+extern "C" EXPORTED void OnSetlistChanged(const char* newSetlistName)
+{
+   std::string name = newSetlistName;
+   subclass->OnSetlistChanged(name);
+}
+
 // Called when a widget is turned or otherwise adjusted. The library must register its interest in listening for such changes
 extern "C" EXPORTED void OnWidgetValueChanged(const char*  widgetName, double newValue)
 {

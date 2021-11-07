@@ -1,8 +1,21 @@
 #include <stdio.h>
 #include <assert.h>
 #include "imports.h"
+#include "macros.h"
 
 #define then
+
+
+// If this is newer than the version expected by GP then a crash may occur. Do NOT change this information.
+#define GPSDK_VERSION 42
+
+// This is an EXPORT from the DLL but it's here for convenience so it can be picked up by both C and C++ projects
+EXPORTED int GPGetSDKVersion()
+{
+   return GPSDK_VERSION;
+}
+
+//////////////////////
 
 
 // Declare the function and initialize
