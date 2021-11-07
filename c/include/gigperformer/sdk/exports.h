@@ -10,6 +10,10 @@ extern "C"
 {
 #endif
 
+    /// \brief   This function is implemented by the SDK itself.
+    /// \warning Do not define this function yourself.
+    int GPGetSDKVersion();
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Mandatory functions
     /// \details You must implement these in your extension library.
@@ -116,6 +120,9 @@ extern "C"
 
     /// \brief   Called when user switches to a new song part within the current song in setlist mode.
     void OnSongPartChanged(int oldIndex, int newIndex);
+
+    /// \brief   Called when the user changes the setlist.
+    void OnSetlistChanged(const char *newSetlistName);
 
     /// \brief   Called when the user switches in or out of tuner mode.
     void OnTunerModeChanged(bool visible);

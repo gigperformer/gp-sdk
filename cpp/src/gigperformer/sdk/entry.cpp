@@ -163,7 +163,12 @@ extern "C" void OnSongPartChanged(int oldIndex, int newIndex)
 {
     subclass->OnSongPartChanged(oldIndex, newIndex);
 }
-// Called when we switch to a new song part
+
+extern "C" void OnSetlistChanged(const char *newSetlistName)
+{
+    std::string name = newSetlistName;
+    subclass->OnSetlistChanged(name);
+}
 
 // Called when the user switches in or out of tuner mode
 extern "C" void OnTunerModeChanged(bool visible)

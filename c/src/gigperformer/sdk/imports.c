@@ -8,6 +8,15 @@
 // Declare the function and initialize
 #define DeclareFunc(funcName) T##funcName funcName = NULL
 
+// If this is newer than the version expected by GP then a crash may occur. Do NOT change this information.
+#define GPSDK_VERSION 42
+
+// This is an EXPORT from the DLL but it's here for convenience so it can be picked up by both C and C++ projects
+int GPGetSDKVersion()
+{
+    return GPSDK_VERSION;
+}
+
 // These are the functions that library developer can call
 #ifdef __cplusplus
 extern "C"

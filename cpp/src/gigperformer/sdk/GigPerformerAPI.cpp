@@ -72,6 +72,10 @@ void GigPerformerAPI::OnSongPartChanged(int, int)
 {
 }
 
+void GigPerformerAPI::OnSetlistChanged(const std::string &)
+{
+}
+
 void GigPerformerAPI::OnRackspaceChanged()
 {
 }

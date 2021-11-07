@@ -81,6 +81,9 @@ class GigPerformerAPI : public GigPerformerFunctions
     /// \brief   Called when user switches to a new song part within the current song in setlist mode.
     virtual void OnSongPartChanged(int oldIndex, int newIndex);
 
+    /// \brief   Called when the user changes the setlist.
+    virtual void OnSetlistChanged(const std::string &newSetlistName);
+
     /// \brief   Called when user switches from one variation to another.
     virtual void OnVariationChanged(int oldIndex, int newIndex);
 
