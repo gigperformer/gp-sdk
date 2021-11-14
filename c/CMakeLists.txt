@@ -4,6 +4,7 @@ target_sources(
   gigperformer_sdk_c
   INTERFACE
     # Headers
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/gigperformer/sdk/macros.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/gigperformer/sdk/types.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/gigperformer/sdk/exports.h>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/gigperformer/sdk/imports.h>

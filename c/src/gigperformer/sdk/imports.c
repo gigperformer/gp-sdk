@@ -1,4 +1,5 @@
 #include "gigperformer/sdk/imports.h"
+#include "gigperformer/sdk/macros.h"
 
 #include <assert.h>
 #include <stdio.h>
@@ -12,7 +13,7 @@
 #define GPSDK_VERSION 43
 
 // This is an EXPORT from the DLL but it's here for convenience so it can be picked up by both C and C++ projects
-int GetGPSDKVersion()
+EXPORTED int GetGPSDKVersion()
 {
     return GPSDK_VERSION;
 }
