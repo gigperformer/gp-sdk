@@ -15,5 +15,12 @@ enum GP_Mode
     GP_SetlistMode = 1,
 };
 
+enum ExternalAPI_GPStatus
+{
+    GPStatus_GigFinishedLoading,
+    GPStatus_GigStartedLoading,
+    GPStatus_GigFailedLoading,
+};
+
 /// Call this to get the address of a GP_ function
 typedef void *(*TGetGPFunctionType)(void *handle, const char *functionName);

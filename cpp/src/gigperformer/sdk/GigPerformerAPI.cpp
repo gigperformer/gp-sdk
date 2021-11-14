@@ -76,7 +76,7 @@ void GigPerformerAPI::OnSetlistChanged(const std::string &)
 {
 }
 
-void GigPerformerAPI::OnRackspaceChanged()
+void GigPerformerAPI::OnRackspaceActivated()
 {
 }
 

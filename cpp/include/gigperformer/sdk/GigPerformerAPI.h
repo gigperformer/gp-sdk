@@ -59,8 +59,8 @@ class GigPerformerAPI : public GigPerformerFunctions
     /// \param   mode can be interpreted as GP_Mode
     virtual void OnModeChanged(int mode);
 
-    /// \brief   Called when a new gig file has been loaded
-    virtual void OnGigLoaded();
+    /// \brief   Called when something in GP changes that can trigger a notification to the external API loaded.
+    virtual void OnStatusChanged(ExternalAPI_GPStatus status);
 
     /// \brief   Called when a MIDI device is connected or disconnected from the computer.
     /// \details You get an array of strings for the MIDI in and MIDI out device list respectively.
@@ -73,7 +73,7 @@ class GigPerformerAPI : public GigPerformerFunctions
     virtual void OnClose();
 
     /// \brief   Called when user switches to a new rackspace.
-    virtual void OnRackspaceChanged();
+    virtual void OnRackspaceActivated();
 
     /// \brief   Called when user switches to a new song in setlist mode.
     virtual void OnSongChanged(int oldIndex, int newIndex);

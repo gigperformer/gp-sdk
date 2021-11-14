@@ -114,12 +114,11 @@ extern "C" void OnModeChanged(int mode)
     subclass->OnModeChanged(mode);
 }
 
-// Called when a new gig file has finished being loaded
-extern "C" void OnGigLoaded()
+// Called when something changes in GP that we can notify the external API
+extern "C" void OnStatusChanged(ExternalAPI_GPStatus status)
 {
-    subclass->OnGigLoaded();
+    subclass->OnStatusChanged(status);
 }
-// Called when a new gig file has been loaded
 
 // Called when a MIDI device is connected or disconnected from the computer
 extern "C" void OnMidiDeviceListChanged(const char **inputs, int inputCount, const char **outputs, int outputCount)
@@ -145,9 +144,9 @@ extern "C" void OnOpen()
 }
 
 // Called when user switches to a new rackspace
-extern "C" void OnRackspaceChanged()
+extern "C" void OnRackspaceActivated()
 {
-    subclass->OnRackspaceChanged();
+    subclass->OnRackspaceActivated();
 }
 
 // Called when user switches to a new song in setlist mode

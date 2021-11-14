@@ -99,8 +99,8 @@ extern "C"
     /// \param   mode can be interpreted as GP_Mode
     void OnModeChanged(int mode);
 
-    /// \brief   Called when a new gig file has finished being loaded.
-    void OnGigLoaded();
+    /// \brief   Called when something in GP changes that can trigger a notification to the external API loaded.
+    void OnStatusChanged(ExternalAPI_GPStatus status);
 
     /// \brief   Called when a MIDI device is connected or disconnected from the computer.
     /// \details You get an array of strings for the MIDI in and MIDI out device list respectively.
@@ -113,7 +113,7 @@ extern "C"
     void OnClose();
 
     /// \brief   Called when user switches to a new rackspace.
-    void OnRackspaceChanged();
+    void OnRackspaceActivated();
 
     /// \brief   Called when user switches to a new song in setlist mode.
     void OnSongChanged(int oldIndex, int newIndex);
