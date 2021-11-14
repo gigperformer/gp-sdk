@@ -1,5 +1,14 @@
 #pragma once
 
+
+enum ExternalAPI_GPStatus
+{
+   GPStatus_GigFinishedLoading,
+   GPStatus_GigStartedLoading,
+   GPStatus_GigFailedLoading,
+};
+
+
 #include <inttypes.h>
 //#include <cstddef>
 #include <stdbool.h>

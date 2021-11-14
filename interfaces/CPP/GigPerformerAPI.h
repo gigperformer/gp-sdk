@@ -28,11 +28,11 @@ class GigPerformerAPI : public GigPerformerFunctions
       virtual void OnWidgetCaptionChanged(const std::string & widgetName, const std::string & newCaption) { }
       virtual void OnMidiDeviceListChanged( std::vector< std::string> & inputs,   std::vector< std::string> & outputs) { } // A midi device was added or removed
       virtual bool OnMidiIn(const std::string & deviceName, const uint8_t* data, int length) { return false; }
-      virtual void OnGigLoaded() { } // Called when a new gig file has been loaded
+      virtual void OnStatusChanged(ExternalAPI_GPStatus status) { } 
       virtual void OnSetlistChanged(const std::string & newSetlistName) {}
       virtual void OnSongChanged(int oldIndex, int newIndex) { } // Called when we have a new song
       virtual void OnSongPartChanged(int oldIndex, int newIndex) { } // Called when we switch to a new song part
-      virtual void OnRackspaceChanged() { }
+      virtual void OnRackspaceActivated() { }
       virtual void OnVariationChanged(int oldIndex, int newIndex) { }
       virtual void OnOpen() { }
       virtual void OnClose() { }

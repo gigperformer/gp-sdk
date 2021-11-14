@@ -142,6 +142,15 @@ public:
         consoleLog("Widget " + widgetName + ": " + ((newState == 0) ? "created" : "removed"));
     } 
 
+   void OnStatusChanged(ExternalAPI_GPStatus status) override
+   {
+       consoleLog("Gig status changed to " + std::to_string(status));
+   }
+
+   void OnRackspaceActivated() override
+      {
+          consoleLog("Rackspace activated");
+      }
 
     void Initialization() override
        {
@@ -152,6 +161,7 @@ public:
               
             // Finally, register all the methods that you are going to actually use, i.e, the ones you declared above as override
             registerCallback("OnSongChanged");
+            registerCallback("OnStatusChanged");
             registerCallback("OnMidiDeviceListChanged");
             registerCallback("OnWidgetValueChanged");
             registerCallback("OnWidgetStateChanged");
@@ -161,6 +171,7 @@ public:
             registerCallback("OnSwitchToPanelView");
             registerCallback("OnSwitchToWiringView");
             registerCallback("OnSetlistChanged");
+            registerCallback("OnRackspaceActivated");
             listenForWidget("abc", true);           
             listenForWidget("def", true);   
 

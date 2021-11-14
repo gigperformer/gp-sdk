@@ -19,6 +19,13 @@ using namespace DeskewGP;
 </Library>
 */
 
+// GigStatusChanged options for the OnGigStatusChanged callback
+#define GigStatus_FinishedLoading 0
+#define GigStatus_StartedLoading 1
+#define GigStatus_FailedLoading 2
+
+
+
 #ifdef __cplusplus
 extern "C"
 {
@@ -77,8 +84,8 @@ EXPORTED    void OnSwitchToPanelView();
 // Called when the user switches into or out of setlist mode - modes defined in macros.h
 EXPORTED    void OnModeChanged(int mode);  
 
-// Called when a new gig file has finished being loaded
-EXPORTED    void OnGigLoaded(); // Called when a new gig file has been loaded
+// Called when something in GP changes that can trigger a notification to the external API
+EXPORTED    void OnStatusChanged(ExternalAPI_GPStatus status); 
 
 // Called when the user changes the setlist
 EXPORTED    void OnSetlistChanged(const char* newSetlistName); 
@@ -90,7 +97,7 @@ EXPORTED    void OnMidiDeviceListChanged(const char** inputs, int intputCount, c
 EXPORTED    void OnOpen();
 
 // Called when user switches to a new rackspace
-EXPORTED    void OnRackspaceChanged();
+EXPORTED    void OnRackspaceActivated();
 
 // Called when user switches to a new song in setlist mode
 EXPORTED    void OnSongChanged(int oldIndex, int newIndex); // Called when we have a new song

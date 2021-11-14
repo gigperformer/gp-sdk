@@ -123,10 +123,10 @@ extern "C" EXPORTED void OnModeChanged(int mode)
 }
 
 
-// Called when a new gig file has finished being loaded
-extern "C" EXPORTED void OnGigLoaded()
+// Called when something changes in GP that we can notify the external API
+extern "C" EXPORTED void OnStatusChanged(ExternalAPI_GPStatus status)
 {
-   subclass->OnGigLoaded();
+   subclass->OnStatusChanged(status);
 }
  // Called when a new gig file has been loaded
 
@@ -156,9 +156,9 @@ extern "C" EXPORTED void OnOpen()
 
 
 // Called when user switches to a new rackspace
-extern "C" EXPORTED void OnRackspaceChanged()
+extern "C" EXPORTED void OnRackspaceActivated()
 {
-   subclass->OnRackspaceChanged();
+   subclass->OnRackspaceActivated();
 }
 
 

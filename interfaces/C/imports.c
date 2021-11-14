@@ -6,11 +6,11 @@
 #define then
 
 
-// If this is newer than the version expected by GP then a crash may occur. Do NOT change this information.
-#define GPSDK_VERSION 42
+// We need to check compatibility with GP --- certain changes can cause breakage
+#define GPSDK_VERSION 43
 
 // This is an EXPORT from the DLL but it's here for convenience so it can be picked up by both C and C++ projects
-EXPORTED int GPGetSDKVersion()
+EXPORTED int GetGPSDKVersion()
 {
    return GPSDK_VERSION;
 }
