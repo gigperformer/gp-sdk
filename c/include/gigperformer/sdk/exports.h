@@ -100,7 +100,7 @@ extern "C"
     void OnModeChanged(int mode);
 
     /// \brief   Called when something in GP changes that can trigger a notification to the external API loaded.
-    void OnStatusChanged(ExternalAPI_GPStatus status);
+    void OnStatusChanged(enum ExternalAPI_GPStatus status);
 
     /// \brief   Called when a MIDI device is connected or disconnected from the computer.
     /// \details You get an array of strings for the MIDI in and MIDI out device list respectively.
