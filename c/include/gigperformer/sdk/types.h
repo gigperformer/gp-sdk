@@ -6,21 +6,30 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-typedef void *LibraryHandle;
-
-/// For use with OnModeChanged()
-enum GP_Mode
+#ifdef __cplusplus
+extern "C"
 {
-    GP_FrontBackMode = 0,
-    GP_SetlistMode = 1,
-};
+#endif
 
-enum ExternalAPI_GPStatus
-{
-    GPStatus_GigFinishedLoading,
-    GPStatus_GigStartedLoading,
-    GPStatus_GigFailedLoading,
-};
+    typedef void *LibraryHandle;
 
-/// Call this to get the address of a GP_ function
-typedef void *(*TGetGPFunctionType)(void *handle, const char *functionName);
+    /// For use with OnModeChanged()
+    enum GP_Mode
+    {
+        GP_FrontBackMode = 0,
+        GP_SetlistMode = 1,
+    };
+
+    typedef enum
+    {
+        GPStatus_GigFinishedLoading,
+        GPStatus_GigStartedLoading,
+        GPStatus_GigFailedLoading,
+    } GPStatus;
+
+    /// Call this to get the address of a GP_ function
+    typedef void *(*TGetGPFunctionType)(void *handle, const char *functionName);
+
+#ifdef __cplusplus
+}
+#endif

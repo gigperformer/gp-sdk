@@ -60,7 +60,7 @@ bool GigPerformerAPI::OnMidiIn(const std::string &, const uint8_t *, int)
     return false;
 }
 
-void GigPerformerAPI::OnStatusChanged(enum ExternalAPI_GPStatus)
+void GigPerformerAPI::OnStatusChanged(GPStatus)
 {
 }
 

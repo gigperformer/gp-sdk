@@ -116,7 +116,7 @@ extern "C" EXPORTED void OnModeChanged(int mode)
 }
 
 // Called when something changes in GP that we can notify the external API
-extern "C" EXPORTED void OnStatusChanged(enum ExternalAPI_GPStatus status)
+extern "C" EXPORTED void OnStatusChanged(GPStatus status)
 {
     subclass->OnStatusChanged(status);
 }
