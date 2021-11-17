@@ -2,19 +2,10 @@
 
 // Define EXPORTED for any platform
 #if defined _WIN32 || defined __CYGWIN__
-    #ifdef WIN_EXPORT
-        // Exporting...
-        #ifdef __GNUC__
-            #define EXPORTED __attribute__((dllexport))
-        #else
-            #define EXPORTED __declspec(dllexport) // Note: actually gcc seems to also supports this syntax.
-        #endif
+    #ifdef __GNUC__
+        #define EXPORTED __attribute__((dllexport))
     #else
-        #ifdef __GNUC__
-            #define EXPORTED __attribute__((dllimport))
-        #else
-            #define EXPORTED __declspec(dllimport) // Note: actually gcc seems to also supports this syntax.
-        #endif
+        #define EXPORTED __declspec(dllexport) // Note: actually gcc seems to also supports this syntax.
     #endif
     #define NOT_EXPORTED
 #else
