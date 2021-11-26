@@ -15,7 +15,7 @@
 -   The C++ API now resides in the namespace `gigperformer::sdk`.
     -   Clients shall use the qualified names.
     -   Workaround: Include `using namespace gigperformer::sdk` into your code.
--   The headers similarily now reside under `gigperformer/sdk`.
+-   The headers similarly now reside under `gigperformer/sdk`.
     -   Example: Change `#include "GigPerformerAPI.h"` to `#include "gigperformer/sdk/GigPerformerAPI.h"`.
 -   The extension main class ("LibMain") may now be arbitrarily named and defined in an arbitrary namespace and header.
     -   In turn, the user **must** implement the factory function `gigperformer::sdk::CreateGPExtension(LibraryHandle)`.
