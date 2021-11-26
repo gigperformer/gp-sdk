@@ -21,6 +21,7 @@
     -   In turn, the user **must** implement the factory function `gigperformer::sdk::CreateGPExtension(LibraryHandle)`.
 -   The examples now reside in a separate repository.
     -   They show an example integration of the SDK.
+-   `ExternalAPI_GPStatus` is renamed to `GPStatus`.
 
 ## 4.0.53
 
