@@ -39,6 +39,18 @@ extern "C"    EXPORTED void GPRegister(TGetGPFunctionType getGPFunctionAddress, 
     }
     
 
+
+
+extern "C"  EXPORTED  int RequestGPScriptFunctionSignatureList( GPScript_AllowedLocations location, ExternaAPI_GPScriptFunctionDefinition* *list)
+{
+   int count = subclass->RequestGPScriptFunctionSignatureList(location, list);
+   return count; 
+}
+  
+
+
+
+
 extern "C"   EXPORTED int GetPanelCount()
 {
    return subclass->GetPanelCount();
@@ -124,7 +136,7 @@ extern "C" EXPORTED void OnModeChanged(int mode)
 
 
 // Called when something changes in GP that we can notify the external API
-extern "C" EXPORTED void OnStatusChanged(ExternalAPI_GPStatus status)
+extern "C" EXPORTED void OnStatusChanged(GPStatusType status)
 {
    subclass->OnStatusChanged(status);
 }

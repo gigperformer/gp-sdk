@@ -28,7 +28,7 @@ class GigPerformerAPI : public GigPerformerFunctions
       virtual void OnWidgetCaptionChanged(const std::string & widgetName, const std::string & newCaption) { }
       virtual void OnMidiDeviceListChanged( std::vector< std::string> & inputs,   std::vector< std::string> & outputs) { } // A midi device was added or removed
       virtual bool OnMidiIn(const std::string & deviceName, const uint8_t* data, int length) { return false; }
-      virtual void OnStatusChanged(ExternalAPI_GPStatus status) { } 
+      virtual void OnStatusChanged(GPStatusType status) { } 
       virtual void OnSetlistChanged(const std::string & newSetlistName) {}
       virtual void OnSongChanged(int oldIndex, int newIndex) { } // Called when we have a new song
       virtual void OnSongPartChanged(int oldIndex, int newIndex) { } // Called when we switch to a new song part
@@ -40,6 +40,8 @@ class GigPerformerAPI : public GigPerformerFunctions
    public:
       // Functions that Gig Performer needs to be able to call in your library - override as appropriate
 
+      virtual void RequestGPScriptSignatures(int * count, char* * signatures, void* * functions) {} // Return a list of GP Script signatures and points to their functiions
+
       // These are for inserting panels into a Gig Performer rackspace
       virtual int GetPanelCount() { return 0; } // Returns how many panels your library provides
       virtual std::string GetPanelName(int index) { return ""; } // Return the name of the panel at this index   0..panelCount - 1
@@ -49,6 +51,15 @@ class GigPerformerAPI : public GigPerformerFunctions
       virtual int GetMenuCount() { return 0; }  // Return the number of menu items available
       virtual std::string GetMenuName(int index) { return ""; } // Return the name of menu item at index
       virtual void InvokeMenu(int itemIndex) {}                 // invoke the action associated with menu item at index
+
+
+
+      virtual int RequestGPScriptFunctionSignatureList( GPScript_AllowedLocations location, ExternaAPI_GPScriptFunctionDefinition* *list)
+         {
+            return 0; // By default, no GP Script functions defined so the count is 0
+         }
+
+
 
    public:
       GigPerformerAPI(LibraryHandle handle) : GigPerformerFunctions(handle) {}

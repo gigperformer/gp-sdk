@@ -39,6 +39,9 @@ public:
     LibMain(LibraryHandle handle) : GigPerformerAPI(handle)  { }
     virtual ~LibMain() {}
 
+    /** An optional list of GP Script functions to be made available to GP along with the address of the code to execute for each of those functions */
+    int RequestGPScriptFunctionSignatureList( GPScript_AllowedLocations location, ExternaAPI_GPScriptFunctionDefinition* *list) override;
+
     void OnSetlistChanged(const std::string & newSetlistName) override
     {
         consoleLog("Setlist switched to: " + newSetlistName);
@@ -142,7 +145,7 @@ public:
         consoleLog("Widget " + widgetName + ": " + ((newState == 0) ? "created" : "removed"));
     } 
 
-   void OnStatusChanged(ExternalAPI_GPStatus status) override
+   void OnStatusChanged(GPStatusType status) override
    {
        consoleLog("Gig status changed to " + std::to_string(status));
    }
@@ -159,7 +162,7 @@ public:
             // .... your code here
 
               
-            // Finally, register all the methods that you are going to actually use, i.e, the ones you declared above as override
+            // Finally, register all the callbacks that you are going to actually use, i.e, the ones you declared above as override
             registerCallback("OnSongChanged");
             registerCallback("OnStatusChanged");
             registerCallback("OnMidiDeviceListChanged");

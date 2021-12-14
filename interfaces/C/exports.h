@@ -19,11 +19,6 @@ using namespace DeskewGP;
 </Library>
 */
 
-// GigStatusChanged options for the OnGigStatusChanged callback
-#define GigStatus_FinishedLoading 0
-#define GigStatus_StartedLoading 1
-#define GigStatus_FailedLoading 2
-
 
 
 #ifdef __cplusplus
@@ -36,6 +31,9 @@ EXPORTED void GPQueryLibrary(char* xmlInfoBuffer, int bufferLength);
 
 EXPORTED int GPGetSDKVersion(); // We test to make sure this is available, otherwise we know SDK is too old
 
+// Called by GP during startup to get a list of GP Script functions implemented by a library
+
+
 
 // If the user decides that this library should be used then it will call GPRegister
 // It passes in the address of a function
@@ -44,12 +42,16 @@ EXPORTED int GPGetSDKVersion(); // We test to make sure this is available, other
 // calls that are used by the library will pass in that handle as the first parameter
 // The XML buffer is used to let the library developer provide multiple items of interest
 
-
-
 EXPORTED void GPRegister(TGetGPFunctionType getGPFunctionAddress, LibraryHandle handle);
 
 
 // Optional calls that DLL may provide depending on functionality.
+
+// Define a list of GP function signatures along with the addresses of their respective implementations. The location is used to indicate which kind of script entity is asking for the functions. Return the number of entries
+extern "C"  EXPORTED  int RequestGPScriptFunctionSignatureList( GPScript_AllowedLocations location, ExternaAPI_GPScriptFunctionDefinition* *list); // Improved version
+
+
+
 // Note that for the strings, we return how long the strings NEED to be so that GP can call again with a longer buffer if necessary
 // Panel creation
 EXPORTED int GetPanelCount();
@@ -85,7 +87,7 @@ EXPORTED    void OnSwitchToPanelView();
 EXPORTED    void OnModeChanged(int mode);  
 
 // Called when something in GP changes that can trigger a notification to the external API
-EXPORTED    void OnStatusChanged(ExternalAPI_GPStatus status); 
+EXPORTED    void OnStatusChanged(GPStatusType status); 
 
 // Called when the user changes the setlist
 EXPORTED    void OnSetlistChanged(const char* newSetlistName); 

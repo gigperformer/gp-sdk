@@ -202,6 +202,25 @@ typedef
     bool (*TGP_UnregisterCallback)(LibraryHandle h, const char* callbackName);
 
 
+/* GP Script helper functions */
+typedef
+   int (*TGP_VM_PopInteger)(GPRuntimeEngine* vm); //     Pop an integer associaed with function argument
+typedef
+   void (*TGP_VM_PushInteger)(GPRuntimeEngine* vm, int value); //     Push an integer associaed with function argument
+typedef
+   double (*TGP_VM_PopDouble)(GPRuntimeEngine* vm); //     Pop a double associaed with function argument
+typedef
+   void (*TGP_VM_PushDouble)(GPRuntimeEngine* vm, double value); //     Push a double associaed with function argument
+typedef
+   void (*TGP_VM_PopString)(GPRuntimeEngine* vm, char* buffer, int bufferLength); //     Pop a string associaed with function argument
+typedef
+   void (*TGP_VM_PushString)(GPRuntimeEngine * vm, const char* buffer); //     Push a string associaed with function argument
+typedef
+   bool (*TGP_VM_PopBoolean)(GPRuntimeEngine* vm); //     Pop an boolean associaed with function argument
+typedef
+   void (*TGP_VM_PushBoolean)(GPRuntimeEngine* vm, bool value); //     Push a boolean associaed with function argument
+
+
 // These are the extern function variables that can be used to call GP functions
 // They will be initialized when GP is started by calling InitializeImportedFunctions(...)    
 
@@ -277,6 +296,20 @@ extern TGP_Previous                              GP_Previous;
 extern TGP_Next                                  GP_Next;
 
 extern TGP_ResetWidgetToDefault                  GP_ResetWidgetToDefault;
+
+
+
+/*GP Script Helper Functions*/
+extern TGP_VM_PopInteger                         GP_VM_PopInteger;
+extern TGP_VM_PushInteger                        GP_VM_PushInteger;
+extern TGP_VM_PopDouble                          GP_VM_PopDouble;
+extern TGP_VM_PushDouble                         GP_VM_PushDouble;
+extern TGP_VM_PopString                          GP_VM_PopString;
+extern TGP_VM_PushString                         GP_VM_PushString;
+extern TGP_VM_PopBoolean                         GP_VM_PopBoolean;
+extern TGP_VM_PushBoolean                        GP_VM_PushBoolean;
+
+
 
 
 extern void InitializeImportedFunctions(LibraryHandle handle, TGetGPFunctionType getGPFunction); // Call this to initialize all the function variables defined below

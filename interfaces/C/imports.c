@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <assert.h>
+#include "GPTypes.h"
 #include "imports.h"
 #include "macros.h"
 
 #define then
 
-
-// We need to check compatibility with GP --- certain changes can cause breakage
-#define GPSDK_VERSION 43
 
 // This is an EXPORT from the DLL but it's here for convenience so it can be picked up by both C and C++ projects
 EXPORTED int GetGPSDKVersion()
@@ -98,6 +96,20 @@ DeclareFunc(GP_ResetWidgetToDefault);
 
 DeclareFunc(GP_RegisterCallback);
 DeclareFunc(GP_UnregisterCallback);
+
+
+/* GP Script Helper functions */
+DeclareFunc(GP_VM_PopInteger);
+DeclareFunc(GP_VM_PushInteger);
+DeclareFunc(GP_VM_PopDouble);
+DeclareFunc(GP_VM_PushDouble);
+DeclareFunc(GP_VM_PopString);
+DeclareFunc(GP_VM_PushString);
+DeclareFunc(GP_VM_PopBoolean);
+DeclareFunc(GP_VM_PushBoolean);
+
+
+
 
 
 static TGetGPFunctionType RequestGPFunctionByName;
@@ -199,6 +211,18 @@ void InitializeImportedFunctions(LibraryHandle handle, TGetGPFunctionType getGPF
 
    R(GP_RegisterCallback);
    R(GP_UnregisterCallback);
+
+
+   /* GP Script Helper Functions */
+   R(GP_VM_PopInteger);
+   R(GP_VM_PushInteger);
+   R(GP_VM_PopDouble);
+   R(GP_VM_PushDouble);
+   R(GP_VM_PopString);
+   R(GP_VM_PushString);
+   R(GP_VM_PopBoolean);
+   R(GP_VM_PushBoolean);
+
 
 #undef R   
 }
