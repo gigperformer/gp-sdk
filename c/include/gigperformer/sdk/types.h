@@ -20,12 +20,13 @@ extern "C"
         GP_SetlistMode = 1,
     };
 
+    /// Options for the OnGigStatusChanged callback
     typedef enum
     {
         GPStatus_GigFinishedLoading,
         GPStatus_GigStartedLoading,
         GPStatus_GigFailedLoading,
-    } GPStatus;
+    } GPStatusType;
 
     /// Call this to get the address of a GP_ function
     typedef void *(*TGetGPFunctionType)(void *handle, const char *functionName);
