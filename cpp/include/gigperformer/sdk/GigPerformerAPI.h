@@ -38,6 +38,21 @@ class GigPerformerAPI : public GigPerformerFunctions
 
   public:
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// \name    GPScript
+    /// \details Extensions may provide functions which can be called from GPScript. For that purpose, the functions in
+    ///          this section can be used.
+
+    /// \brief   Called by Gig Performer during startup to get a list of GPScript functions implemented by the
+    ///          extension.
+    /// \details This function may be called multiple times, especially for different values of \p location.
+    /// \param   location indicates which kind of script entity is asking for the functions.
+    /// \param   list *list is set to the start of a buffer buffer containing elements of type
+    ///               \ref ExternaAPI_GPScriptFunctionDefinition.
+    /// \return  Number of elements in \p list.
+    virtual int RequestGPScriptFunctionSignatureList(GPScript_AllowedLocations location,
+                                                     ExternaAPI_GPScriptFunctionDefinition **list);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Callbacks
     /// \details Only implement the callbacks in which you are interested
 

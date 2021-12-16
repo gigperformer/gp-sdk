@@ -76,3 +76,85 @@ For each library that it finds, the following sequence of steps will be performe
 7. Register for whatever other callbacks your library will need.
    However, to keep your library mean and lean, please don't just arbitrarily register for all callbacks.
 8. Your library is now ready to interact with Gig Performer and whatever hardware you are controlling.
+
+## Using GPScript functions with extensions (experimental)
+
+The GP API includes a mechanism that allows extension developers to define GPScript functions that are available to Gig Performer users.
+The implementations of those functions exist within the extension itself.
+The purpose of this mechanism is to allow third parties to develop extensions such as graphic packages, algorithmic music packages, lighting control systems and so forth that can then be manipulated inside a GPScript callback while performing with Gig Performer.
+This process must be tested extremely carefully as erroneous implementations can easily crash Gig Performer.
+The extension developer must ensure that incoming parameters are within expected ranges so that a Gig Performer user cannot crash the system by sending invalid values in a GPScript function call.
+
+### Types
+
+The required types you will need to support GPScript are defined in `gigperformer/sdk/types`h` which is included in the SDK.
+
+-   The helper functions used to accept and send back parameters will use instances of this type:
+
+    ```c
+    typedef void* GPRuntimeEngine;
+    ```
+
+-   This is the required signature for the functions you implement in the extension that can be called from Gig Performer via GPScript:
+
+    ```c
+    typedef void (*TGPScriptExecutableFunctionSignature)(GPRuntimeEngine* vm);
+    ```
+
+-   This structure is used to define the parts of a GP function so that it can be properly injected back into Gig Performer.
+    During initialization, the function `RequestGPScriptFunctionSignatureList` will be called and you must provide an array of this structure, appropriately filled in.
+    An example of this is included in the cpp example for the SDK.
+    Gig Performer also includes a location value that indicates what script entity is asking for your function list.
+    This allows you to control whether your functions should be available everywhere or perhaps only in the Gig Script, or only in the Global Rackspace, etc:
+
+    ```c
+    typedef struct
+    {
+        const char *functionName;                               ///< Just the name of the function
+        const char *args;                                       ///< The args and the optional return type
+        const char *returns;                                    ///< optional return type clause
+        const char *description;                                ///< For the helper in the script editor
+        TGPScriptExecutableFunctionSignature functionToExecute; ///< Pointer to the function implementation
+    } ExternaAPI_GPScriptFunctionDefinition;
+    ```
+
+### Accessing parameters and returning results
+
+Arguments defined in the function are pushed on to a stack and the extension must pull all the arguments from the stack as the initial action in any function defined in the extension that's associated with an injected GP Script function signature.
+In particular, the developer must pull the arguments from the stack in the reverse order.
+For example, suppose you have defined the following GP Script signature to multiply the first two arguments, add in the third argument and return the result:
+
+```cpp
+ExternaAPI_GPScriptFunctionDefinition{"MA", "a:Double, b:Double, c:Double", "Returns Double", "Mult And Add", MultAdd}
+```
+
+Provided, the name of your extension is `myextension`, the GP user will see this GP Script function:
+
+```
+function mytension_MA(a : Double, b : Double, c : Double) Returns Double
+```
+
+The function would most likely be implemented in your extension as follows:
+
+```c
+extern "C" void MultAdd(GPRuntimeEngine *vm)
+{
+    // Access the incoming arguments in the reverse order
+    double c = GP_VM_PopDouble(vm);
+    double b = GP_VM_PopDouble(vm);
+    double a = GP_VM_PopDouble(vm);
+
+    // Perform your calculation
+    double result = a * b + c;
+
+    // Push the result back on to the stack
+    GP_VM_PushDouble(vm, result);
+}
+```
+
+If you do not perform the three "pops" at the beginning (in the reverse order of the declared function) and the "push" at the end, the GP Script stack will be corrupted and Gig Performer will crash.
+
+### GP Script supported function types
+
+Currently, the only types that are available are the basic scalar types, i.e, `Integer`, `Double`, `Boolean` and `String`.
+A future version will provide support for arrays and other objects.

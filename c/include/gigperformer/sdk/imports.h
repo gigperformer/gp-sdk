@@ -102,6 +102,42 @@ extern "C"
     typedef bool (*TGP_RegisterCallback)(LibraryHandle h, const char *callbackName);
     typedef bool (*TGP_UnregisterCallback)(LibraryHandle h, const char *callbackName);
 
+    typedef int (*TGP_VM_PopInteger)(GPRuntimeEngine *vm);
+    typedef void (*TGP_VM_PushInteger)(GPRuntimeEngine *vm, int value);
+    typedef double (*TGP_VM_PopDouble)(GPRuntimeEngine *vm);
+    typedef void (*TGP_VM_PushDouble)(GPRuntimeEngine *vm, double value);
+    typedef void (*TGP_VM_PopString)(GPRuntimeEngine *vm, char *buffer, int bufferLength);
+    typedef void (*TGP_VM_PushString)(GPRuntimeEngine *vm, const char *buffer);
+    typedef bool (*TGP_VM_PopBoolean)(GPRuntimeEngine *vm);
+    typedef void (*TGP_VM_PushBoolean)(GPRuntimeEngine *vm, bool value);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// \name    Interacting with the GPScript runtime
+
+    /// \brief   Pop an integer associated with function argument.
+    extern TGP_VM_PopInteger GP_VM_PopInteger;
+
+    /// \brief   Push an integer associated with function return value.
+    extern TGP_VM_PushInteger GP_VM_PushInteger;
+
+    /// \brief   Pop a double associated with function argument.
+    extern TGP_VM_PopDouble GP_VM_PopDouble;
+
+    /// \brief   Push a double associated with function return value.
+    extern TGP_VM_PushDouble GP_VM_PushDouble;
+
+    /// \brief   Pop a string associated with function argument.
+    extern TGP_VM_PopString GP_VM_PopString;
+
+    /// \brief   Push a string associated with function return value.
+    extern TGP_VM_PushString GP_VM_PushString;
+
+    /// \brief   Pop a boolean associated with function argument.
+    extern TGP_VM_PopBoolean GP_VM_PopBoolean;
+
+    /// \brief   Push a boolean associated with function return value.
+    extern TGP_VM_PushBoolean GP_VM_PushBoolean;
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Callbacks
 

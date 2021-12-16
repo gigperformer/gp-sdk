@@ -37,6 +37,13 @@ extern "C" EXPORTED void GPRegister(TGetGPFunctionType getGPFunctionAddress, Lib
     subclass->Initialization();
 }
 
+extern "C" EXPORTED int RequestGPScriptFunctionSignatureList(GPScript_AllowedLocations location,
+                                                             ExternaAPI_GPScriptFunctionDefinition **list)
+{
+    int count = subclass->RequestGPScriptFunctionSignatureList(location, list);
+    return count;
+}
+
 extern "C" EXPORTED int GetPanelCount()
 {
     return subclass->GetPanelCount();
