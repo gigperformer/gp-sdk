@@ -13,7 +13,7 @@
 #define GPSDK_VERSION 43
 
 // This is an EXPORT from the DLL but it's here for convenience so it can be picked up by both C and C++ projects
-EXPORTED int GetGPSDKVersion()
+EXPORTED int GetGPSDKVersion(void)
 {
     return GPSDK_VERSION;
 }
