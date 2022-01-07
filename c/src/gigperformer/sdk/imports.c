@@ -10,7 +10,7 @@
 #define DeclareFunc(funcName) T##funcName funcName = NULL
 
 // If this is newer than the version expected by GP then a crash may occur. Do NOT change this information.
-#define GPSDK_VERSION 44
+#define GPSDK_VERSION 45
 
 // This is an EXPORT from the DLL but it's here for convenience so it can be picked up by both C and C++ projects
 EXPORTED int GetGPSDKVersion(void)
