@@ -2,8 +2,8 @@
 
 #For OS X you need to define the following two entries
 #The first one will depend on what SDKs are available on your system
-set(CMAKE_OSX_SYSROOT macosx10.15)
-set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9")
+#set(CMAKE_OSX_SYSROOT macosx10.15)
+#set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9")
 
 #Note - depending on the version of Xcode that you are using, you might have to copy an SDK to the appropriate location
 #Look in   /Library/Developer/CommandLineTools/SDKs for SDKs

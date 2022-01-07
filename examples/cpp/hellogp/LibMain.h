@@ -80,6 +80,9 @@ public:
         //switchToSetlistView();
         //switchToWiringView();
 
+        int color = RGBAToColor(1,0,0,0.5);
+        setWidgetFillColor("MyShape", color);
+
     }
 
     // Now, simply override the callback methods in which you are interested

@@ -48,7 +48,8 @@ EXPORTED void GPRegister(TGetGPFunctionType getGPFunctionAddress, LibraryHandle 
 // Optional calls that DLL may provide depending on functionality.
 
 // Define a list of GP function signatures along with the addresses of their respective implementations. The location is used to indicate which kind of script entity is asking for the functions. Return the number of entries
-extern "C"  EXPORTED  int RequestGPScriptFunctionSignatureList( GPScript_AllowedLocations location, ExternaAPI_GPScriptFunctionDefinition* *list); // Improved version
+
+EXPORTED  int RequestGPScriptFunctionSignatureList( GPScript_AllowedLocations location, ExternaAPI_GPScriptFunctionDefinition* *list); // Improved version
 
 
 

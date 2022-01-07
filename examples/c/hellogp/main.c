@@ -26,7 +26,6 @@ EXPORTED void GPQueryLibrary(char* xmlInfoBuffer, int bufferLength)
 
 
 // If this is newer than the version expected by GP then a crash may occur. Do NOT change this information.
-#define GPSDK_VERSION 42
 
 EXPORTED int GPGetSDKVersion()
 {

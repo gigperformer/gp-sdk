@@ -64,6 +64,24 @@ typedef
 typedef
    bool (*TGP_ListeningForWidget)(LibraryHandle h, const char*  widgetName);
 
+
+typedef
+   int  (*TGP_RGBAToColor)(LibraryHandle h, double red, double green, double blue, double alpha);
+
+typedef
+   int (*TGP_HSLAToColor)(LibraryHandle h, double hue, double saturation, double luminance, double alpha);
+
+typedef
+   void (*TGP_SetWidgetFillColor)(LibraryHandle h, const char* widgetName, int color);
+typedef
+   void (*TGP_SetWidgetOutlineColor)(LibraryHandle h, const char* widgetName, int color);
+typedef
+   void (*TGP_SetWidgetOutlineThickness)(LibraryHandle h, const char* widgetName, int thickness);
+typedef
+   void (*TGP_SetWidgetOutlineRoundness)(LibraryHandle h, const char* widgetName, int roundness);   
+
+///////////////////////   
+
 typedef
    bool (*TGP_ListenForMidi)(LibraryHandle h, const char*  deviceName, bool listen);
 
@@ -260,6 +278,14 @@ extern TGP_SetWidgetCaption                      GP_SetWidgetCaption;
 extern TGP_GetWidgetCaption                      GP_GetWidgetCaption;
 extern TGP_ListenForWidget                       GP_ListenForWidget;
 extern TGP_ListeningForWidget                    GP_ListeningForWidget;
+
+extern TGP_RGBAToColor 			                   GP_RGBAToColor;
+extern TGP_HSLAToColor 			                   GP_HSLAToColor;
+extern TGP_SetWidgetFillColor 			          GP_SetWidgetFillColor;
+extern TGP_SetWidgetOutlineColor 			       GP_SetWidgetOutlineColor;
+extern TGP_SetWidgetOutlineThickness 			    GP_SetWidgetOutlineThickness;
+extern TGP_SetWidgetOutlineRoundness 			    GP_SetWidgetOutlineRoundness;   
+
 extern TGP_ListenForMidi                         GP_ListenForMidi;
 extern TGP_ListeningForMidi                      GP_ListeningForMidi;
 extern TGP_GetMidiInDeviceCount                  GP_GetMidiInDeviceCount;

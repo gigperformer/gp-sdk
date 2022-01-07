@@ -44,6 +44,16 @@ public:
    std::string getWidgetCaption(const std::string &  widgetName);  
    bool listenForWidget(const std::string & widgetName, bool listen);
    bool listeningForWidget(const std::string & widgetName);
+
+   int  RGBAToColor(double red, double green, double blue, double alpha);
+   int  HSLAToColor(double hue, double saturation, double luminance, double alpha);
+   void setWidgetFillColor( const std::string & widgetName, int color);
+   void setWidgetOutlineColor(const std::string & widgetName, int color);
+   void setWidgetOutlineThickness(const std::string & widgetName, int thickness);
+   void setWidgetOutlineRoundness(const std::string & widgetName, int roundness);
+
+
+
    bool listenForMidi(const std::string & deviceName, bool listen);
    bool listeningForMidi(const std::string & deviceName);
    int getMidiInDeviceCount();

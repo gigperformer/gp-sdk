@@ -46,6 +46,15 @@ DeclareFunc(GP_GetWidgetTextValue);
 DeclareFunc(GP_SetWidgetValue);
 DeclareFunc(GP_SetWidgetCaption);
 DeclareFunc(GP_GetWidgetCaption);
+
+DeclareFunc(GP_RGBAToColor);
+DeclareFunc(GP_HSLAToColor);
+DeclareFunc(GP_SetWidgetFillColor);
+DeclareFunc(GP_SetWidgetOutlineColor);
+DeclareFunc(GP_SetWidgetOutlineThickness);
+DeclareFunc(GP_SetWidgetOutlineRoundness);   
+
+
 DeclareFunc(GP_ListenForWidget);
 DeclareFunc(GP_ListeningForWidget);
 DeclareFunc(GP_ListenForMidi);
@@ -169,6 +178,13 @@ void InitializeImportedFunctions(LibraryHandle handle, TGetGPFunctionType getGPF
    R(GP_SetWidgetValue);
    R(GP_SetWidgetCaption);
    R(GP_GetWidgetCaption);
+   R(GP_RGBAToColor);
+   R(GP_HSLAToColor);
+   R(GP_SetWidgetFillColor);
+   R(GP_SetWidgetOutlineColor);
+   R(GP_SetWidgetOutlineThickness);
+   R(GP_SetWidgetOutlineRoundness);   
+
    R(GP_ListenForWidget);
    R(GP_ListeningForWidget);
    R(GP_ListenForMidi);

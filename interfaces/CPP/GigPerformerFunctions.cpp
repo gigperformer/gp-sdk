@@ -71,6 +71,47 @@
     }
 
 
+   int  GigPerformerFunctions::RGBAToColor(double red, double green, double blue, double alpha)
+   {
+      int result = GP_RGBAToColor(fHandle, red, green, blue, alpha);
+      return result;
+   }
+
+   int  GigPerformerFunctions::HSLAToColor(double hue, double saturation, double luminance, double alpha)
+   {
+      int result = GP_HSLAToColor(fHandle, hue, saturation, luminance, alpha);
+      return result;
+
+   }
+
+
+
+   void GigPerformerFunctions::setWidgetFillColor( const std::string & widgetName, int color)
+   {
+      GP_SetWidgetFillColor(fHandle, widgetName.c_str(), color);
+   }
+
+
+   void GigPerformerFunctions::setWidgetOutlineColor(const std::string & widgetName, int color)
+   {
+      GP_SetWidgetOutlineColor(fHandle, widgetName.c_str(), color);
+
+   }
+   void GigPerformerFunctions::setWidgetOutlineThickness(const std::string & widgetName, int thickness)
+   {
+      GP_SetWidgetOutlineThickness(fHandle, widgetName.c_str(), thickness);
+   }
+   void GigPerformerFunctions::setWidgetOutlineRoundness(const std::string & widgetName, int roundness)
+   {
+      GP_SetWidgetOutlineRoundness(fHandle, widgetName.c_str(), roundness);
+
+   }
+
+
+
+
+
+
    void GigPerformerFunctions::setPluginParameter(const std::string & pluginHandle, int parameterNumber, double value , bool useGlobalRackspace)
    {
       GP_SetPluginParameter(fHandle, pluginHandle.c_str(), parameterNumber, value, useGlobalRackspace);
