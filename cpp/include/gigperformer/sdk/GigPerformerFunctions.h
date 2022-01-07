@@ -84,6 +84,29 @@ class GigPerformerFunctions
     /// \brief   Query GP to see if you are listening for widget changes.
     bool listeningForWidget(const std::string &widgetName);
 
+    /// \brief   Set the fill color of widgets that support it.
+    void setWidgetFillColor(const std::string &widgetName, int color);
+
+    /// \brief   Set the outline color of widgets that support it.
+    void setWidgetOutlineColor(const std::string &widgetName, int color);
+
+    /// \brief   Set the outline thickness of widgets that support it.
+    void setWidgetOutlineThickness(const std::string &widgetName, int thickness);
+
+    /// \brief   Set the outline roundness of widgets that support it.
+    void setWidgetOutlineRoundness(const std::string &widgetName, int roundness);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// \name    Working with colors
+
+    /// \brief   Convert RGB + Alpha values (all between 0.0 and 1.0) into a color code that can be used to set colors
+    ///          in Gig Performer, where available.
+    int RGBAToColor(double red, double green, double blue, double alpha);
+
+    /// \brief   Convert HSL + Alpha values (all between 0.0 and 1.0) into a color code that can be used to set colors
+    ///          in Gig Performer, where available.
+    int HSLAToColor(double hue, double saturation, double luminance, double alpha);
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    MIDI
 

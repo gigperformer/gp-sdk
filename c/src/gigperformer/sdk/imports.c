@@ -46,6 +46,14 @@ extern "C"
     DeclareFunc(GP_GetWidgetCaption);
     DeclareFunc(GP_ListenForWidget);
     DeclareFunc(GP_ListeningForWidget);
+    DeclareFunc(GP_SetWidgetFillColor);
+    DeclareFunc(GP_SetWidgetOutlineColor);
+    DeclareFunc(GP_SetWidgetOutlineThickness);
+    DeclareFunc(GP_SetWidgetOutlineRoundness);
+
+    DeclareFunc(GP_RGBAToColor);
+    DeclareFunc(GP_HSLAToColor);
+
     DeclareFunc(GP_ListenForMidi);
     DeclareFunc(GP_ListeningForMidi);
     DeclareFunc(GP_GetMidiInDeviceCount);
@@ -162,6 +170,15 @@ extern "C"
         R(GP_GetWidgetCaption);
         R(GP_ListenForWidget);
         R(GP_ListeningForWidget);
+
+        R(GP_SetWidgetFillColor);
+        R(GP_SetWidgetOutlineColor);
+        R(GP_SetWidgetOutlineThickness);
+        R(GP_SetWidgetOutlineRoundness);
+
+        R(GP_RGBAToColor);
+        R(GP_HSLAToColor);
+
         R(GP_ListenForMidi);
         R(GP_ListeningForMidi);
         R(GP_GetMidiInDeviceCount);

@@ -43,6 +43,13 @@ extern "C"
     typedef int (*TGP_GetWidgetCaption)(LibraryHandle h, const char *widgetName, char *returnBuffer, int bufferLength);
     typedef bool (*TGP_ListenForWidget)(LibraryHandle h, const char *widgetName, bool listen);
     typedef bool (*TGP_ListeningForWidget)(LibraryHandle h, const char *widgetName);
+    typedef void (*TGP_SetWidgetFillColor)(LibraryHandle h, const char *widgetName, int color);
+    typedef void (*TGP_SetWidgetOutlineColor)(LibraryHandle h, const char *widgetName, int color);
+    typedef void (*TGP_SetWidgetOutlineThickness)(LibraryHandle h, const char *widgetName, int thickness);
+    typedef void (*TGP_SetWidgetOutlineRoundness)(LibraryHandle h, const char *widgetName, int roundness);
+
+    typedef int (*TGP_RGBAToColor)(LibraryHandle h, double red, double green, double blue, double alpha);
+    typedef int (*TGP_HSLAToColor)(LibraryHandle h, double hue, double saturation, double luminance, double alpha);
 
     typedef bool (*TGP_ListenForMidi)(LibraryHandle h, const char *deviceName, bool listen);
     typedef bool (*TGP_ListeningForMidi)(LibraryHandle h, const char *deviceName);
@@ -236,6 +243,29 @@ extern "C"
 
     /// \brief   Query GP to see if you are listening for widget changes.
     extern TGP_ListeningForWidget GP_ListeningForWidget;
+
+    /// \brief   Set the fill color of widgets that support it.
+    extern TGP_SetWidgetFillColor GP_SetWidgetFillColor;
+
+    /// \brief   Set the outline color of widgets that support it.
+    extern TGP_SetWidgetOutlineColor GP_SetWidgetOutlineColor;
+
+    /// \brief   Set the outline thickness of widgets that support it.
+    extern TGP_SetWidgetOutlineThickness GP_SetWidgetOutlineThickness;
+
+    /// \brief   Set the outline roundness of widgets that support it.
+    extern TGP_SetWidgetOutlineRoundness GP_SetWidgetOutlineRoundness;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// \name    Working with colors
+
+    /// \brief   Convert RGB + Alpha values (all between 0.0 and 1.0) into a color code that can be used to set colors
+    ///          in Gig Performer, where available.
+    extern TGP_RGBAToColor GP_RGBAToColor;
+
+    /// \brief   Convert HSL + Alpha values (all between 0.0 and 1.0) into a color code that can be used to set colors
+    ///          in Gig Performer, where available.
+    extern TGP_HSLAToColor GP_HSLAToColor;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    MIDI
