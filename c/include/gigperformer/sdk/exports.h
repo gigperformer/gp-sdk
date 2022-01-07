@@ -40,6 +40,21 @@ extern "C"
     EXPORTED void GPRegister(TGetGPFunctionType getGPFunctionAddress, LibraryHandle handle);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// \name    GPScript
+    /// \details Extensions may provide functions which can be called from GPScript. For that purpose, the functions in
+    ///          this section can be used.
+
+    /// \brief   Called by Gig Performer during startup to get a list of GPScript functions implemented by the
+    ///          extension.
+    /// \details This function may be called multiple times, especially for different values of \p location.
+    /// \param   location indicates which kind of script entity is asking for the functions.
+    /// \param   list *list is set to the start of a buffer buffer containing elements of type
+    ///               \ref ExternaAPI_GPScriptFunctionDefinition.
+    /// \return  Number of elements in \p list.
+    EXPORTED int RequestGPScriptFunctionSignatureList(GPScript_AllowedLocations location,
+                                                      ExternaAPI_GPScriptFunctionDefinition **list);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Panel support
     /// \details If your library includes resources such as predefined front panels, you will need to implement the
     ///          following three functions so that Gig Performer can query your library to get access to the panels that
@@ -101,7 +116,7 @@ extern "C"
     EXPORTED void OnModeChanged(int mode);
 
     /// \brief   Called when something in GP changes that can trigger a notification to the external API loaded.
-    EXPORTED void OnStatusChanged(GPStatus status);
+    EXPORTED void OnStatusChanged(GPStatusType status);
 
     /// \brief   Called when a MIDI device is connected or disconnected from the computer.
     /// \details You get an array of strings for the MIDI in and MIDI out device list respectively.

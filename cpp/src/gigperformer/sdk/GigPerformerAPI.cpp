@@ -60,7 +60,7 @@ bool GigPerformerAPI::OnMidiIn(const std::string &, const uint8_t *, int)
     return false;
 }
 
-void GigPerformerAPI::OnStatusChanged(GPStatus)
+void GigPerformerAPI::OnStatusChanged(GPStatusType)
 {
 }
 
@@ -119,6 +119,13 @@ std::string GigPerformerAPI::GetMenuName(int)
 
 void GigPerformerAPI::InvokeMenu(int)
 {
+}
+
+int GigPerformerAPI::RequestGPScriptFunctionSignatureList(GPScript_AllowedLocations,
+                                                          ExternaAPI_GPScriptFunctionDefinition **)
+{
+    // By default, no GPScript functions defined so the count is 0
+    return 0;
 }
 
 GigPerformerAPI::GigPerformerAPI(LibraryHandle handle) : GigPerformerFunctions(handle)

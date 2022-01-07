@@ -10,7 +10,7 @@
 #define DeclareFunc(funcName) T##funcName funcName = NULL
 
 // If this is newer than the version expected by GP then a crash may occur. Do NOT change this information.
-#define GPSDK_VERSION 43
+#define GPSDK_VERSION 44
 
 // This is an EXPORT from the DLL but it's here for convenience so it can be picked up by both C and C++ projects
 EXPORTED int GetGPSDKVersion(void)
@@ -94,6 +94,15 @@ extern "C"
 
     DeclareFunc(GP_RegisterCallback);
     DeclareFunc(GP_UnregisterCallback);
+
+    DeclareFunc(GP_VM_PopInteger);
+    DeclareFunc(GP_VM_PushInteger);
+    DeclareFunc(GP_VM_PopDouble);
+    DeclareFunc(GP_VM_PushDouble);
+    DeclareFunc(GP_VM_PopString);
+    DeclareFunc(GP_VM_PushString);
+    DeclareFunc(GP_VM_PopBoolean);
+    DeclareFunc(GP_VM_PushBoolean);
 
     static TGetGPFunctionType RequestGPFunctionByName;
 
@@ -193,6 +202,15 @@ extern "C"
 
         R(GP_RegisterCallback);
         R(GP_UnregisterCallback);
+
+        R(GP_VM_PopInteger);
+        R(GP_VM_PushInteger);
+        R(GP_VM_PopDouble);
+        R(GP_VM_PushDouble);
+        R(GP_VM_PopString);
+        R(GP_VM_PushString);
+        R(GP_VM_PopBoolean);
+        R(GP_VM_PushBoolean);
 
 #undef R
     }
