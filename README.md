@@ -2,6 +2,7 @@
 
 ## Prolog
 
+Gig Performer is an audio plugin host (AU, VST3 and VST host) for live performance and session musicians.
 Before you consider writing a library for use with Gig Performer, please familiarize yourself with the operation of Gig Performer itself so that you have a reasonable understanding of its capabilities and functionality that might impact your library.
 
 ## Introduction
@@ -12,14 +13,14 @@ This SDK includes the source code that will need to be included in every third p
 
 ## Fundamentals
 
-1. GP will query all libraries found in `/Users/Shared/Gig Performer/Extensions` (macOS) and in `C:\Users\All Users\Gig Performer\Extensions` (Windows) to collection information (product name, build date, description, etc).
+1. GP will query all libraries found in `/Users/Shared/Gig Performer/Extensions` (macOS) and in `C:\Users\All Users\Gig Performer\Extensions` (Windows) to collect information (product name, build date, description, etc).
    This information will be displayed to the user who can decide which libraries should be loaded and used.
 2. GP will next load the desired libraries.
 3. GP exposes a collection of functions that a library can call to interact with the application.
    For example, you can set the current value of a widget in a rackspace (the widget must have a handle defined).
    You can ask for the number of songs in the current setlist, get the name of each song, get the names of all the song parts in a song, switch from one song to another and so forth.
    The library can of course also send MIDI events into GP.
-4. The GP API supports callbacks into the third party library to notify the library that something "happened".
+4. The GP API supports callbacks into the third-party library to notify the library that something "happened".
    For example, if the user switches from one song to another, a library supporting a keyboard controller with a programmable display could be notified so that it can display the names of the song parts in the new song.
    If the library is interested in MIDI events coming from a particular piece of hardware, it can be called whenever that hardware sends out MIDI data.
 
@@ -31,7 +32,7 @@ The example class included for the C++ example will perform some initial operati
 
 ## Working with the API
 
-When GP is first loaded, it will looked for third party libraries.
+When GP is first loaded, it will look for third party libraries.
 For each library that it finds, the following sequence of steps will be performed:
 
 1. GP will open the library.
