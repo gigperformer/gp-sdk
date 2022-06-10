@@ -1,0 +1,3 @@
+BasedOnStyle: Microsoft
+
+IndentPPDirectives: BeforeHash
