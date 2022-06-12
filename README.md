@@ -3,7 +3,7 @@
 ## Prolog
 
 Gig Performer is an audio plugin host (AU, VST3 and VST host) for live performance and session musicians.
-Before you consider writing a library for use with Gig Performer, please familiarize yourself with the operation of Gig Performer itself so that you have a reasonable understanding of its capabilities and functionality that might impact your library.
+Before you consider writing a library for use with Gig Performer, please familiarize yourself with the operation of Gig Performer itself so that you have a reasonable understanding of its capabilities and functionality that might impact your library. More information about Gig Performer can be found at https://gigperformer.com
 
 ## Introduction
 
