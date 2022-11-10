@@ -77,6 +77,8 @@ extern "C"
     typedef int (*TGP_GetSongName)(LibraryHandle h, int atSongIndex, char *returnBuffer, int bufferLength);
     typedef int (*TGP_GetCurrentSongIndex)(LibraryHandle h);
     typedef int (*TGP_GetSongpartCount)(LibraryHandle h, int atSongIndex);
+    typedef int (*TGP_GetChordProFilenameForSong)(LibraryHandle h, int atSongIndex, char *returnBuffer,
+                                                  int bufferLength);
     typedef int (*TGP_GetSongpartName)(LibraryHandle h, int atSongIndex, int atIndex, char *returnBuffer,
                                        int bufferLength);
     typedef int (*TGP_GetCurrentSongpartIndex)(LibraryHandle h);
@@ -84,6 +86,10 @@ extern "C"
     typedef bool (*TGP_InSetlistMode)(LibraryHandle h);
     typedef bool (*TGP_SwitchToSong)(LibraryHandle h, int songIndex, int partIndex);
     typedef bool (*TGP_SwitchToSongPart)(LibraryHandle h, int partIndex);
+    typedef int (*TGP_GetSetlistCount)(LibraryHandle h);
+    typedef int (*TGP_GetSetlistName)(LibraryHandle h, int atSongIndex, char *returnBuffer, int bufferLength);
+    typedef int (*TGP_GetCurrentSetlistIndex)(LibraryHandle h);
+    typedef bool (*TGP_SwitchToSetlist)(LibraryHandle h, int setlistIndex);
 
     typedef void (*TGP_ConsoleLog)(LibraryHandle h, const char *message);
     typedef void (*TGP_ScriptLog)(LibraryHandle h, const char *message, bool openLogWindow);
@@ -341,6 +347,11 @@ extern "C"
     /// \return  represents the actual length needed to fill the buffer.
     extern TGP_GetSongName GP_GetSongName;
 
+    /// \brief   Get the full path to a ChordPro file associated with the song at the given index of the currently
+    ///          active setlist.
+    /// \return  The number of bytes written to returnBuffer.
+    extern TGP_GetChordProFilenameForSong GP_GetChordProFilenameForSong;
+
     /// \brief   Query GP for the index of the currently selected song.
     extern TGP_GetCurrentSongIndex GP_GetCurrentSongIndex;
 
@@ -360,6 +371,20 @@ extern "C"
 
     /// \brief   Tell GP to switch to the song part with the given (zero-based) index in the current song.
     extern TGP_SwitchToSongPart GP_SwitchToSongPart;
+
+    /// \brief   Returns the number of setlists in the currently gig file.
+    extern TGP_GetSetlistCount GP_GetSetlistCount;
+
+    /// \brief   Gets the name of the setlist at the given index.
+    /// \return  The number of bytes written to returnBuffer.
+    extern TGP_GetSetlistName GP_GetSetlistName;
+
+    /// \brief   Returns the index of the current setlist.
+    extern TGP_GetCurrentSetlistIndex GP_GetCurrentSetlistIndex;
+
+    /// \brief   Switch to the setlist defined by the index.
+    /// \return  True if Gig Performer has successfully switched to the given setlist.
+    extern TGP_SwitchToSetlist GP_SwitchToSetlist;
 
     /// \brief   Returns the number of rackspaces in the gig file.
     extern TGP_GetRackspaceCount GP_GetRackspaceCount;

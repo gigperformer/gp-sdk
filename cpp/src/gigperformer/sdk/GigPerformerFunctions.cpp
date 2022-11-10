@@ -328,6 +328,15 @@ int GigPerformerFunctions::getCurrentSongIndex()
     return GP_GetCurrentSongIndex(fHandle);
 }
 
+std::string GigPerformerFunctions::getChordProFilenameForSong(int atIndex)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+    /* int actualLength = */ GP_GetChordProFilenameForSong(fHandle, atIndex, returnBuffer, bufferLength);
+    std::string result(returnBuffer);
+    return result;
+}
+
 int GigPerformerFunctions::getSongpartCount(int atSongIndex)
 {
     return GP_GetSongpartCount(fHandle, atSongIndex);
@@ -361,6 +370,31 @@ bool GigPerformerFunctions::switchToSong(int songIndex, int partIndex)
 bool GigPerformerFunctions::switchToSongPart(int partIndex)
 {
     return GP_SwitchToSongPart(fHandle, partIndex);
+}
+
+int GigPerformerFunctions::getSetlistCount()
+{
+    return GP_GetSetlistCount(fHandle);
+}
+
+std::string GigPerformerFunctions::getSetlistName(int setlistIndex)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+    /* int actualLength = */ GP_GetSetlistName(fHandle, setlistIndex, returnBuffer, bufferLength);
+    std::string result(returnBuffer);
+
+    return result;
+}
+
+int GigPerformerFunctions::getCurrentSetlistIndex()
+{
+    return GP_GetCurrentSetlistIndex(fHandle);
+}
+
+bool GigPerformerFunctions::switchToSetlist(int setlistIndex)
+{
+    return GP_SwitchToSetlist(fHandle, setlistIndex);
 }
 
 void GigPerformerFunctions::consoleLog(const char *message)

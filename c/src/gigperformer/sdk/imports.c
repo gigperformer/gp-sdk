@@ -10,7 +10,7 @@
 #define DeclareFunc(funcName) T##funcName funcName = NULL
 
 // If this is newer than the version expected by GP then a crash may occur. Do NOT change this information.
-#define GPSDK_VERSION 44
+#define GPSDK_VERSION 46
 
 // This is an EXPORT from the DLL but it's here for convenience so it can be picked up by both C and C++ projects
 EXPORTED int GetGPSDKVersion(void)
@@ -74,6 +74,7 @@ extern "C"
     DeclareFunc(GP_InjectMidiMessageToMidiInputAlias);
     DeclareFunc(GP_GetSongCount);
     DeclareFunc(GP_GetSongName);
+    DeclareFunc(GP_GetChordProFilenameForSong);
     DeclareFunc(GP_GetCurrentSongIndex);
     DeclareFunc(GP_GetSongpartCount);
     DeclareFunc(GP_GetSongpartName);
@@ -81,6 +82,10 @@ extern "C"
     DeclareFunc(GP_InSetlistMode);
     DeclareFunc(GP_SwitchToSong);
     DeclareFunc(GP_SwitchToSongPart);
+    DeclareFunc(GP_GetSetlistCount);
+    DeclareFunc(GP_GetSetlistName);
+    DeclareFunc(GP_GetCurrentSetlistIndex);
+    DeclareFunc(GP_SwitchToSetlist);
     DeclareFunc(GP_ConsoleLog);
     DeclareFunc(GP_ScriptLog);
 
@@ -208,6 +213,7 @@ extern "C"
         R(GP_InjectMidiMessageToMidiInputAlias);
         R(GP_GetSongCount);
         R(GP_GetSongName);
+        R(GP_GetChordProFilenameForSong);
         R(GP_GetCurrentSongIndex);
         R(GP_GetSongpartCount);
         R(GP_GetSongpartName);
@@ -215,6 +221,10 @@ extern "C"
         R(GP_InSetlistMode);
         R(GP_SwitchToSong);
         R(GP_SwitchToSongPart);
+        R(GP_GetSetlistCount);
+        R(GP_GetSetlistName);
+        R(GP_GetCurrentSetlistIndex);
+        R(GP_SwitchToSetlist);
         R(GP_ScriptLog);
         R(GP_GetRackspaceCount);
         R(GP_GetRackspaceName);

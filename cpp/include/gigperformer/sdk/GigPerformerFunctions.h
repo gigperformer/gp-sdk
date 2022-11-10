@@ -169,6 +169,10 @@ class GigPerformerFunctions
     /// \brief   Query GP for the name of a song at the given index (zero-based).
     std::string getSongName(int atIndex);
 
+    /// \brief   Get the full path to a ChordPro file associated with the song at the given index of the currently
+    ///          active setlist.
+    std::string getChordProFilenameForSong(int atIndex);
+
     /// \brief   Query GP for the index of the currently selected song.
     int getCurrentSongIndex();
 
@@ -186,6 +190,19 @@ class GigPerformerFunctions
 
     /// \brief   Tell GP to switch to the song part with the given (zero-based) index in the current song.
     bool switchToSongPart(int partIndex);
+
+    /// \brief   Returns the number of setlists in the currently gig file.
+    int getSetlistCount();
+
+    /// \brief   Gets the name of the setlist at the given index.
+    std::string getSetlistName(int setlistIndex);
+
+    /// \brief   Returns the index of the current setlist.
+    int getCurrentSetlistIndex();
+
+    /// \brief   Switch to the setlist defined by the index.
+    /// \return  True if Gig Performer has successfully switched to the given setlist.
+    bool switchToSetlist(int setlistIndex);
 
     /// \brief   Returns the number of rackspaces in the gig file.
     int getRackspaceCount();

@@ -26,6 +26,12 @@ extern "C"
         GPStatus_GigFinishedLoading,
         GPStatus_GigStartedLoading,
         GPStatus_GigFailedLoading,
+
+        // For each of these we will have a code representing Add, Delete, Move, Rename
+        GPStatus_SongListModifed,
+        GPStatus_RackspaceListModified,
+        GPStatus_SongPartListModified,
+        GPStatus_VariationListModified
     } GPStatusType;
 
     /// Specifies which entities are allowed to use injected GPScripts or which scripts are allowed in external API
