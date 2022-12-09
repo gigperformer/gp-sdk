@@ -76,6 +76,9 @@ extern "C"
     typedef int (*TGP_GetSongCount)(LibraryHandle h);
     typedef int (*TGP_GetSongName)(LibraryHandle h, int atSongIndex, char *returnBuffer, int bufferLength);
     typedef int (*TGP_GetCurrentSongIndex)(LibraryHandle h);
+    typedef int (*TGP_GetVariationNameForSongPart)(LibraryHandle h, int atSongIndex, int atPartIndex,
+                                                   char *returnBuffer, int bufferLength);
+
     typedef int (*TGP_GetSongpartCount)(LibraryHandle h, int atSongIndex);
     typedef int (*TGP_GetChordProFilenameForSong)(LibraryHandle h, int atSongIndex, char *returnBuffer,
                                                   int bufferLength);
@@ -354,6 +357,10 @@ extern "C"
 
     /// \brief   Query GP for the index of the currently selected song.
     extern TGP_GetCurrentSongIndex GP_GetCurrentSongIndex;
+
+    /// \brief   Query GP for the name of the variation associated with the song and song part with the given
+    ///          (zero-based) indices.
+    extern TGP_GetVariationNameForSongPart GP_GetVariationNameForSongPart;
 
     /// \brief   Query GP for the number of song parts in the song at the given index.
     extern TGP_GetSongpartCount GP_GetSongpartCount;

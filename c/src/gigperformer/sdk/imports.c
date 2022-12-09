@@ -76,6 +76,7 @@ extern "C"
     DeclareFunc(GP_GetSongName);
     DeclareFunc(GP_GetChordProFilenameForSong);
     DeclareFunc(GP_GetCurrentSongIndex);
+    DeclareFunc(GP_GetVariationNameForSongPart);
     DeclareFunc(GP_GetSongpartCount);
     DeclareFunc(GP_GetSongpartName);
     DeclareFunc(GP_GetCurrentSongpartIndex);
@@ -215,6 +216,7 @@ extern "C"
         R(GP_GetSongName);
         R(GP_GetChordProFilenameForSong);
         R(GP_GetCurrentSongIndex);
+        R(GP_GetVariationNameForSongPart);
         R(GP_GetSongpartCount);
         R(GP_GetSongpartName);
         R(GP_GetCurrentSongpartIndex);
