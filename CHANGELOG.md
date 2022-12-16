@@ -1,9 +1,11 @@
 # Changelog
 
 # 46
+- A new API for getting the variation name associated with a specified song and song part:
+  - `GP_GetVariationNameForSongPart` (C) and `GigPerformerFunctions::getVariationNameForSongPart` (C++).
 
 - A new API for getting the ChordPro filepath to the currently active song:
-  `GP_GetChordProFilenameForSong` (C) and `GigPerformerFunctions::getChordProFilenameForSong` (C++).
+  - `GP_GetChordProFilenameForSong` (C) and `GigPerformerFunctions::getChordProFilenameForSong` (C++).
 - Several new APIs concerning set lists:
   - `GP_GetSetlistCount()` (C) and `GigPerformerFunctions::getSetlistCount()` (C++)
   - `GP_GetSetlistName()` (C) and `GigPerformerFunctions::getSetlistName()` (C++)

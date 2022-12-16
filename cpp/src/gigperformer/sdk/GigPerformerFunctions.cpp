@@ -328,6 +328,16 @@ int GigPerformerFunctions::getCurrentSongIndex()
     return GP_GetCurrentSongIndex(fHandle);
 }
 
+std::string GigPerformerFunctions::getVariationNameForSongPart(int atSongIndex, int atPartIndex)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+    /* int actualLength = */ GP_GetVariationNameForSongPart(fHandle, atSongIndex, atPartIndex, returnBuffer,
+                                                            bufferLength);
+    std::string result(returnBuffer);
+    return result;
+}
+
 std::string GigPerformerFunctions::getChordProFilenameForSong(int atIndex)
 {
     const int bufferLength = 1024;
