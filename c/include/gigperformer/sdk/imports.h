@@ -33,6 +33,9 @@ extern "C"
     typedef int (*TGP_GetPluginParameterName)(LibraryHandle h, const char *pluginHandle, int parameterIndex,
                                               char *returnBuffer, int bufferLength, bool useGlobalRackspace);
 
+    typedef int (*TGP_GetPluginParameterText)(LibraryHandle h, const char* pluginHandle, int parameterIndex,
+                                              char* returnBuffer, int bufferLength, bool useGlobalRackspace);
+
     typedef int (*TGP_GetWidgetList)(LibraryHandle h, char *returnBuffer, int bufferLength, bool useGlobalRackspace);
     typedef bool (*TGP_WidgetExists)(LibraryHandle h, const char *widgetName);
     typedef double (*TGP_GetWidgetValue)(LibraryHandle h, const char *widgetName);
@@ -114,6 +117,9 @@ extern "C"
     typedef void (*TGP_ShowTuner)(LibraryHandle h, bool show);
     typedef bool (*TGP_TunerShowing)(LibraryHandle h);
 
+    typedef void (*TGP_EnableMetronome)(LibraryHandle h, bool enable);
+    typedef bool (*TGP_MetronomeEnabled)(LibraryHandle h);
+
     typedef bool (*TGP_SaveGigUnconditionally)(LibraryHandle h, bool withTimestamp);
     typedef bool (*TGP_LoadGigByIndex)(LibraryHandle h, int indexNumber);
 
@@ -181,6 +187,12 @@ extern "C"
     /// \brief   Indicates whether the tuner is visible.
     extern TGP_TunerShowing GP_TunerShowing;
 
+    /// \brief   Enable or disable the metronome.
+    extern TGP_EnableMetronome GP_EnableMetronome;
+   
+    /// \brief   Indicates whether the metronome is enabled.
+    extern TGP_MetronomeEnabled GP_MetronomeEnabled;
+
     /// \brief   Switch Gig Performer to Setlist View.
     extern TGP_SwitchToSetlistView GP_SwitchToSetlistView;
 
@@ -220,6 +232,10 @@ extern "C"
     /// \brief   Returns the name of the parameter at the specified parameter number of the plugin with the given handle
     ///          in the currently active rackspace or in the global rackspace.
     extern TGP_GetPluginParameterName GP_GetPluginParameterName;
+
+    /// \brief   Returns the current text value of the parameter at the specified parameter number of the plugin with the given handle
+    ///          in the currently active rackspace or in the global rackspace.  
+    extern TGP_GetPluginParameterText GP_GetPluginParameterText;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with Widgets

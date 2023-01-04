@@ -97,6 +97,17 @@ std::string GigPerformerFunctions::getPluginParameterName(const std::string &plu
     return result;
 }
 
+std::string GigPerformerFunctions::getPluginParameterText(const std::string & pluginHandle, int parameterIndex,
+                                                          bool useGlobalRackspace)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+
+    /* int actualLength = */ GP_GetPluginParameterText(fHandle, pluginHandle.c_str(), parameterIndex, returnBuffer, bufferLength, useGlobalRackspace);
+    std::string result(returnBuffer);
+    return result;
+}
+
 bool GigPerformerFunctions::setWidgetValue(const std::string &widgetName, double newValue)
 {
     return GP_SetWidgetValue(fHandle, widgetName.c_str(), newValue);
@@ -140,6 +151,16 @@ void GigPerformerFunctions::showTuner(bool show)
 bool GigPerformerFunctions::tunerShowing()
 {
     return GP_TunerShowing(fHandle);
+}
+
+void GigPerformerFunctions::enableMetronome(bool enable)
+{
+    GP_EnableMetronome(fHandle, enable);
+}
+
+bool GigPerformerFunctions::metronomeEnabled()
+{
+    return GP_MetronomeEnabled(fHandle);
 }
 
 std::string GigPerformerFunctions::getPathToMe()

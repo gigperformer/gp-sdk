@@ -40,6 +40,12 @@ class GigPerformerFunctions
     /// \brief   Indicates whether the tuner is visible.
     bool tunerShowing();
 
+    /// \brief   Enable or disable the metronome.
+    void enableMetronome(bool enable);
+   
+    /// \brief   Indicates whether the metronome is enabled.
+    bool metronomeEnabled();
+
     /// \brief   Switch Gig Performer to Setlist View.
     void switchToSetlistView();
 
@@ -267,6 +273,10 @@ class GigPerformerFunctions
     /// \brief   Returns the name of the parameter at the specified parameter number of the plugin with the given handle
     ///          in the currently active rackspace or in the global rackspace.
     std::string getPluginParameterName(const std::string &pluginHandle, int parameterIndex, bool useGlobalRackspace);
+
+    /// \brief   Returns the current text value of the parameter at the specified parameter number of the plugin with the given handle
+    ///          in the currently active rackspace or in the global rackspace.  
+    std::string getPluginParameterText(const std::string & pluginHandle, int parameterIndex, bool useGlobalRackspace);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with gig files

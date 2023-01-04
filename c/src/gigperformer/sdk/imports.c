@@ -36,6 +36,7 @@ extern "C"
     DeclareFunc(GP_GetPluginParameter);
     DeclareFunc(GP_GetPluginParameterCount);
     DeclareFunc(GP_GetPluginParameterName);
+    DeclareFunc(GP_GetPluginParameterText);
 
     DeclareFunc(GP_GetWidgetList);
     DeclareFunc(GP_WidgetExists);
@@ -106,6 +107,9 @@ extern "C"
     DeclareFunc(GP_ShowTuner);
     DeclareFunc(GP_TunerShowing);
 
+    DeclareFunc(GP_EnableMetronome);
+    DeclareFunc(GP_MetronomeEnabled);
+
     DeclareFunc(GP_SaveGigUnconditionally);
     DeclareFunc(GP_LoadGigByIndex);
     DeclareFunc(GP_Tap);
@@ -169,6 +173,9 @@ extern "C"
 
         R(GP_ShowTuner);
         R(GP_TunerShowing);
+
+        R(GP_EnableMetronome);
+        R(GP_MetronomeEnabled);
 
         R(GP_GetPluginList);
         R(GP_PluginExists);
