@@ -183,6 +183,7 @@ extern "C"
         R(GP_GetPluginParameter);
         R(GP_GetPluginParameterCount);
         R(GP_GetPluginParameterName);
+        R(GP_GetPluginParameterText);
 
         R(GP_GetWidgetList);
         R(GP_WidgetExists);
