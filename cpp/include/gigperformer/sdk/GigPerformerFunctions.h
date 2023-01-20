@@ -58,6 +58,9 @@ class GigPerformerFunctions
     /// \brief   Query GP to see if it is in setlist mode.
     bool inSetlistMode();
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// \name    Widgets
+
     /// \brief   Get a list of all widgets defined (i.e, with handles) in the currently active or the global rackspace.
     void getWidgetList(std::vector<std::string> &list, bool useGlobalRackspace);
 
@@ -89,6 +92,9 @@ class GigPerformerFunctions
 
     /// \brief   Query GP to see if you are listening for widget changes.
     bool listeningForWidget(const std::string &widgetName);
+
+    /// \brief   Map the named widget to the specified parameter number of the plugin with the given handle.
+    void mapWidgetToPluginParameter(const std::string & widgetName, const std::string  & pluginHandle, int parameterNumber, bool useGlobalRackspace);
 
     /// \brief   Set the fill color of widgets that support it.
     void setWidgetFillColor(const std::string &widgetName, int color);
@@ -182,6 +188,9 @@ class GigPerformerFunctions
     /// \brief   Query GP for the index of the currently selected song.
     int getCurrentSongIndex();
 
+    /// \brief   Get the uuid for the song at the given index.
+    std::string getSongUuid(int atIndex);
+
     /// \brief   Query GP for the name of the variation associated with the song and song part with the given
     ///          (zero-based) indices.
     std::string getVariationNameForSongPart(int atSongIndex, int atPartIndex);
@@ -222,6 +231,9 @@ class GigPerformerFunctions
 
     /// \brief   Get the rackspace currently in use.
     int getCurrentRackspaceIndex();
+
+    /// \brief   Get the uuid for the rackspace at the given index.
+    std::string getRackspaceUuid(int atIndex);
 
     /// \brief   Get the rackspace currently in use.
     int getCurrentVariationIndex();

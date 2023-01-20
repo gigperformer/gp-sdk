@@ -20,21 +20,18 @@ extern "C"
     typedef int (*TGP_GetPathToMe)(LibraryHandle h, char *returnBuffer, int bufferLength);
 
     typedef int (*TGP_GetPluginList)(LibraryHandle h, char *returnBuffer, int bufferLength, bool useGlobalRackspace);
-
     typedef bool (*TGP_PluginExists)(LibraryHandle h, const char *pluginHandle, bool useGlobalRackspace);
-
     typedef void (*TGP_SetPluginParameter)(LibraryHandle h, const char *pluginHandle, int parameterIndex, double value,
                                            bool useGlobalRackspace);
-
     typedef double (*TGP_GetPluginParameter)(LibraryHandle h, const char *pluginHandle, int parameterIndex,
                                              bool useGlobalRackspace);
     typedef int (*TGP_GetPluginParameterCount)(LibraryHandle h, const char *pluginHandle, bool useGlobalRackspace);
-
     typedef int (*TGP_GetPluginParameterName)(LibraryHandle h, const char *pluginHandle, int parameterIndex,
                                               char *returnBuffer, int bufferLength, bool useGlobalRackspace);
-
     typedef int (*TGP_GetPluginParameterText)(LibraryHandle h, const char* pluginHandle, int parameterIndex,
                                               char* returnBuffer, int bufferLength, bool useGlobalRackspace);
+    typedef void (*TGP_MapWidgetToPluginParameter)(LibraryHandle h, const char* widgetName, const char* pluginHandle, 
+                                                    int parameterNumber, bool useGlobalRackspace);
 
     typedef int (*TGP_GetWidgetList)(LibraryHandle h, char *returnBuffer, int bufferLength, bool useGlobalRackspace);
     typedef bool (*TGP_WidgetExists)(LibraryHandle h, const char *widgetName);
@@ -79,6 +76,7 @@ extern "C"
     typedef int (*TGP_GetSongCount)(LibraryHandle h);
     typedef int (*TGP_GetSongName)(LibraryHandle h, int atSongIndex, char *returnBuffer, int bufferLength);
     typedef int (*TGP_GetCurrentSongIndex)(LibraryHandle h);
+    typedef int (*TGP_GetSongUuid)(LibraryHandle h, int atIndex, char* returnBuffer, int bufferLength);
     typedef int (*TGP_GetVariationNameForSongPart)(LibraryHandle h, int atSongIndex, int atPartIndex,
                                                    char *returnBuffer, int bufferLength);
 
@@ -103,6 +101,7 @@ extern "C"
     typedef int (*TGP_GetRackspaceCount)(LibraryHandle h);
     typedef int (*TGP_GetRackspaceName)(LibraryHandle h, int atIndex, char *returnBuffer, int bufferLength);
     typedef int (*TGP_GetCurrentRackspaceIndex)(LibraryHandle h);
+    typedef int (*TGP_GetRackspaceUuid)(LibraryHandle h, int atIndex, char* returnBuffer, int bufferLength);
     typedef int (*TGP_GetCurrentVariationIndex)(LibraryHandle h);
     typedef int (*TGP_GetVariationCount)(LibraryHandle h, int atRackspaceIndex);
     typedef int (*TGP_GetVariationName)(LibraryHandle h, int atRackspaceIndex, int atIndex, char *returnBuffer,
@@ -240,6 +239,10 @@ extern "C"
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with Widgets
 
+     /// \brief   Map the named widget to the specified parameter number of the plugin with the given handle
+     ///          in the currently active rackspace or in the global rackspace. 
+    extern TGP_MapWidgetToPluginParameter GP_MapWidgetToPluginParameter;
+
     /// \brief   Get a list of all widgets defined (i.e, with handles) in the currently active or the global rackspace.
     /// \return  The actual number of characters needed to store the return value.
     extern TGP_GetWidgetList GP_GetWidgetList;
@@ -374,6 +377,9 @@ extern "C"
     /// \brief   Query GP for the index of the currently selected song.
     extern TGP_GetCurrentSongIndex GP_GetCurrentSongIndex;
 
+    /// \brief   Get the uuid for the song at the given index.
+    extern TGP_GetSongUuid GP_GetSongUuid;
+
     /// \brief   Query GP for the name of the variation associated with the song and song part with the given
     ///          (zero-based) indices.
     extern TGP_GetVariationNameForSongPart GP_GetVariationNameForSongPart;
@@ -412,11 +418,14 @@ extern "C"
     /// \brief   Returns the number of rackspaces in the gig file.
     extern TGP_GetRackspaceCount GP_GetRackspaceCount;
 
-    /// \brief   Get the name of rackspace atIndex.
+    /// \brief   Get the name of rackspace at the given index.
     extern TGP_GetRackspaceName GP_GetRackspaceName;
 
     /// \brief   Get the rackspace currently in use.
     extern TGP_GetCurrentRackspaceIndex GP_GetCurrentRackspaceIndex;
+
+    /// \brief   Get the uuid for the rackspace at the given index.
+    extern TGP_GetRackspaceUuid GP_GetRackspaceUuid;
 
     /// \brief   Get the rackspace currently in use.
     extern TGP_GetCurrentVariationIndex GP_GetCurrentVariationIndex;
