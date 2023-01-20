@@ -5,7 +5,7 @@
 - A new API for mapping a widget to a plugin parameter:
   - `GP_MapWidgetToPluginParameter` (C) and `GigPerformerFunctions::mapWidgetToPluginParameter` (C++)
 
-- New APIs for getting rackspace and song universally unique indentifiers (UUID):
+- New APIs for getting the rackspace and song universally unique identifier (UUID):
   - `GP_GetRackspaceUuid` (C) and `GigPerformerFunctions::getRackspaceUuid` (C++)
   - `GP_GetSongUuid` (C) and `GigPerformerFunctions::getSongUuid` (C++)
 
