@@ -28,10 +28,10 @@ extern "C"
     typedef int (*TGP_GetPluginParameterCount)(LibraryHandle h, const char *pluginHandle, bool useGlobalRackspace);
     typedef int (*TGP_GetPluginParameterName)(LibraryHandle h, const char *pluginHandle, int parameterIndex,
                                               char *returnBuffer, int bufferLength, bool useGlobalRackspace);
-    typedef int (*TGP_GetPluginParameterText)(LibraryHandle h, const char* pluginHandle, int parameterIndex,
-                                              char* returnBuffer, int bufferLength, bool useGlobalRackspace);
-    typedef void (*TGP_MapWidgetToPluginParameter)(LibraryHandle h, const char* widgetName, const char* pluginHandle, 
-                                                    int parameterNumber, bool useGlobalRackspace);
+    typedef int (*TGP_GetPluginParameterText)(LibraryHandle h, const char *pluginHandle, int parameterIndex,
+                                              char *returnBuffer, int bufferLength, bool useGlobalRackspace);
+    typedef void (*TGP_MapWidgetToPluginParameter)(LibraryHandle h, const char *widgetName, const char *pluginHandle,
+                                                   int parameterNumber, bool useGlobalRackspace);
 
     typedef int (*TGP_GetWidgetList)(LibraryHandle h, char *returnBuffer, int bufferLength, bool useGlobalRackspace);
     typedef bool (*TGP_WidgetExists)(LibraryHandle h, const char *widgetName);
@@ -76,7 +76,7 @@ extern "C"
     typedef int (*TGP_GetSongCount)(LibraryHandle h);
     typedef int (*TGP_GetSongName)(LibraryHandle h, int atSongIndex, char *returnBuffer, int bufferLength);
     typedef int (*TGP_GetCurrentSongIndex)(LibraryHandle h);
-    typedef int (*TGP_GetSongUuid)(LibraryHandle h, int atIndex, char* returnBuffer, int bufferLength);
+    typedef int (*TGP_GetSongUuid)(LibraryHandle h, int atIndex, char *returnBuffer, int bufferLength);
     typedef int (*TGP_GetVariationNameForSongPart)(LibraryHandle h, int atSongIndex, int atPartIndex,
                                                    char *returnBuffer, int bufferLength);
 
@@ -101,7 +101,7 @@ extern "C"
     typedef int (*TGP_GetRackspaceCount)(LibraryHandle h);
     typedef int (*TGP_GetRackspaceName)(LibraryHandle h, int atIndex, char *returnBuffer, int bufferLength);
     typedef int (*TGP_GetCurrentRackspaceIndex)(LibraryHandle h);
-    typedef int (*TGP_GetRackspaceUuid)(LibraryHandle h, int atIndex, char* returnBuffer, int bufferLength);
+    typedef int (*TGP_GetRackspaceUuid)(LibraryHandle h, int atIndex, char *returnBuffer, int bufferLength);
     typedef int (*TGP_GetCurrentVariationIndex)(LibraryHandle h);
     typedef int (*TGP_GetVariationCount)(LibraryHandle h, int atRackspaceIndex);
     typedef int (*TGP_GetVariationName)(LibraryHandle h, int atRackspaceIndex, int atIndex, char *returnBuffer,
@@ -188,7 +188,7 @@ extern "C"
 
     /// \brief   Enable or disable the metronome.
     extern TGP_EnableMetronome GP_EnableMetronome;
-   
+
     /// \brief   Indicates whether the metronome is enabled.
     extern TGP_MetronomeEnabled GP_MetronomeEnabled;
 
@@ -232,15 +232,16 @@ extern "C"
     ///          in the currently active rackspace or in the global rackspace.
     extern TGP_GetPluginParameterName GP_GetPluginParameterName;
 
-    /// \brief   Returns the current text value of the parameter at the specified parameter number of the plugin with the given handle
-    ///          in the currently active rackspace or in the global rackspace.  
+    /// \brief   Returns the current text value of the parameter at the specified parameter number of the plugin with
+    /// the given handle
+    ///          in the currently active rackspace or in the global rackspace.
     extern TGP_GetPluginParameterText GP_GetPluginParameterText;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with Widgets
 
-     /// \brief   Map the named widget to the specified parameter number of the plugin with the given handle
-     ///          in the currently active rackspace or in the global rackspace. 
+    /// \brief   Map the named widget to the specified parameter number of the plugin with the given handle
+    ///          in the currently active rackspace or in the global rackspace.
     extern TGP_MapWidgetToPluginParameter GP_MapWidgetToPluginParameter;
 
     /// \brief   Get a list of all widgets defined (i.e, with handles) in the currently active or the global rackspace.

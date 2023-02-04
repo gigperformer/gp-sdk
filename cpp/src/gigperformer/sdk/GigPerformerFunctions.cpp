@@ -97,13 +97,14 @@ std::string GigPerformerFunctions::getPluginParameterName(const std::string &plu
     return result;
 }
 
-std::string GigPerformerFunctions::getPluginParameterText(const std::string & pluginHandle, int parameterIndex,
+std::string GigPerformerFunctions::getPluginParameterText(const std::string &pluginHandle, int parameterIndex,
                                                           bool useGlobalRackspace)
 {
     const int bufferLength = 1024;
     char returnBuffer[bufferLength] = {0};
 
-    /* int actualLength = */ GP_GetPluginParameterText(fHandle, pluginHandle.c_str(), parameterIndex, returnBuffer, bufferLength, useGlobalRackspace);
+    /* int actualLength = */ GP_GetPluginParameterText(fHandle, pluginHandle.c_str(), parameterIndex, returnBuffer,
+                                                       bufferLength, useGlobalRackspace);
     std::string result(returnBuffer);
     return result;
 }
@@ -143,9 +144,11 @@ void GigPerformerFunctions::getWidgetList(std::vector<std::string> &list, bool u
     }
 }
 
-void GigPerformerFunctions::mapWidgetToPluginParameter(const std::string &widgetName, const std::string  &pluginHandle, int parameterNumber, bool useGlobalRackspace)
+void GigPerformerFunctions::mapWidgetToPluginParameter(const std::string &widgetName, const std::string &pluginHandle,
+                                                       int parameterNumber, bool useGlobalRackspace)
 {
-    GP_MapWidgetToPluginParameter(fHandle, widgetName.c_str(), pluginHandle.c_str(), parameterNumber, useGlobalRackspace);
+    GP_MapWidgetToPluginParameter(fHandle, widgetName.c_str(), pluginHandle.c_str(), parameterNumber,
+                                  useGlobalRackspace);
 }
 
 void GigPerformerFunctions::showTuner(bool show)
@@ -358,7 +361,7 @@ std::string GigPerformerFunctions::getSongUuid(int atIndex)
 {
     const int bufferLength = 1024;
     char returnBuffer[bufferLength] = {0};
-    /* int actualLength = */ GP_GetSongUuid(fHandle, atIndex,  returnBuffer,  bufferLength);
+    /* int actualLength = */ GP_GetSongUuid(fHandle, atIndex, returnBuffer, bufferLength);
     std::string result(returnBuffer);
     return result;
 }
@@ -485,7 +488,7 @@ std::string GigPerformerFunctions::getRackspaceUuid(int atIndex)
 {
     const int bufferLength = 1024;
     char returnBuffer[bufferLength] = {0};
-    /* int actualLength = */ GP_GetRackspaceUuid(fHandle, atIndex,  returnBuffer,  bufferLength);
+    /* int actualLength = */ GP_GetRackspaceUuid(fHandle, atIndex, returnBuffer, bufferLength);
     std::string result(returnBuffer);
     return result;
 }

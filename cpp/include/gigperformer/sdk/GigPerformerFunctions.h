@@ -42,7 +42,7 @@ class GigPerformerFunctions
 
     /// \brief   Enable or disable the metronome.
     void enableMetronome(bool enable);
-   
+
     /// \brief   Indicates whether the metronome is enabled.
     bool metronomeEnabled();
 
@@ -94,7 +94,8 @@ class GigPerformerFunctions
     bool listeningForWidget(const std::string &widgetName);
 
     /// \brief   Map the named widget to the specified parameter number of the plugin with the given handle.
-    void mapWidgetToPluginParameter(const std::string & widgetName, const std::string  & pluginHandle, int parameterNumber, bool useGlobalRackspace);
+    void mapWidgetToPluginParameter(const std::string &widgetName, const std::string &pluginHandle, int parameterNumber,
+                                    bool useGlobalRackspace);
 
     /// \brief   Set the fill color of widgets that support it.
     void setWidgetFillColor(const std::string &widgetName, int color);
@@ -286,9 +287,10 @@ class GigPerformerFunctions
     ///          in the currently active rackspace or in the global rackspace.
     std::string getPluginParameterName(const std::string &pluginHandle, int parameterIndex, bool useGlobalRackspace);
 
-    /// \brief   Returns the current text value of the parameter at the specified parameter number of the plugin with the given handle
-    ///          in the currently active rackspace or in the global rackspace.  
-    std::string getPluginParameterText(const std::string & pluginHandle, int parameterIndex, bool useGlobalRackspace);
+    /// \brief   Returns the current text value of the parameter at the specified parameter number of the plugin with
+    /// the given handle
+    ///          in the currently active rackspace or in the global rackspace.
+    std::string getPluginParameterText(const std::string &pluginHandle, int parameterIndex, bool useGlobalRackspace);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with gig files
