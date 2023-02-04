@@ -98,6 +98,8 @@ extern "C"
     typedef void (*TGP_ConsoleLog)(LibraryHandle h, const char *message);
     typedef void (*TGP_ScriptLog)(LibraryHandle h, const char *message, bool openLogWindow);
 
+    typedef int (*TGP_GetInstanceName)(LibraryHandle h, char *returnBuffer, int bufferLength);
+
     typedef int (*TGP_GetRackspaceCount)(LibraryHandle h);
     typedef int (*TGP_GetRackspaceName)(LibraryHandle h, int atIndex, char *returnBuffer, int bufferLength);
     typedef int (*TGP_GetCurrentRackspaceIndex)(LibraryHandle h);
@@ -484,6 +486,9 @@ extern "C"
 
     /// \brief   Send the message to the console output (works only when Xcode is open).
     extern TGP_ConsoleLog GP_ConsoleLog;
+
+    /// \brief   Display the message in the Script Logger window, possibly opening the window if it is not already open.
+    extern TGP_ScriptLog GP_ScriptLog;
 
     /// \brief   Display the message in the Script Logger window, possibly opening the window if it is not already open.
     extern TGP_ScriptLog GP_ScriptLog;
