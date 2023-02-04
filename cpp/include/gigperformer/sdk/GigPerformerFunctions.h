@@ -40,6 +40,12 @@ class GigPerformerFunctions
     /// \brief   Indicates whether the tuner is visible.
     bool tunerShowing();
 
+    /// \brief   Enable or disable the metronome.
+    void enableMetronome(bool enable);
+
+    /// \brief   Indicates whether the metronome is enabled.
+    bool metronomeEnabled();
+
     /// \brief   Switch Gig Performer to Setlist View.
     void switchToSetlistView();
 
@@ -51,6 +57,9 @@ class GigPerformerFunctions
 
     /// \brief   Query GP to see if it is in setlist mode.
     bool inSetlistMode();
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// \name    Widgets
 
     /// \brief   Get a list of all widgets defined (i.e, with handles) in the currently active or the global rackspace.
     void getWidgetList(std::vector<std::string> &list, bool useGlobalRackspace);
@@ -83,6 +92,10 @@ class GigPerformerFunctions
 
     /// \brief   Query GP to see if you are listening for widget changes.
     bool listeningForWidget(const std::string &widgetName);
+
+    /// \brief   Map the named widget to the specified parameter number of the plugin with the given handle.
+    void mapWidgetToPluginParameter(const std::string &widgetName, const std::string &pluginHandle, int parameterNumber,
+                                    bool useGlobalRackspace);
 
     /// \brief   Set the fill color of widgets that support it.
     void setWidgetFillColor(const std::string &widgetName, int color);
@@ -176,6 +189,9 @@ class GigPerformerFunctions
     /// \brief   Query GP for the index of the currently selected song.
     int getCurrentSongIndex();
 
+    /// \brief   Get the uuid for the song at the given index.
+    std::string getSongUuid(int atIndex);
+
     /// \brief   Query GP for the name of the variation associated with the song and song part with the given
     ///          (zero-based) indices.
     std::string getVariationNameForSongPart(int atSongIndex, int atPartIndex);
@@ -216,6 +232,9 @@ class GigPerformerFunctions
 
     /// \brief   Get the rackspace currently in use.
     int getCurrentRackspaceIndex();
+
+    /// \brief   Get the uuid for the rackspace at the given index.
+    std::string getRackspaceUuid(int atIndex);
 
     /// \brief   Get the rackspace currently in use.
     int getCurrentVariationIndex();
@@ -267,6 +286,11 @@ class GigPerformerFunctions
     /// \brief   Returns the name of the parameter at the specified parameter number of the plugin with the given handle
     ///          in the currently active rackspace or in the global rackspace.
     std::string getPluginParameterName(const std::string &pluginHandle, int parameterIndex, bool useGlobalRackspace);
+
+    /// \brief   Returns the current text value of the parameter at the specified parameter number of the plugin with
+    /// the given handle
+    ///          in the currently active rackspace or in the global rackspace.
+    std::string getPluginParameterText(const std::string &pluginHandle, int parameterIndex, bool useGlobalRackspace);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with gig files

@@ -36,7 +36,9 @@ extern "C"
     DeclareFunc(GP_GetPluginParameter);
     DeclareFunc(GP_GetPluginParameterCount);
     DeclareFunc(GP_GetPluginParameterName);
+    DeclareFunc(GP_GetPluginParameterText);
 
+    DeclareFunc(GP_MapWidgetToPluginParameter);
     DeclareFunc(GP_GetWidgetList);
     DeclareFunc(GP_WidgetExists);
     DeclareFunc(GP_GetWidgetValue);
@@ -76,6 +78,7 @@ extern "C"
     DeclareFunc(GP_GetSongName);
     DeclareFunc(GP_GetChordProFilenameForSong);
     DeclareFunc(GP_GetCurrentSongIndex);
+    DeclareFunc(GP_GetSongUuid);
     DeclareFunc(GP_GetVariationNameForSongPart);
     DeclareFunc(GP_GetSongpartCount);
     DeclareFunc(GP_GetSongpartName);
@@ -93,6 +96,7 @@ extern "C"
     DeclareFunc(GP_GetRackspaceCount);
     DeclareFunc(GP_GetRackspaceName);
     DeclareFunc(GP_GetCurrentRackspaceIndex);
+    DeclareFunc(GP_GetRackspaceUuid);
     DeclareFunc(GP_GetCurrentVariationIndex);
     DeclareFunc(GP_GetVariationCount);
     DeclareFunc(GP_GetVariationName);
@@ -105,6 +109,9 @@ extern "C"
 
     DeclareFunc(GP_ShowTuner);
     DeclareFunc(GP_TunerShowing);
+
+    DeclareFunc(GP_EnableMetronome);
+    DeclareFunc(GP_MetronomeEnabled);
 
     DeclareFunc(GP_SaveGigUnconditionally);
     DeclareFunc(GP_LoadGigByIndex);
@@ -170,13 +177,18 @@ extern "C"
         R(GP_ShowTuner);
         R(GP_TunerShowing);
 
+        R(GP_EnableMetronome);
+        R(GP_MetronomeEnabled);
+
         R(GP_GetPluginList);
         R(GP_PluginExists);
         R(GP_SetPluginParameter);
         R(GP_GetPluginParameter);
         R(GP_GetPluginParameterCount);
         R(GP_GetPluginParameterName);
+        R(GP_GetPluginParameterText);
 
+        R(GP_MapWidgetToPluginParameter);
         R(GP_GetWidgetList);
         R(GP_WidgetExists);
         R(GP_GetWidgetValue);
@@ -220,6 +232,7 @@ extern "C"
         R(GP_GetSongpartCount);
         R(GP_GetSongpartName);
         R(GP_GetCurrentSongpartIndex);
+        R(GP_GetSongUuid);
         R(GP_InSetlistMode);
         R(GP_SwitchToSong);
         R(GP_SwitchToSongPart);
@@ -231,6 +244,7 @@ extern "C"
         R(GP_GetRackspaceCount);
         R(GP_GetRackspaceName);
         R(GP_GetCurrentRackspaceIndex);
+        R(GP_GetRackspaceUuid);
         R(GP_GetCurrentVariationIndex);
         R(GP_GetVariationCount);
         R(GP_GetVariationName);
