@@ -4,5 +4,6 @@
 # IDEs
 .idea/
 .vscode/
+.vs/
 
 build/
