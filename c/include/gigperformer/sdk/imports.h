@@ -490,8 +490,8 @@ extern "C"
     /// \brief   Display the message in the Script Logger window, possibly opening the window if it is not already open.
     extern TGP_ScriptLog GP_ScriptLog;
 
-    /// \brief   Returns the GP instance name
-    extern TGP_GetInstanceName GP_GetInstanceName;
+    /// \brief   Display the message in the Script Logger window, possibly opening the window if it is not already open.
+    extern TGP_ScriptLog GP_ScriptLog;
 
     /// \brief   Returns the folder path where your library is installed.
     /// \details It is useful when you need to access other resource files installed in the same or a relative location
