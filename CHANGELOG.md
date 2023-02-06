@@ -2,7 +2,7 @@
 
 # 46
 
-- A new API for getting the instance name from a GP instance:
+- A new API for getting the instance name from a GigPerformer instance:
   - `GP_GetInstanceName` (C) and
   - `GigPerformerFunctions::getInstanceName` (C++)
 
