@@ -331,6 +331,9 @@ class GigPerformerFunctions
     void scriptLog(const char *message, bool openLogWindow);
     void scriptLog(const std::string &message, bool openLogWindow);
 
+    /// \brief   Returns the GP instance name
+    std::string getInstanceName();
+
     /// \brief   Returns the folder path where your library is installed.
     /// \details This is useful when you need to access other resource files installed in the same or a relative
     ///          location to the library.

@@ -93,6 +93,8 @@ extern "C"
     DeclareFunc(GP_ConsoleLog);
     DeclareFunc(GP_ScriptLog);
 
+    DeclareFunc(GP_GetInstanceName);
+
     DeclareFunc(GP_GetRackspaceCount);
     DeclareFunc(GP_GetRackspaceName);
     DeclareFunc(GP_GetCurrentRackspaceIndex);
@@ -241,6 +243,9 @@ extern "C"
         R(GP_GetCurrentSetlistIndex);
         R(GP_SwitchToSetlist);
         R(GP_ScriptLog);
+
+        R(GP_GetInstanceName);
+
         R(GP_GetRackspaceCount);
         R(GP_GetRackspaceName);
         R(GP_GetCurrentRackspaceIndex);

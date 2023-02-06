@@ -465,6 +465,15 @@ void GigPerformerFunctions::scriptLog(const std::string &message, bool openLogWi
     GP_ScriptLog(fHandle, message.c_str(), openLogWindow);
 }
 
+std::string GigPerformerFunctions::getInstanceName()
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+    /* int actualLength = */ GP_GetInstanceName(fHandle, returnBuffer, bufferLength);
+    std::string result(returnBuffer);
+    return result;
+}
+
 int GigPerformerFunctions::getRackspaceCount()
 {
     return GP_GetRackspaceCount(fHandle);

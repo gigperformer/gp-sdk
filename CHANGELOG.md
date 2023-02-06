@@ -2,6 +2,10 @@
 
 # 46
 
+- A new API for getting the instance name from a GP instance:
+  - `GP_GetInstanceName` (C) and
+  - `GigPerformerFunctions::getInstanceName` (C++)
+
 - A new API for mapping a widget to a plugin parameter:
   - `GP_MapWidgetToPluginParameter` (C) and `GigPerformerFunctions::mapWidgetToPluginParameter` (C++)
 
