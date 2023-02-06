@@ -28,6 +28,9 @@
   - `GP_GetCurrentSetlistIndex()` (C) and `GigPerformerFunctions::getCurrentSetlistIndex()` (C++)
   - `GP_SwitchToSetlist()` (C) and `GigPerformerFunctions::switchToSetlist(int setlistIndex)` (C++)
 
+- Changed .gitignore:
+  - Added .vs/ to rpevent Visual Studio IDEs from littering the project
+
 # 44
 
 - Initial publicly released version.
