@@ -124,6 +124,16 @@ bool GigPerformerFunctions::setWidgetCaption(const std::string &widgetName, cons
     return GP_SetWidgetCaption(fHandle, widgetName.c_str(), newCaption.c_str());
 }
 
+void GigPerformerFunctions::setWidgetBounds(const std::string &widgetName, int left, int top, int width, int height)
+{
+    GP_SetWidgetBounds(fHandle, left, top, width, height);
+}
+
+void GigPerformerFunctions::getWidgetBounds( const std::string & widgetName, int & left, int & top, int & width, int & height)
+{
+    GP_GetWidgetBounds(fHandle, &left, &top, &width, &height);
+}
+
 void GigPerformerFunctions::getWidgetList(std::vector<std::string> &list, bool useGlobalRackspace)
 {
     list.clear();
@@ -248,6 +258,16 @@ int GigPerformerFunctions::getWidgetOutlineRoundness(const std::string &widgetNa
     return GP_GetWidgetOutlineRoundness(fHandle, widgetName.c_str());
 }
 
+void GigPerformerFunctions::setWidgetHideOnPresentation(const std::string &widgetName, bool hide)
+{
+    GP_SetWidgetHideOnPresentation(fHandle, widgetName.c_str(), hide);
+}
+
+bool GigPerformerFunctions::getWidgetHideState(const std::string &widgetName)
+{
+    return GP_GetWidgetHideState(fHandle, widgetName.c_str());
+}
+
 int GigPerformerFunctions::RGBAToColor(double red, double green, double blue, double alpha)
 {
     int result = GP_RGBAToColor(fHandle, red, green, blue, alpha);
@@ -348,6 +368,15 @@ std::string GigPerformerFunctions::getSongName(int atIndex)
     const int bufferLength = 1024;
     char returnBuffer[bufferLength] = {0};
     /* int actualLength = */ GP_GetSongName(fHandle, atIndex, returnBuffer, bufferLength);
+    std::string result(returnBuffer);
+    return result;
+}
+
+std::string GigPerformerFunctions::getArtistName(int atIndex)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+    /* int actualLength = */ GP_GetArtistName(fHandle, atIndex, returnBuffer, bufferLength);
     std::string result(returnBuffer);
     return result;
 }
@@ -582,6 +611,11 @@ bool GigPerformerFunctions::getPlayheadState()
 void GigPerformerFunctions::tap()
 {
     GP_Tap(fHandle);
+}
+
+void GigPerformerFunctions::panic()
+{
+    GP_Panic(fHandle);
 }
 
 void GigPerformerFunctions::setBPM(double bpm)

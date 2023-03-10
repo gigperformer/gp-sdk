@@ -190,7 +190,7 @@ extern "C" EXPORTED void OnTunerModeChanged(bool visible)
     subclass->OnTunerModeChanged(visible);
 }
 
-extern "C" EXPORTED void OnGlobalPlayStateChanged(bool playing)
+extern "C" EXPORTED void OnGlobalPlayStateChanged(double playing)
 {
     subclass->OnGlobalPlayStateChanged(playing);
 }

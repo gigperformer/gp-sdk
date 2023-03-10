@@ -38,6 +38,8 @@ extern "C"
     DeclareFunc(GP_GetPluginParameterName);
     DeclareFunc(GP_GetPluginParameterText);
 
+    DeclareFunc(GP_SetWidgetHideOnPresentation);
+    DeclareFunc(GP_GetWidgetHideState);
     DeclareFunc(GP_MapWidgetToPluginParameter);
     DeclareFunc(GP_GetWidgetList);
     DeclareFunc(GP_WidgetExists);
@@ -52,17 +54,21 @@ extern "C"
     DeclareFunc(GP_SetWidgetOutlineColor);
     DeclareFunc(GP_SetWidgetOutlineThickness);
     DeclareFunc(GP_SetWidgetOutlineRoundness);
-
     DeclareFunc(GP_GetWidgetFillColor);
     DeclareFunc(GP_GetWidgetOutlineColor);
     DeclareFunc(GP_GetWidgetOutlineThickness);
     DeclareFunc(GP_GetWidgetOutlineRoundness);
+    DeclareFunc(GP_SetWidgetBounds);
+    DeclareFunc(GP_GetWidgetBounds);
 
     DeclareFunc(GP_RGBAToColor);
     DeclareFunc(GP_ColorToRGBA);
 
     DeclareFunc(GP_SetBPM);
     DeclareFunc(GP_GetBPM);
+    DeclareFunc(GP_GetCurrentTimeSignature);
+
+    DeclareFunc(GP_Panic);
 
     DeclareFunc(GP_ListenForMidi);
     DeclareFunc(GP_ListeningForMidi);
@@ -76,6 +82,7 @@ extern "C"
     DeclareFunc(GP_InjectMidiMessageToMidiInputAlias);
     DeclareFunc(GP_GetSongCount);
     DeclareFunc(GP_GetSongName);
+    DeclareFunc(GP_GetArtistName);
     DeclareFunc(GP_GetChordProFilenameForSong);
     DeclareFunc(GP_GetCurrentSongIndex);
     DeclareFunc(GP_GetSongUuid);
@@ -198,6 +205,9 @@ extern "C"
         R(GP_SetWidgetValue);
         R(GP_SetWidgetCaption);
         R(GP_GetWidgetCaption);
+        R(GP_SetWidgetHideOnPresentation);
+        R(GP_GetWidgetHideState);
+
         R(GP_ListenForWidget);
         R(GP_ListeningForWidget);
 
@@ -209,12 +219,17 @@ extern "C"
         R(GP_GetWidgetOutlineColor);
         R(GP_GetWidgetOutlineThickness);
         R(GP_GetWidgetOutlineRoundness);
+        R(GP_GetWidgetBounds);
+        R(GP_SetWidgetBounds);
 
         R(GP_RGBAToColor);
         R(GP_ColorToRGBA);
 
         R(GP_SetBPM);
         R(GP_GetBPM);
+        R(GP_GetCurrentTimeSignature);
+
+        R(GP_Panic);
 
         R(GP_ListenForMidi);
         R(GP_ListeningForMidi);
@@ -228,6 +243,7 @@ extern "C"
         R(GP_InjectMidiMessageToMidiInputAlias);
         R(GP_GetSongCount);
         R(GP_GetSongName);
+        R(GP_GetArtistName);
         R(GP_GetChordProFilenameForSong);
         R(GP_GetCurrentSongIndex);
         R(GP_GetVariationNameForSongPart);
