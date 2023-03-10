@@ -126,12 +126,12 @@ bool GigPerformerFunctions::setWidgetCaption(const std::string &widgetName, cons
 
 void GigPerformerFunctions::setWidgetBounds(const std::string &widgetName, int left, int top, int width, int height)
 {
-    GP_SetWidgetBounds(fHandle, left, top, width, height);
+    GP_SetWidgetBounds(fHandle, widgetName.c_str(), left, top, width, height);
 }
 
-void GigPerformerFunctions::getWidgetBounds( const std::string & widgetName, int & left, int & top, int & width, int & height)
+void GigPerformerFunctions::getWidgetBounds(const std::string &widgetName, int &left, int &top, int &width, int &height)
 {
-    GP_GetWidgetBounds(fHandle, &left, &top, &width, &height);
+    GP_GetWidgetBounds(fHandle, widgetName.c_str(), &left, &top, &width, &height);
 }
 
 void GigPerformerFunctions::getWidgetList(std::vector<std::string> &list, bool useGlobalRackspace)
