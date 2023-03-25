@@ -129,7 +129,7 @@ class GigPerformerFunctions
 
     /// \brief   Set whether a widget is hidden when not in Edit mode.
     void setWidgetHideOnPresentation(const std::string &widgetName, bool hide);
-    
+
     /// \brief   Get the current status of whether the named widget is hidden when not in Edit mode.
     bool getWidgetHideState(const std::string &widgetName);
 
@@ -270,7 +270,7 @@ class GigPerformerFunctions
 
     /// \brief   Switch to the variation.
     /// \return  true if successful, false else
-    bool switchToVariation(int variationIndex = 0) {return switchToRackspace(-1, variationIndex);}
+    bool switchToVariation(int variationIndex = 0);
 
     /// \brief   Move to previous variation or rackspace.
     void previous();

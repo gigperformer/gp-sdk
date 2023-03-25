@@ -2,9 +2,25 @@
 
 # 46
 
-- A new API for getting the instance name from a GigPerformer instance:
-  - `GP_GetInstanceName` (C) and
-  - `GigPerformerFunctions::getInstanceName` (C++)
+- A new API for getting the artist name for a song:
+  - `GP_GetArtistName` (C) and `GigPerformerFunctions::getArtistName` (C++)
+
+- A new API for getting the global time signature:
+  - `GP_GetCurrentTimeSignature` (C) and `GigPerformerFunctions::getCurrentTimeSignature` (C++)
+
+- A new API to trigger Gig Performer's Panic mode (e.g. to send MIDI note off messages or reset the audio engine):
+  - `GP_Panic` (C) and `GigPerformerFunctions::panic` (C++)
+
+- New APIs for getting and setting the widget bounds:
+  - `GP_GetWidgetBounds` (C) and `GigPerformerFunctions::getWidgetBounds` (C++)
+  - `GP_SetWidgetBounds` (C) and `GigPerformerFunctions::setWidgetBounds` (C++)
+
+- New APIs for getting and setting the hide state of a widget:
+  - `GP_GetWidgetHideState` (C) and `GigPerformerFunctions::getWidgetHideState` (C++)
+  - `GP_SetWidgetHideOnPresentation` (C) and `GigPerformerFunctions::setWidgetHideOnPresentation` (C++)
+
+- A new API for getting the instance name from a Gig Performer instance:
+  - `GP_GetInstanceName` (C) and `GigPerformerFunctions::getInstanceName` (C++)
 
 - A new API for mapping a widget to a plugin parameter:
   - `GP_MapWidgetToPluginParameter` (C) and `GigPerformerFunctions::mapWidgetToPluginParameter` (C++)

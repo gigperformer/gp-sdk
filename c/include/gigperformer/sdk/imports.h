@@ -53,8 +53,10 @@ extern "C"
     typedef int (*TGP_GetWidgetOutlineColor)(LibraryHandle h, const char *widgetName);
     typedef int (*TGP_GetWidgetOutlineThickness)(LibraryHandle h, const char *widgetName);
     typedef int (*TGP_GetWidgetOutlineRoundness)(LibraryHandle h, const char *widgetName);
-    typedef void (*TGP_SetWidgetBounds)(LibraryHandle h, const char *widgetName, int left, int top, int width, int height);
-    typedef void (*TGP_GetWidgetBounds)(LibraryHandle h, const char *widgetName, int *left, int *top, int *width, int *height);
+    typedef void (*TGP_SetWidgetBounds)(LibraryHandle h, const char *widgetName, int left, int top, int width,
+                                         int height);
+    typedef void (*TGP_GetWidgetBounds)(LibraryHandle h, const char *widgetName, int *left, int *top, int *width,
+                                         int *height);
 
     typedef int (*TGP_RGBAToColor)(LibraryHandle h, double red, double green, double blue, double alpha);
     typedef void (*TGP_ColorToRGBA)(LibraryHandle h, int color, double *red, double *green, double *blue,
@@ -62,7 +64,7 @@ extern "C"
 
     typedef void (*TGP_SetBPM)(LibraryHandle h, double bpm);
     typedef double (*TGP_GetBPM)(LibraryHandle h);
-    typedef void(*TGP_GetCurrentTimeSignature)(LibraryHandle h, int *numerator, int *denominator);
+    typedef void (*TGP_GetCurrentTimeSignature)(LibraryHandle h, int *numerator, int *denominator);
 
     typedef void (*TGP_Panic)(LibraryHandle h);
 
@@ -82,7 +84,7 @@ extern "C"
 
     typedef int (*TGP_GetSongCount)(LibraryHandle h);
     typedef int (*TGP_GetSongName)(LibraryHandle h, int atSongIndex, char *returnBuffer, int bufferLength);
-    typedef int (*TGP_GetArtistName)(LibraryHandle h, int atSongIndex, char *returnBuffer, int bufferLength); 
+    typedef int (*TGP_GetArtistName)(LibraryHandle h, int atSongIndex, char *returnBuffer, int bufferLength);
 
     typedef int (*TGP_GetCurrentSongIndex)(LibraryHandle h);
     typedef int (*TGP_GetSongUuid)(LibraryHandle h, int atIndex, char *returnBuffer, int bufferLength);
@@ -508,7 +510,7 @@ extern "C"
     /// \brief   Get the global tempo in Gig Performer.
     extern TGP_GetBPM GP_GetBPM;
 
-     /// \brief   Get the current time signature in Gig Performer.
+    /// \brief   Get the current time signature in Gig Performer.
     extern TGP_GetCurrentTimeSignature GP_GetCurrentTimeSignature;
 
     /// \brief   Stop all notes in the current rackspace.

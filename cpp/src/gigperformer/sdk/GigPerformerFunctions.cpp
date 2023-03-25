@@ -566,6 +566,11 @@ bool GigPerformerFunctions::switchToRackspaceName(const std::string &rackspace, 
     return success;
 }
 
+bool GigPerformerFunctions::switchToVariation(int variationIndex = 0)
+{
+    return switchToRackspace(-1, variationIndex);
+}
+
 bool GigPerformerFunctions::saveGigUnconditionally(bool withTimestamp)
 {
     bool success = GP_SaveGigUnconditionally(fHandle, withTimestamp);
@@ -627,6 +632,11 @@ double GigPerformerFunctions::getBPM()
 {
     double result = GP_GetBPM(fHandle);
     return result;
+}
+
+void GigPerformerFunctions::getCurrentTimeSignature(int &numerator, int &denominator)
+{
+    GP_GetCurrentTimeSignature(fHandle, &numerator, &denominator);
 }
 
 void GigPerformerFunctions::previous()
