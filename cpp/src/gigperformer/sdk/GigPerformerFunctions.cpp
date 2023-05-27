@@ -566,7 +566,7 @@ bool GigPerformerFunctions::switchToRackspaceName(const std::string &rackspace, 
     return success;
 }
 
-bool GigPerformerFunctions::switchToVariation(int variationIndex = 0)
+bool GigPerformerFunctions::switchToVariation(int variationIndex)
 {
     return switchToRackspace(-1, variationIndex);
 }
