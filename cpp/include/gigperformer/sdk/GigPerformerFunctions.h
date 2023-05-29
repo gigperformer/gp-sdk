@@ -121,6 +121,18 @@ class GigPerformerFunctions
     /// \brief   Get the outline roundness of widgets that support it.
     int getWidgetOutlineRoundness(const std::string &widgetName);
 
+    /// \brief   Get the position and size of the named widget.
+    void getWidgetBounds(const std::string &widgetName, int &left, int &top, int &width, int &height);
+
+    /// \brief   Set the position and size of the named widget.
+    void setWidgetBounds(const std::string &widgetName, int left, int top, int width, int height);
+
+    /// \brief   Set whether a widget is hidden when not in Edit mode.
+    void setWidgetHideOnPresentation(const std::string &widgetName, bool hide);
+
+    /// \brief   Get the current status of whether the named widget is hidden when not in Edit mode.
+    bool getWidgetHideState(const std::string &widgetName);
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Working with colors
 
@@ -181,6 +193,9 @@ class GigPerformerFunctions
 
     /// \brief   Query GP for the name of a song at the given index (zero-based).
     std::string getSongName(int atIndex);
+
+    /// \brief   Query GP for the name of a song artist at the given index (zero-based).
+    std::string getArtistName(int atIndex);
 
     /// \brief   Get the full path to a ChordPro file associated with the song at the given index of the currently
     ///          active setlist.
@@ -253,6 +268,10 @@ class GigPerformerFunctions
     /// \return  true if successful, false else
     bool switchToRackspaceName(const std::string &rackspace, const std::string &variation = "");
 
+    /// \brief   Switch to the variation.
+    /// \return  true if successful, false else
+    bool switchToVariation(int variationIndex = 0);
+
     /// \brief   Move to previous variation or rackspace.
     void previous();
 
@@ -317,11 +336,17 @@ class GigPerformerFunctions
     /// \brief   Same as clicking the global "Tap Tempo" button.
     void tap();
 
+    /// \brief   Stop all notes in the current rackspace.
+    void panic();
+
     /// \brief   Set the global tempo in Gig Performer.
     void setBPM(double bpm);
 
     /// \brief   Get the global tempo in Gig Performer.
     double getBPM();
+
+    /// \brief   Get the current time signature in Gig Performer.
+    void getCurrentTimeSignature(int &numerator, int &denominator);
 
     /// \brief   Send the message to the console output (works only when Xcode is open).
     void consoleLog(const char *message);

@@ -41,6 +41,8 @@ extern "C"
     typedef bool (*TGP_SetWidgetValue)(LibraryHandle h, const char *widgetName, double newValue);
     typedef bool (*TGP_SetWidgetCaption)(LibraryHandle h, const char *widgetName, const char *newCaption);
     typedef int (*TGP_GetWidgetCaption)(LibraryHandle h, const char *widgetName, char *returnBuffer, int bufferLength);
+    typedef void (*TGP_SetWidgetHideOnPresentation)(LibraryHandle h, const char *widgetName, bool hide);
+    typedef bool (*TGP_GetWidgetHideState)(LibraryHandle h, const char *widgetName);
     typedef bool (*TGP_ListenForWidget)(LibraryHandle h, const char *widgetName, bool listen);
     typedef bool (*TGP_ListeningForWidget)(LibraryHandle h, const char *widgetName);
     typedef void (*TGP_SetWidgetFillColor)(LibraryHandle h, const char *widgetName, int color);
@@ -51,6 +53,10 @@ extern "C"
     typedef int (*TGP_GetWidgetOutlineColor)(LibraryHandle h, const char *widgetName);
     typedef int (*TGP_GetWidgetOutlineThickness)(LibraryHandle h, const char *widgetName);
     typedef int (*TGP_GetWidgetOutlineRoundness)(LibraryHandle h, const char *widgetName);
+    typedef void (*TGP_SetWidgetBounds)(LibraryHandle h, const char *widgetName, int left, int top, int width,
+                                        int height);
+    typedef void (*TGP_GetWidgetBounds)(LibraryHandle h, const char *widgetName, int *left, int *top, int *width,
+                                        int *height);
 
     typedef int (*TGP_RGBAToColor)(LibraryHandle h, double red, double green, double blue, double alpha);
     typedef void (*TGP_ColorToRGBA)(LibraryHandle h, int color, double *red, double *green, double *blue,
@@ -58,6 +64,9 @@ extern "C"
 
     typedef void (*TGP_SetBPM)(LibraryHandle h, double bpm);
     typedef double (*TGP_GetBPM)(LibraryHandle h);
+    typedef void (*TGP_GetCurrentTimeSignature)(LibraryHandle h, int *numerator, int *denominator);
+
+    typedef void (*TGP_Panic)(LibraryHandle h);
 
     typedef bool (*TGP_ListenForMidi)(LibraryHandle h, const char *deviceName, bool listen);
     typedef bool (*TGP_ListeningForMidi)(LibraryHandle h, const char *deviceName);
@@ -75,6 +84,8 @@ extern "C"
 
     typedef int (*TGP_GetSongCount)(LibraryHandle h);
     typedef int (*TGP_GetSongName)(LibraryHandle h, int atSongIndex, char *returnBuffer, int bufferLength);
+    typedef int (*TGP_GetArtistName)(LibraryHandle h, int atSongIndex, char *returnBuffer, int bufferLength);
+
     typedef int (*TGP_GetCurrentSongIndex)(LibraryHandle h);
     typedef int (*TGP_GetSongUuid)(LibraryHandle h, int atIndex, char *returnBuffer, int bufferLength);
     typedef int (*TGP_GetVariationNameForSongPart)(LibraryHandle h, int atSongIndex, int atPartIndex,
@@ -277,6 +288,12 @@ extern "C"
     /// \return  The actual number of characters needed for the return buffer.
     extern TGP_GetWidgetCaption GP_GetWidgetCaption;
 
+    /// \brief   Set whether a widget is hidden when not in Edit mode.
+    extern TGP_SetWidgetHideOnPresentation GP_SetWidgetHideOnPresentation;
+
+    /// \brief   Get the current status of whether the named widget is hidden when not in Edit mode.
+    extern TGP_GetWidgetHideState GP_GetWidgetHideState;
+
     /// \brief   Tell GP to call (or stop calling) the OnWidgetValueChanged() callback for the named widget.
     extern TGP_ListenForWidget GP_ListenForWidget;
 
@@ -306,6 +323,12 @@ extern "C"
 
     /// \brief   Get the outline roundness of widgets that support it.
     extern TGP_GetWidgetOutlineRoundness GP_GetWidgetOutlineRoundness;
+
+    /// \brief   Get the position and size of the named widget.
+    extern TGP_GetWidgetBounds GP_GetWidgetBounds;
+
+    /// \brief   Set the position and size of the named widget.
+    extern TGP_SetWidgetBounds GP_SetWidgetBounds;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Working with colors
@@ -371,6 +394,9 @@ extern "C"
     ///          buffer and indicate its size. GP will fill in the buffer with the name.
     /// \return  represents the actual length needed to fill the buffer.
     extern TGP_GetSongName GP_GetSongName;
+
+    /// \brief   Get the artist name of the song at the given index.
+    extern TGP_GetArtistName GP_GetArtistName;
 
     /// \brief   Get the full path to a ChordPro file associated with the song at the given index of the currently
     ///          active setlist.
@@ -483,6 +509,12 @@ extern "C"
 
     /// \brief   Get the global tempo in Gig Performer.
     extern TGP_GetBPM GP_GetBPM;
+
+    /// \brief   Get the current time signature in Gig Performer.
+    extern TGP_GetCurrentTimeSignature GP_GetCurrentTimeSignature;
+
+    /// \brief   Stop all notes in the current rackspace.
+    extern TGP_Panic GP_Panic;
 
     /// \brief   Send the message to the console output (works only when Xcode is open).
     extern TGP_ConsoleLog GP_ConsoleLog;

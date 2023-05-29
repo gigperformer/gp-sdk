@@ -31,7 +31,9 @@ extern "C"
         GPStatus_SongListModifed,
         GPStatus_RackspaceListModified,
         GPStatus_SongPartListModified,
-        GPStatus_VariationListModified
+        GPStatus_VariationListModified,
+        GPStatus_MetronomeStateChanged,
+        GPStatus_SaveRequest
     } GPStatusType;
 
     /// Specifies which entities are allowed to use injected GPScripts or which scripts are allowed in external API
