@@ -2,6 +2,10 @@
 
 # 46
 
+- New APIs for getting the plugin caption and plugin name:
+  - `GP_GetPluginCaption` (C) and `GigPerformerFunctions::getPluginCaption` (C++)
+  - `GP_GetPluginName` (C) and `GigPerformerFunctions::getPluginName` (C++)
+
 - A new API for getting the artist name for a song:
   - `GP_GetArtistName` (C) and `GigPerformerFunctions::getArtistName` (C++)
 
