@@ -30,10 +30,10 @@ extern "C"
                                               char *returnBuffer, int bufferLength, bool useGlobalRackspace);
     typedef int (*TGP_GetPluginParameterText)(LibraryHandle h, const char *pluginHandle, int parameterIndex,
                                               char *returnBuffer, int bufferLength, bool useGlobalRackspace);
-    typedef int (*TGP_GetPluginCaption)(LibraryHandle h, const char *pluginHandle, char *returnBuffer, int bufferLength,
-                                             bool useGlobalRackspace);
+    typedef int (*TGP_GetPluginCaption)(LibraryHandle h, const char *pluginHandle, char *returnBuffer,
+                                        int bufferLength, bool useGlobalRackspace);
     typedef int (*TGP_GetPluginName)(LibraryHandle h, const char *pluginHandle, char *returnBuffer, int bufferLength,
-                                             bool useGlobalRackspace);
+                                     bool useGlobalRackspace);
     typedef void (*TGP_MapWidgetToPluginParameter)(LibraryHandle h, const char *widgetName, const char *pluginHandle,
                                                    int parameterNumber, bool useGlobalRackspace);
 
