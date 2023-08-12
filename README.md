@@ -23,6 +23,7 @@ This SDK includes the source code that will need to be included in every third p
 4. The GP API supports callbacks into the third-party library to notify the library that something "happened".
    For example, if the user switches from one song to another, a library supporting a keyboard controller with a programmable display could be notified so that it can display the names of the song parts in the new song.
    If the library is interested in MIDI events coming from a particular piece of hardware, it can be called whenever that hardware sends out MIDI data.
+5. The GP API has a mechanism that allows developers to define GP Script functions that can be injected into Gig Performer to invoke code implemented with the extension.
 
 ## Structure of the API
 
