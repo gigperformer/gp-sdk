@@ -307,9 +307,16 @@ class GigPerformerFunctions
     std::string getPluginParameterName(const std::string &pluginHandle, int parameterIndex, bool useGlobalRackspace);
 
     /// \brief   Returns the current text value of the parameter at the specified parameter number of the plugin with
-    /// the given handle
-    ///          in the currently active rackspace or in the global rackspace.
+    ///          the given handle in the currently active rackspace or in the global rackspace.
     std::string getPluginParameterText(const std::string &pluginHandle, int parameterIndex, bool useGlobalRackspace);
+
+    /// \brief   Returns the user-defined caption name of the plugin with
+    ///          the given handle in the currently active rackspace or in the global rackspace.
+    std::string getPluginCaption(const std::string &pluginHandle, bool useGlobalRackspace);
+
+    /// \brief   Returns the vendor-defined name of the plugin with
+    ///          the given handle in the currently active rackspace or in the global rackspace.
+    std::string getPluginName(const std::string &pluginHandle, bool useGlobalRackspace);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with gig files

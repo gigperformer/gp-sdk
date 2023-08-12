@@ -30,6 +30,10 @@ extern "C"
                                               char *returnBuffer, int bufferLength, bool useGlobalRackspace);
     typedef int (*TGP_GetPluginParameterText)(LibraryHandle h, const char *pluginHandle, int parameterIndex,
                                               char *returnBuffer, int bufferLength, bool useGlobalRackspace);
+    typedef int (*TGP_GetPluginCaption)(LibraryHandle h, const char *pluginHandle, char *returnBuffer, int bufferLength,
+                                        bool useGlobalRackspace);
+    typedef int (*TGP_GetPluginName)(LibraryHandle h, const char *pluginHandle, char *returnBuffer, int bufferLength,
+                                     bool useGlobalRackspace);
     typedef void (*TGP_MapWidgetToPluginParameter)(LibraryHandle h, const char *widgetName, const char *pluginHandle,
                                                    int parameterNumber, bool useGlobalRackspace);
 
@@ -246,9 +250,16 @@ extern "C"
     extern TGP_GetPluginParameterName GP_GetPluginParameterName;
 
     /// \brief   Returns the current text value of the parameter at the specified parameter number of the plugin with
-    /// the given handle
-    ///          in the currently active rackspace or in the global rackspace.
+    ///          the given handle in the currently active rackspace or in the global rackspace.
     extern TGP_GetPluginParameterText GP_GetPluginParameterText;
+
+    /// \brief   Returns the user-defined caption name of the plugin with
+    ///          the given handle in the currently active rackspace or in the global rackspace.
+    extern TGP_GetPluginCaption GP_GetPluginCaption;
+
+    /// \brief   Returns the vendor-defined name of the plugin with
+    ///          the given handle in the currently active rackspace or in the global rackspace.
+    extern TGP_GetPluginName GP_GetPluginName;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with Widgets
