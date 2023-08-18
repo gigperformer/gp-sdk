@@ -26,7 +26,7 @@ extern "C"
         GPStatus_GigFinishedLoading,
         GPStatus_GigStartedLoading,
         GPStatus_GigFailedLoading,
-
+        GPStatus_GigCanceledLoading,
         // For each of these we will have a code representing Add, Delete, Move, Rename
         GPStatus_SongListModifed,
         GPStatus_RackspaceListModified,
