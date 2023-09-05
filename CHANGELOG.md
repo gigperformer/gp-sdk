@@ -2,6 +2,8 @@
 
 # 46
 
+Extensions built with this SDK will be **compatible to Gig Performer 4.7**.
+
 - New APIs for getting the plugin caption and plugin name:
   - `GP_GetPluginCaption` (C) and `GigPerformerFunctions::getPluginCaption` (C++)
   - `GP_GetPluginName` (C) and `GigPerformerFunctions::getPluginName` (C++)
@@ -53,5 +55,7 @@
   - `GP_SwitchToSetlist()` (C) and `GigPerformerFunctions::switchToSetlist(int setlistIndex)` (C++)
 
 # 44
+
+Extensions built with this SDK will be **compatible to Gig Performer 4.5.8**.
 
 - Initial publicly released version.
