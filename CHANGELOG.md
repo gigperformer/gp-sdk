@@ -4,6 +4,12 @@
 
 Extensions built with this SDK will be **compatible to Gig Performer 4.7**.
 
+## Breaking changes
+- The `OnGlobalPlayStateChanged` callback will now tell you whether the user initiated playing via Gig Performer directly or Ableton Link.
+  Thus, the `playing` parameter changed from `bool` to `double` (see the function's documentation for more details).
+
+## New APIs
+
 - New APIs for getting the plugin caption and plugin name:
   - `GP_GetPluginCaption` (C) and `GigPerformerFunctions::getPluginCaption` (C++)
   - `GP_GetPluginName` (C) and `GigPerformerFunctions::getPluginName` (C++)
