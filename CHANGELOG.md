@@ -2,7 +2,7 @@
 
 # 46
 
-Extensions built with this SDK will be **compatible to Gig Performer 4.7**.
+Extensions built with this SDK will be **compatible with Gig Performer 4.7**.
 
 ## Breaking changes
 - The `OnGlobalPlayStateChanged` callback will now tell you whether the user initiated playing via Gig Performer directly or Ableton Link.
