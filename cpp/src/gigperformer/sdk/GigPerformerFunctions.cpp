@@ -385,6 +385,20 @@ int GigPerformerFunctions::getSongCount()
     return GP_GetSongCount(fHandle);
 }
 
+std::string GigPerformerFunctions::getSongKey(int atIndex)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+    /* int actualLength = */ GP_GetSongKey(fHandle, atIndex, returnBuffer, bufferLength);
+    std::string result(returnBuffer);
+    return result;
+}
+
+double GigPerformerFunctions::getSongTempo(int atIndex)
+{
+    return GP_GetSongTempo(fHandle, atIndex);
+}
+
 std::string GigPerformerFunctions::getSongName(int atIndex)
 {
     const int bufferLength = 1024;

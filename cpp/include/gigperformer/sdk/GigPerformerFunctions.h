@@ -197,6 +197,12 @@ class GigPerformerFunctions
     /// \brief   Query GP for the name of a song artist at the given index (zero-based).
     std::string getArtistName(int atIndex);
 
+    /// \brief   Query GP for the key of a song at the given index (zero-based).
+    std::string getSongKey(int atIndex);
+
+    /// \brief   Query GP for the tempo of a song at the given index (zero-based).
+    double getSongTempo(int atIndex);
+
     /// \brief   Get the full path to a ChordPro file associated with the song at the given index of the currently
     ///          active setlist.
     std::string getChordProFilenameForSong(int atIndex);

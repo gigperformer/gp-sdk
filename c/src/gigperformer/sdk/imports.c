@@ -10,7 +10,9 @@
 #define DeclareFunc(funcName) T##funcName funcName = NULL
 
 // If this is newer than the version expected by GP then a crash may occur. Do NOT change this information.
-#define GPSDK_VERSION 47
+// In particular, whenever we add new functions into GP that can be called from this SDK
+// We need to update this version so we can check that it's safe to call GP
+#define GPSDK_VERSION 48
 
 // This is an EXPORT from the DLL but it's here for convenience so it can be picked up by both C and C++ projects
 EXPORTED int GetGPSDKVersion(void)
@@ -85,6 +87,8 @@ extern "C"
     DeclareFunc(GP_GetSongCount);
     DeclareFunc(GP_GetSongName);
     DeclareFunc(GP_GetArtistName);
+    DeclareFunc(GP_GetSongKey);
+    DeclareFunc(GP_GetSongTempo);
     DeclareFunc(GP_GetChordProFilenameForSong);
     DeclareFunc(GP_GetCurrentSongIndex);
     DeclareFunc(GP_GetSongUuid);
@@ -249,6 +253,8 @@ extern "C"
         R(GP_GetSongCount);
         R(GP_GetSongName);
         R(GP_GetArtistName);
+        R(GP_GetSongKey);
+        R(GP_GetSongTempo);
         R(GP_GetChordProFilenameForSong);
         R(GP_GetCurrentSongIndex);
         R(GP_GetVariationNameForSongPart);

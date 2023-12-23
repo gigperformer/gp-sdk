@@ -90,6 +90,9 @@ extern "C"
     typedef int (*TGP_GetSongName)(LibraryHandle h, int atSongIndex, char *returnBuffer, int bufferLength);
     typedef int (*TGP_GetArtistName)(LibraryHandle h, int atSongIndex, char *returnBuffer, int bufferLength);
 
+    typedef int (*TGP_GetSongKey)(LibraryHandle h, int atSongIndex, char *returnBuffer, int bufferLength);
+    typedef double (*TGP_GetSongTempo)(LibraryHandle h, int atSongIndex);
+
     typedef int (*TGP_GetCurrentSongIndex)(LibraryHandle h);
     typedef int (*TGP_GetSongUuid)(LibraryHandle h, int atIndex, char *returnBuffer, int bufferLength);
     typedef int (*TGP_GetVariationNameForSongPart)(LibraryHandle h, int atSongIndex, int atPartIndex,
@@ -412,6 +415,14 @@ extern "C"
 
     /// \brief   Get the artist name of the song at the given index.
     extern TGP_GetArtistName GP_GetArtistName;
+
+    /// \brief   Query GP for the key of a song at the given index (zero-based). The caller must provide a character
+    ///          buffer and indicate its size. GP will fill in the buffer with the name.
+    /// \return  The actual length length of the string needed to fill the return buffer.
+    extern TGP_GetSongKey GP_GetSongKey;
+
+    /// \brief   Query GP for the tempo of a song at the given index (zero-based).
+    extern TGP_GetSongTempo GP_GetSongTempo;
 
     /// \brief   Get the full path to a ChordPro file associated with the song at the given index of the currently
     ///          active setlist.
