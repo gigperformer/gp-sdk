@@ -97,6 +97,40 @@ std::string GigPerformerFunctions::getPluginParameterName(const std::string &plu
     return result;
 }
 
+std::string GigPerformerFunctions::getPluginParameterText(const std::string &pluginHandle, int parameterIndex,
+                                                          bool useGlobalRackspace)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+
+    /* int actualLength = */ GP_GetPluginParameterText(fHandle, pluginHandle.c_str(), parameterIndex, returnBuffer,
+                                                       bufferLength, useGlobalRackspace);
+    std::string result(returnBuffer);
+    return result;
+}
+
+std::string GigPerformerFunctions::getPluginCaption(const std::string &pluginHandle, bool useGlobalRackspace)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+
+    /* int actualLength = */ GP_GetPluginCaption(fHandle, pluginHandle.c_str(), returnBuffer, bufferLength,
+                                                 useGlobalRackspace);
+    std::string result(returnBuffer);
+    return result;
+}
+
+std::string GigPerformerFunctions::getPluginName(const std::string &pluginHandle, bool useGlobalRackspace)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+
+    /* int actualLength = */ GP_GetPluginName(fHandle, pluginHandle.c_str(), returnBuffer, bufferLength,
+                                              useGlobalRackspace);
+    std::string result(returnBuffer);
+    return result;
+}
+
 bool GigPerformerFunctions::setWidgetValue(const std::string &widgetName, double newValue)
 {
     return GP_SetWidgetValue(fHandle, widgetName.c_str(), newValue);
@@ -110,6 +144,16 @@ bool GigPerformerFunctions::resetWidgetToDefault(const std::string &widgetName, 
 bool GigPerformerFunctions::setWidgetCaption(const std::string &widgetName, const std::string &newCaption)
 {
     return GP_SetWidgetCaption(fHandle, widgetName.c_str(), newCaption.c_str());
+}
+
+void GigPerformerFunctions::setWidgetBounds(const std::string &widgetName, int left, int top, int width, int height)
+{
+    GP_SetWidgetBounds(fHandle, widgetName.c_str(), left, top, width, height);
+}
+
+void GigPerformerFunctions::getWidgetBounds(const std::string &widgetName, int &left, int &top, int &width, int &height)
+{
+    GP_GetWidgetBounds(fHandle, widgetName.c_str(), &left, &top, &width, &height);
 }
 
 void GigPerformerFunctions::getWidgetList(std::vector<std::string> &list, bool useGlobalRackspace)
@@ -132,6 +176,13 @@ void GigPerformerFunctions::getWidgetList(std::vector<std::string> &list, bool u
     }
 }
 
+void GigPerformerFunctions::mapWidgetToPluginParameter(const std::string &widgetName, const std::string &pluginHandle,
+                                                       int parameterNumber, bool useGlobalRackspace)
+{
+    GP_MapWidgetToPluginParameter(fHandle, widgetName.c_str(), pluginHandle.c_str(), parameterNumber,
+                                  useGlobalRackspace);
+}
+
 void GigPerformerFunctions::showTuner(bool show)
 {
     GP_ShowTuner(fHandle, show);
@@ -140,6 +191,16 @@ void GigPerformerFunctions::showTuner(bool show)
 bool GigPerformerFunctions::tunerShowing()
 {
     return GP_TunerShowing(fHandle);
+}
+
+void GigPerformerFunctions::enableMetronome(bool enable)
+{
+    GP_EnableMetronome(fHandle, enable);
+}
+
+bool GigPerformerFunctions::metronomeEnabled()
+{
+    return GP_MetronomeEnabled(fHandle);
 }
 
 std::string GigPerformerFunctions::getPathToMe()
@@ -217,6 +278,16 @@ int GigPerformerFunctions::getWidgetOutlineThickness(const std::string &widgetNa
 int GigPerformerFunctions::getWidgetOutlineRoundness(const std::string &widgetName)
 {
     return GP_GetWidgetOutlineRoundness(fHandle, widgetName.c_str());
+}
+
+void GigPerformerFunctions::setWidgetHideOnPresentation(const std::string &widgetName, bool hide)
+{
+    GP_SetWidgetHideOnPresentation(fHandle, widgetName.c_str(), hide);
+}
+
+bool GigPerformerFunctions::getWidgetHideState(const std::string &widgetName)
+{
+    return GP_GetWidgetHideState(fHandle, widgetName.c_str());
 }
 
 int GigPerformerFunctions::RGBAToColor(double red, double green, double blue, double alpha)
@@ -323,9 +394,46 @@ std::string GigPerformerFunctions::getSongName(int atIndex)
     return result;
 }
 
+std::string GigPerformerFunctions::getArtistName(int atIndex)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+    /* int actualLength = */ GP_GetArtistName(fHandle, atIndex, returnBuffer, bufferLength);
+    std::string result(returnBuffer);
+    return result;
+}
+
 int GigPerformerFunctions::getCurrentSongIndex()
 {
     return GP_GetCurrentSongIndex(fHandle);
+}
+
+std::string GigPerformerFunctions::getSongUuid(int atIndex)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+    /* int actualLength = */ GP_GetSongUuid(fHandle, atIndex, returnBuffer, bufferLength);
+    std::string result(returnBuffer);
+    return result;
+}
+
+std::string GigPerformerFunctions::getVariationNameForSongPart(int atSongIndex, int atPartIndex)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+    /* int actualLength = */ GP_GetVariationNameForSongPart(fHandle, atSongIndex, atPartIndex, returnBuffer,
+                                                            bufferLength);
+    std::string result(returnBuffer);
+    return result;
+}
+
+std::string GigPerformerFunctions::getChordProFilenameForSong(int atIndex)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+    /* int actualLength = */ GP_GetChordProFilenameForSong(fHandle, atIndex, returnBuffer, bufferLength);
+    std::string result(returnBuffer);
+    return result;
 }
 
 int GigPerformerFunctions::getSongpartCount(int atSongIndex)
@@ -363,6 +471,31 @@ bool GigPerformerFunctions::switchToSongPart(int partIndex)
     return GP_SwitchToSongPart(fHandle, partIndex);
 }
 
+int GigPerformerFunctions::getSetlistCount()
+{
+    return GP_GetSetlistCount(fHandle);
+}
+
+std::string GigPerformerFunctions::getSetlistName(int setlistIndex)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+    /* int actualLength = */ GP_GetSetlistName(fHandle, setlistIndex, returnBuffer, bufferLength);
+    std::string result(returnBuffer);
+
+    return result;
+}
+
+int GigPerformerFunctions::getCurrentSetlistIndex()
+{
+    return GP_GetCurrentSetlistIndex(fHandle);
+}
+
+bool GigPerformerFunctions::switchToSetlist(int setlistIndex)
+{
+    return GP_SwitchToSetlist(fHandle, setlistIndex);
+}
+
 void GigPerformerFunctions::consoleLog(const char *message)
 {
     GP_ConsoleLog(fHandle, message);
@@ -383,6 +516,15 @@ void GigPerformerFunctions::scriptLog(const std::string &message, bool openLogWi
     GP_ScriptLog(fHandle, message.c_str(), openLogWindow);
 }
 
+std::string GigPerformerFunctions::getInstanceName()
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+    /* int actualLength = */ GP_GetInstanceName(fHandle, returnBuffer, bufferLength);
+    std::string result(returnBuffer);
+    return result;
+}
+
 int GigPerformerFunctions::getRackspaceCount()
 {
     return GP_GetRackspaceCount(fHandle);
@@ -396,10 +538,19 @@ std::string GigPerformerFunctions::getRackspaceName(int atIndex)
     std::string result(returnBuffer);
     return result;
 }
-int GigPerformerFunctions::getCurrentRackspaceIndex()
 
+int GigPerformerFunctions::getCurrentRackspaceIndex()
 {
     return GP_GetCurrentRackspaceIndex(fHandle);
+}
+
+std::string GigPerformerFunctions::getRackspaceUuid(int atIndex)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+    /* int actualLength = */ GP_GetRackspaceUuid(fHandle, atIndex, returnBuffer, bufferLength);
+    std::string result(returnBuffer);
+    return result;
 }
 
 int GigPerformerFunctions::getCurrentVariationIndex()
@@ -435,6 +586,11 @@ bool GigPerformerFunctions::switchToRackspaceName(const std::string &rackspace, 
 
     bool success = GP_SwitchToRackspaceName(fHandle, rackspace.c_str(), presetName);
     return success;
+}
+
+bool GigPerformerFunctions::switchToVariation(int variationIndex)
+{
+    return switchToRackspace(-1, variationIndex);
 }
 
 bool GigPerformerFunctions::saveGigUnconditionally(bool withTimestamp)
@@ -484,6 +640,11 @@ void GigPerformerFunctions::tap()
     GP_Tap(fHandle);
 }
 
+void GigPerformerFunctions::panic()
+{
+    GP_Panic(fHandle);
+}
+
 void GigPerformerFunctions::setBPM(double bpm)
 {
     GP_SetBPM(fHandle, bpm);
@@ -493,6 +654,11 @@ double GigPerformerFunctions::getBPM()
 {
     double result = GP_GetBPM(fHandle);
     return result;
+}
+
+void GigPerformerFunctions::getCurrentTimeSignature(int &numerator, int &denominator)
+{
+    GP_GetCurrentTimeSignature(fHandle, &numerator, &denominator);
 }
 
 void GigPerformerFunctions::previous()

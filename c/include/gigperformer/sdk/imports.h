@@ -20,18 +20,22 @@ extern "C"
     typedef int (*TGP_GetPathToMe)(LibraryHandle h, char *returnBuffer, int bufferLength);
 
     typedef int (*TGP_GetPluginList)(LibraryHandle h, char *returnBuffer, int bufferLength, bool useGlobalRackspace);
-
     typedef bool (*TGP_PluginExists)(LibraryHandle h, const char *pluginHandle, bool useGlobalRackspace);
-
     typedef void (*TGP_SetPluginParameter)(LibraryHandle h, const char *pluginHandle, int parameterIndex, double value,
                                            bool useGlobalRackspace);
-
     typedef double (*TGP_GetPluginParameter)(LibraryHandle h, const char *pluginHandle, int parameterIndex,
                                              bool useGlobalRackspace);
     typedef int (*TGP_GetPluginParameterCount)(LibraryHandle h, const char *pluginHandle, bool useGlobalRackspace);
-
     typedef int (*TGP_GetPluginParameterName)(LibraryHandle h, const char *pluginHandle, int parameterIndex,
                                               char *returnBuffer, int bufferLength, bool useGlobalRackspace);
+    typedef int (*TGP_GetPluginParameterText)(LibraryHandle h, const char *pluginHandle, int parameterIndex,
+                                              char *returnBuffer, int bufferLength, bool useGlobalRackspace);
+    typedef int (*TGP_GetPluginCaption)(LibraryHandle h, const char *pluginHandle, char *returnBuffer, int bufferLength,
+                                        bool useGlobalRackspace);
+    typedef int (*TGP_GetPluginName)(LibraryHandle h, const char *pluginHandle, char *returnBuffer, int bufferLength,
+                                     bool useGlobalRackspace);
+    typedef void (*TGP_MapWidgetToPluginParameter)(LibraryHandle h, const char *widgetName, const char *pluginHandle,
+                                                   int parameterNumber, bool useGlobalRackspace);
 
     typedef int (*TGP_GetWidgetList)(LibraryHandle h, char *returnBuffer, int bufferLength, bool useGlobalRackspace);
     typedef bool (*TGP_WidgetExists)(LibraryHandle h, const char *widgetName);
@@ -41,6 +45,8 @@ extern "C"
     typedef bool (*TGP_SetWidgetValue)(LibraryHandle h, const char *widgetName, double newValue);
     typedef bool (*TGP_SetWidgetCaption)(LibraryHandle h, const char *widgetName, const char *newCaption);
     typedef int (*TGP_GetWidgetCaption)(LibraryHandle h, const char *widgetName, char *returnBuffer, int bufferLength);
+    typedef void (*TGP_SetWidgetHideOnPresentation)(LibraryHandle h, const char *widgetName, bool hide);
+    typedef bool (*TGP_GetWidgetHideState)(LibraryHandle h, const char *widgetName);
     typedef bool (*TGP_ListenForWidget)(LibraryHandle h, const char *widgetName, bool listen);
     typedef bool (*TGP_ListeningForWidget)(LibraryHandle h, const char *widgetName);
     typedef void (*TGP_SetWidgetFillColor)(LibraryHandle h, const char *widgetName, int color);
@@ -51,6 +57,10 @@ extern "C"
     typedef int (*TGP_GetWidgetOutlineColor)(LibraryHandle h, const char *widgetName);
     typedef int (*TGP_GetWidgetOutlineThickness)(LibraryHandle h, const char *widgetName);
     typedef int (*TGP_GetWidgetOutlineRoundness)(LibraryHandle h, const char *widgetName);
+    typedef void (*TGP_SetWidgetBounds)(LibraryHandle h, const char *widgetName, int left, int top, int width,
+                                        int height);
+    typedef void (*TGP_GetWidgetBounds)(LibraryHandle h, const char *widgetName, int *left, int *top, int *width,
+                                        int *height);
 
     typedef int (*TGP_RGBAToColor)(LibraryHandle h, double red, double green, double blue, double alpha);
     typedef void (*TGP_ColorToRGBA)(LibraryHandle h, int color, double *red, double *green, double *blue,
@@ -58,6 +68,9 @@ extern "C"
 
     typedef void (*TGP_SetBPM)(LibraryHandle h, double bpm);
     typedef double (*TGP_GetBPM)(LibraryHandle h);
+    typedef void (*TGP_GetCurrentTimeSignature)(LibraryHandle h, int *numerator, int *denominator);
+
+    typedef void (*TGP_Panic)(LibraryHandle h);
 
     typedef bool (*TGP_ListenForMidi)(LibraryHandle h, const char *deviceName, bool listen);
     typedef bool (*TGP_ListeningForMidi)(LibraryHandle h, const char *deviceName);
@@ -75,8 +88,16 @@ extern "C"
 
     typedef int (*TGP_GetSongCount)(LibraryHandle h);
     typedef int (*TGP_GetSongName)(LibraryHandle h, int atSongIndex, char *returnBuffer, int bufferLength);
+    typedef int (*TGP_GetArtistName)(LibraryHandle h, int atSongIndex, char *returnBuffer, int bufferLength);
+
     typedef int (*TGP_GetCurrentSongIndex)(LibraryHandle h);
+    typedef int (*TGP_GetSongUuid)(LibraryHandle h, int atIndex, char *returnBuffer, int bufferLength);
+    typedef int (*TGP_GetVariationNameForSongPart)(LibraryHandle h, int atSongIndex, int atPartIndex,
+                                                   char *returnBuffer, int bufferLength);
+
     typedef int (*TGP_GetSongpartCount)(LibraryHandle h, int atSongIndex);
+    typedef int (*TGP_GetChordProFilenameForSong)(LibraryHandle h, int atSongIndex, char *returnBuffer,
+                                                  int bufferLength);
     typedef int (*TGP_GetSongpartName)(LibraryHandle h, int atSongIndex, int atIndex, char *returnBuffer,
                                        int bufferLength);
     typedef int (*TGP_GetCurrentSongpartIndex)(LibraryHandle h);
@@ -84,13 +105,20 @@ extern "C"
     typedef bool (*TGP_InSetlistMode)(LibraryHandle h);
     typedef bool (*TGP_SwitchToSong)(LibraryHandle h, int songIndex, int partIndex);
     typedef bool (*TGP_SwitchToSongPart)(LibraryHandle h, int partIndex);
+    typedef int (*TGP_GetSetlistCount)(LibraryHandle h);
+    typedef int (*TGP_GetSetlistName)(LibraryHandle h, int atSongIndex, char *returnBuffer, int bufferLength);
+    typedef int (*TGP_GetCurrentSetlistIndex)(LibraryHandle h);
+    typedef bool (*TGP_SwitchToSetlist)(LibraryHandle h, int setlistIndex);
 
     typedef void (*TGP_ConsoleLog)(LibraryHandle h, const char *message);
     typedef void (*TGP_ScriptLog)(LibraryHandle h, const char *message, bool openLogWindow);
 
+    typedef int (*TGP_GetInstanceName)(LibraryHandle h, char *returnBuffer, int bufferLength);
+
     typedef int (*TGP_GetRackspaceCount)(LibraryHandle h);
     typedef int (*TGP_GetRackspaceName)(LibraryHandle h, int atIndex, char *returnBuffer, int bufferLength);
     typedef int (*TGP_GetCurrentRackspaceIndex)(LibraryHandle h);
+    typedef int (*TGP_GetRackspaceUuid)(LibraryHandle h, int atIndex, char *returnBuffer, int bufferLength);
     typedef int (*TGP_GetCurrentVariationIndex)(LibraryHandle h);
     typedef int (*TGP_GetVariationCount)(LibraryHandle h, int atRackspaceIndex);
     typedef int (*TGP_GetVariationName)(LibraryHandle h, int atRackspaceIndex, int atIndex, char *returnBuffer,
@@ -104,6 +132,9 @@ extern "C"
 
     typedef void (*TGP_ShowTuner)(LibraryHandle h, bool show);
     typedef bool (*TGP_TunerShowing)(LibraryHandle h);
+
+    typedef void (*TGP_EnableMetronome)(LibraryHandle h, bool enable);
+    typedef bool (*TGP_MetronomeEnabled)(LibraryHandle h);
 
     typedef bool (*TGP_SaveGigUnconditionally)(LibraryHandle h, bool withTimestamp);
     typedef bool (*TGP_LoadGigByIndex)(LibraryHandle h, int indexNumber);
@@ -121,6 +152,7 @@ extern "C"
     typedef void (*TGP_VM_PushInteger)(GPRuntimeEngine *vm, int value);
     typedef double (*TGP_VM_PopDouble)(GPRuntimeEngine *vm);
     typedef void (*TGP_VM_PushDouble)(GPRuntimeEngine *vm, double value);
+    typedef int (*TGP_VM_TopStringLength)(GPRuntimeEngine *vm);
     typedef void (*TGP_VM_PopString)(GPRuntimeEngine *vm, char *buffer, int bufferLength);
     typedef void (*TGP_VM_PushString)(GPRuntimeEngine *vm, const char *buffer);
     typedef bool (*TGP_VM_PopBoolean)(GPRuntimeEngine *vm);
@@ -140,6 +172,9 @@ extern "C"
 
     /// \brief   Push a double associated with function return value.
     extern TGP_VM_PushDouble GP_VM_PushDouble;
+
+    /// \brief   Get the length of the string on top of the stack
+    extern TGP_VM_TopStringLength GP_VM_TopStringLength;
 
     /// \brief   Pop a string associated with function argument.
     extern TGP_VM_PopString GP_VM_PopString;
@@ -171,6 +206,12 @@ extern "C"
 
     /// \brief   Indicates whether the tuner is visible.
     extern TGP_TunerShowing GP_TunerShowing;
+
+    /// \brief   Enable or disable the metronome.
+    extern TGP_EnableMetronome GP_EnableMetronome;
+
+    /// \brief   Indicates whether the metronome is enabled.
+    extern TGP_MetronomeEnabled GP_MetronomeEnabled;
 
     /// \brief   Switch Gig Performer to Setlist View.
     extern TGP_SwitchToSetlistView GP_SwitchToSetlistView;
@@ -212,8 +253,24 @@ extern "C"
     ///          in the currently active rackspace or in the global rackspace.
     extern TGP_GetPluginParameterName GP_GetPluginParameterName;
 
+    /// \brief   Returns the current text value of the parameter at the specified parameter number of the plugin with
+    ///          the given handle in the currently active rackspace or in the global rackspace.
+    extern TGP_GetPluginParameterText GP_GetPluginParameterText;
+
+    /// \brief   Returns the user-defined caption name of the plugin with
+    ///          the given handle in the currently active rackspace or in the global rackspace.
+    extern TGP_GetPluginCaption GP_GetPluginCaption;
+
+    /// \brief   Returns the vendor-defined name of the plugin with
+    ///          the given handle in the currently active rackspace or in the global rackspace.
+    extern TGP_GetPluginName GP_GetPluginName;
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with Widgets
+
+    /// \brief   Map the named widget to the specified parameter number of the plugin with the given handle
+    ///          in the currently active rackspace or in the global rackspace.
+    extern TGP_MapWidgetToPluginParameter GP_MapWidgetToPluginParameter;
 
     /// \brief   Get a list of all widgets defined (i.e, with handles) in the currently active or the global rackspace.
     /// \return  The actual number of characters needed to store the return value.
@@ -246,6 +303,12 @@ extern "C"
     /// \return  The actual number of characters needed for the return buffer.
     extern TGP_GetWidgetCaption GP_GetWidgetCaption;
 
+    /// \brief   Set whether a widget is hidden when not in Edit mode.
+    extern TGP_SetWidgetHideOnPresentation GP_SetWidgetHideOnPresentation;
+
+    /// \brief   Get the current status of whether the named widget is hidden when not in Edit mode.
+    extern TGP_GetWidgetHideState GP_GetWidgetHideState;
+
     /// \brief   Tell GP to call (or stop calling) the OnWidgetValueChanged() callback for the named widget.
     extern TGP_ListenForWidget GP_ListenForWidget;
 
@@ -275,6 +338,12 @@ extern "C"
 
     /// \brief   Get the outline roundness of widgets that support it.
     extern TGP_GetWidgetOutlineRoundness GP_GetWidgetOutlineRoundness;
+
+    /// \brief   Get the position and size of the named widget.
+    extern TGP_GetWidgetBounds GP_GetWidgetBounds;
+
+    /// \brief   Set the position and size of the named widget.
+    extern TGP_SetWidgetBounds GP_SetWidgetBounds;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Working with colors
@@ -341,8 +410,23 @@ extern "C"
     /// \return  represents the actual length needed to fill the buffer.
     extern TGP_GetSongName GP_GetSongName;
 
+    /// \brief   Get the artist name of the song at the given index.
+    extern TGP_GetArtistName GP_GetArtistName;
+
+    /// \brief   Get the full path to a ChordPro file associated with the song at the given index of the currently
+    ///          active setlist.
+    /// \return  The number of bytes written to returnBuffer.
+    extern TGP_GetChordProFilenameForSong GP_GetChordProFilenameForSong;
+
     /// \brief   Query GP for the index of the currently selected song.
     extern TGP_GetCurrentSongIndex GP_GetCurrentSongIndex;
+
+    /// \brief   Get the uuid for the song at the given index.
+    extern TGP_GetSongUuid GP_GetSongUuid;
+
+    /// \brief   Query GP for the name of the variation associated with the song and song part with the given
+    ///          (zero-based) indices.
+    extern TGP_GetVariationNameForSongPart GP_GetVariationNameForSongPart;
 
     /// \brief   Query GP for the number of song parts in the song at the given index.
     extern TGP_GetSongpartCount GP_GetSongpartCount;
@@ -361,14 +445,31 @@ extern "C"
     /// \brief   Tell GP to switch to the song part with the given (zero-based) index in the current song.
     extern TGP_SwitchToSongPart GP_SwitchToSongPart;
 
+    /// \brief   Returns the number of setlists in the currently gig file.
+    extern TGP_GetSetlistCount GP_GetSetlistCount;
+
+    /// \brief   Gets the name of the setlist at the given index.
+    /// \return  The number of bytes written to returnBuffer.
+    extern TGP_GetSetlistName GP_GetSetlistName;
+
+    /// \brief   Returns the index of the current setlist.
+    extern TGP_GetCurrentSetlistIndex GP_GetCurrentSetlistIndex;
+
+    /// \brief   Switch to the setlist defined by the index.
+    /// \return  True if Gig Performer has successfully switched to the given setlist.
+    extern TGP_SwitchToSetlist GP_SwitchToSetlist;
+
     /// \brief   Returns the number of rackspaces in the gig file.
     extern TGP_GetRackspaceCount GP_GetRackspaceCount;
 
-    /// \brief   Get the name of rackspace atIndex.
+    /// \brief   Get the name of rackspace at the given index.
     extern TGP_GetRackspaceName GP_GetRackspaceName;
 
     /// \brief   Get the rackspace currently in use.
     extern TGP_GetCurrentRackspaceIndex GP_GetCurrentRackspaceIndex;
+
+    /// \brief   Get the uuid for the rackspace at the given index.
+    extern TGP_GetRackspaceUuid GP_GetRackspaceUuid;
 
     /// \brief   Get the rackspace currently in use.
     extern TGP_GetCurrentVariationIndex GP_GetCurrentVariationIndex;
@@ -424,11 +525,20 @@ extern "C"
     /// \brief   Get the global tempo in Gig Performer.
     extern TGP_GetBPM GP_GetBPM;
 
+    /// \brief   Get the current time signature in Gig Performer.
+    extern TGP_GetCurrentTimeSignature GP_GetCurrentTimeSignature;
+
+    /// \brief   Stop all notes in the current rackspace.
+    extern TGP_Panic GP_Panic;
+
     /// \brief   Send the message to the console output (works only when Xcode is open).
     extern TGP_ConsoleLog GP_ConsoleLog;
 
     /// \brief   Display the message in the Script Logger window, possibly opening the window if it is not already open.
     extern TGP_ScriptLog GP_ScriptLog;
+
+    /// \brief   Returns the GP instance name
+    extern TGP_GetInstanceName GP_GetInstanceName;
 
     /// \brief   Returns the folder path where your library is installed.
     /// \details It is useful when you need to access other resource files installed in the same or a relative location

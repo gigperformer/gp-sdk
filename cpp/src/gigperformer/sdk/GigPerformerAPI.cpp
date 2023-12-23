@@ -39,7 +39,7 @@ void GigPerformerAPI::OnTunerModeChanged(bool)
 {
 }
 
-void GigPerformerAPI::OnGlobalPlayStateChanged(bool)
+void GigPerformerAPI::OnGlobalPlayStateChanged(double)
 {
 }
 

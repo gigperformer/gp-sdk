@@ -10,7 +10,7 @@
 #define DeclareFunc(funcName) T##funcName funcName = NULL
 
 // If this is newer than the version expected by GP then a crash may occur. Do NOT change this information.
-#define GPSDK_VERSION 44
+#define GPSDK_VERSION 47
 
 // This is an EXPORT from the DLL but it's here for convenience so it can be picked up by both C and C++ projects
 EXPORTED int GetGPSDKVersion(void)
@@ -36,7 +36,13 @@ extern "C"
     DeclareFunc(GP_GetPluginParameter);
     DeclareFunc(GP_GetPluginParameterCount);
     DeclareFunc(GP_GetPluginParameterName);
+    DeclareFunc(GP_GetPluginParameterText);
+    DeclareFunc(GP_GetPluginCaption);
+    DeclareFunc(GP_GetPluginName);
 
+    DeclareFunc(GP_SetWidgetHideOnPresentation);
+    DeclareFunc(GP_GetWidgetHideState);
+    DeclareFunc(GP_MapWidgetToPluginParameter);
     DeclareFunc(GP_GetWidgetList);
     DeclareFunc(GP_WidgetExists);
     DeclareFunc(GP_GetWidgetValue);
@@ -50,17 +56,21 @@ extern "C"
     DeclareFunc(GP_SetWidgetOutlineColor);
     DeclareFunc(GP_SetWidgetOutlineThickness);
     DeclareFunc(GP_SetWidgetOutlineRoundness);
-
     DeclareFunc(GP_GetWidgetFillColor);
     DeclareFunc(GP_GetWidgetOutlineColor);
     DeclareFunc(GP_GetWidgetOutlineThickness);
     DeclareFunc(GP_GetWidgetOutlineRoundness);
+    DeclareFunc(GP_SetWidgetBounds);
+    DeclareFunc(GP_GetWidgetBounds);
 
     DeclareFunc(GP_RGBAToColor);
     DeclareFunc(GP_ColorToRGBA);
 
     DeclareFunc(GP_SetBPM);
     DeclareFunc(GP_GetBPM);
+    DeclareFunc(GP_GetCurrentTimeSignature);
+
+    DeclareFunc(GP_Panic);
 
     DeclareFunc(GP_ListenForMidi);
     DeclareFunc(GP_ListeningForMidi);
@@ -74,19 +84,30 @@ extern "C"
     DeclareFunc(GP_InjectMidiMessageToMidiInputAlias);
     DeclareFunc(GP_GetSongCount);
     DeclareFunc(GP_GetSongName);
+    DeclareFunc(GP_GetArtistName);
+    DeclareFunc(GP_GetChordProFilenameForSong);
     DeclareFunc(GP_GetCurrentSongIndex);
+    DeclareFunc(GP_GetSongUuid);
+    DeclareFunc(GP_GetVariationNameForSongPart);
     DeclareFunc(GP_GetSongpartCount);
     DeclareFunc(GP_GetSongpartName);
     DeclareFunc(GP_GetCurrentSongpartIndex);
     DeclareFunc(GP_InSetlistMode);
     DeclareFunc(GP_SwitchToSong);
     DeclareFunc(GP_SwitchToSongPart);
+    DeclareFunc(GP_GetSetlistCount);
+    DeclareFunc(GP_GetSetlistName);
+    DeclareFunc(GP_GetCurrentSetlistIndex);
+    DeclareFunc(GP_SwitchToSetlist);
     DeclareFunc(GP_ConsoleLog);
     DeclareFunc(GP_ScriptLog);
+
+    DeclareFunc(GP_GetInstanceName);
 
     DeclareFunc(GP_GetRackspaceCount);
     DeclareFunc(GP_GetRackspaceName);
     DeclareFunc(GP_GetCurrentRackspaceIndex);
+    DeclareFunc(GP_GetRackspaceUuid);
     DeclareFunc(GP_GetCurrentVariationIndex);
     DeclareFunc(GP_GetVariationCount);
     DeclareFunc(GP_GetVariationName);
@@ -99,6 +120,9 @@ extern "C"
 
     DeclareFunc(GP_ShowTuner);
     DeclareFunc(GP_TunerShowing);
+
+    DeclareFunc(GP_EnableMetronome);
+    DeclareFunc(GP_MetronomeEnabled);
 
     DeclareFunc(GP_SaveGigUnconditionally);
     DeclareFunc(GP_LoadGigByIndex);
@@ -115,6 +139,7 @@ extern "C"
     DeclareFunc(GP_VM_PushInteger);
     DeclareFunc(GP_VM_PopDouble);
     DeclareFunc(GP_VM_PushDouble);
+    DeclareFunc(GP_VM_TopStringLength);
     DeclareFunc(GP_VM_PopString);
     DeclareFunc(GP_VM_PushString);
     DeclareFunc(GP_VM_PopBoolean);
@@ -164,13 +189,20 @@ extern "C"
         R(GP_ShowTuner);
         R(GP_TunerShowing);
 
+        R(GP_EnableMetronome);
+        R(GP_MetronomeEnabled);
+
         R(GP_GetPluginList);
         R(GP_PluginExists);
         R(GP_SetPluginParameter);
         R(GP_GetPluginParameter);
         R(GP_GetPluginParameterCount);
         R(GP_GetPluginParameterName);
+        R(GP_GetPluginParameterText);
+        R(GP_GetPluginCaption);
+        R(GP_GetPluginName);
 
+        R(GP_MapWidgetToPluginParameter);
         R(GP_GetWidgetList);
         R(GP_WidgetExists);
         R(GP_GetWidgetValue);
@@ -178,6 +210,9 @@ extern "C"
         R(GP_SetWidgetValue);
         R(GP_SetWidgetCaption);
         R(GP_GetWidgetCaption);
+        R(GP_SetWidgetHideOnPresentation);
+        R(GP_GetWidgetHideState);
+
         R(GP_ListenForWidget);
         R(GP_ListeningForWidget);
 
@@ -189,12 +224,17 @@ extern "C"
         R(GP_GetWidgetOutlineColor);
         R(GP_GetWidgetOutlineThickness);
         R(GP_GetWidgetOutlineRoundness);
+        R(GP_GetWidgetBounds);
+        R(GP_SetWidgetBounds);
 
         R(GP_RGBAToColor);
         R(GP_ColorToRGBA);
 
         R(GP_SetBPM);
         R(GP_GetBPM);
+        R(GP_GetCurrentTimeSignature);
+
+        R(GP_Panic);
 
         R(GP_ListenForMidi);
         R(GP_ListeningForMidi);
@@ -208,17 +248,29 @@ extern "C"
         R(GP_InjectMidiMessageToMidiInputAlias);
         R(GP_GetSongCount);
         R(GP_GetSongName);
+        R(GP_GetArtistName);
+        R(GP_GetChordProFilenameForSong);
         R(GP_GetCurrentSongIndex);
+        R(GP_GetVariationNameForSongPart);
         R(GP_GetSongpartCount);
         R(GP_GetSongpartName);
         R(GP_GetCurrentSongpartIndex);
+        R(GP_GetSongUuid);
         R(GP_InSetlistMode);
         R(GP_SwitchToSong);
         R(GP_SwitchToSongPart);
+        R(GP_GetSetlistCount);
+        R(GP_GetSetlistName);
+        R(GP_GetCurrentSetlistIndex);
+        R(GP_SwitchToSetlist);
         R(GP_ScriptLog);
+
+        R(GP_GetInstanceName);
+
         R(GP_GetRackspaceCount);
         R(GP_GetRackspaceName);
         R(GP_GetCurrentRackspaceIndex);
+        R(GP_GetRackspaceUuid);
         R(GP_GetCurrentVariationIndex);
         R(GP_GetVariationCount);
         R(GP_GetVariationName);
@@ -241,6 +293,7 @@ extern "C"
         R(GP_VM_PushInteger);
         R(GP_VM_PopDouble);
         R(GP_VM_PushDouble);
+        R(GP_VM_TopStringLength);
         R(GP_VM_PopString);
         R(GP_VM_PushString);
         R(GP_VM_PopBoolean);

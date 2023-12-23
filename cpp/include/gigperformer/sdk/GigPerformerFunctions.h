@@ -40,6 +40,12 @@ class GigPerformerFunctions
     /// \brief   Indicates whether the tuner is visible.
     bool tunerShowing();
 
+    /// \brief   Enable or disable the metronome.
+    void enableMetronome(bool enable);
+
+    /// \brief   Indicates whether the metronome is enabled.
+    bool metronomeEnabled();
+
     /// \brief   Switch Gig Performer to Setlist View.
     void switchToSetlistView();
 
@@ -51,6 +57,9 @@ class GigPerformerFunctions
 
     /// \brief   Query GP to see if it is in setlist mode.
     bool inSetlistMode();
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// \name    Widgets
 
     /// \brief   Get a list of all widgets defined (i.e, with handles) in the currently active or the global rackspace.
     void getWidgetList(std::vector<std::string> &list, bool useGlobalRackspace);
@@ -84,6 +93,10 @@ class GigPerformerFunctions
     /// \brief   Query GP to see if you are listening for widget changes.
     bool listeningForWidget(const std::string &widgetName);
 
+    /// \brief   Map the named widget to the specified parameter number of the plugin with the given handle.
+    void mapWidgetToPluginParameter(const std::string &widgetName, const std::string &pluginHandle, int parameterNumber,
+                                    bool useGlobalRackspace);
+
     /// \brief   Set the fill color of widgets that support it.
     void setWidgetFillColor(const std::string &widgetName, int color);
 
@@ -107,6 +120,18 @@ class GigPerformerFunctions
 
     /// \brief   Get the outline roundness of widgets that support it.
     int getWidgetOutlineRoundness(const std::string &widgetName);
+
+    /// \brief   Get the position and size of the named widget.
+    void getWidgetBounds(const std::string &widgetName, int &left, int &top, int &width, int &height);
+
+    /// \brief   Set the position and size of the named widget.
+    void setWidgetBounds(const std::string &widgetName, int left, int top, int width, int height);
+
+    /// \brief   Set whether a widget is hidden when not in Edit mode.
+    void setWidgetHideOnPresentation(const std::string &widgetName, bool hide);
+
+    /// \brief   Get the current status of whether the named widget is hidden when not in Edit mode.
+    bool getWidgetHideState(const std::string &widgetName);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Working with colors
@@ -169,8 +194,22 @@ class GigPerformerFunctions
     /// \brief   Query GP for the name of a song at the given index (zero-based).
     std::string getSongName(int atIndex);
 
+    /// \brief   Query GP for the name of a song artist at the given index (zero-based).
+    std::string getArtistName(int atIndex);
+
+    /// \brief   Get the full path to a ChordPro file associated with the song at the given index of the currently
+    ///          active setlist.
+    std::string getChordProFilenameForSong(int atIndex);
+
     /// \brief   Query GP for the index of the currently selected song.
     int getCurrentSongIndex();
+
+    /// \brief   Get the uuid for the song at the given index.
+    std::string getSongUuid(int atIndex);
+
+    /// \brief   Query GP for the name of the variation associated with the song and song part with the given
+    ///          (zero-based) indices.
+    std::string getVariationNameForSongPart(int atSongIndex, int atPartIndex);
 
     /// \brief   Query GP for the number of song parts in the song at the given index.
     int getSongpartCount(int atSongIndex);
@@ -187,6 +226,19 @@ class GigPerformerFunctions
     /// \brief   Tell GP to switch to the song part with the given (zero-based) index in the current song.
     bool switchToSongPart(int partIndex);
 
+    /// \brief   Returns the number of setlists in the currently gig file.
+    int getSetlistCount();
+
+    /// \brief   Gets the name of the setlist at the given index.
+    std::string getSetlistName(int setlistIndex);
+
+    /// \brief   Returns the index of the current setlist.
+    int getCurrentSetlistIndex();
+
+    /// \brief   Switch to the setlist defined by the index.
+    /// \return  True if Gig Performer has successfully switched to the given setlist.
+    bool switchToSetlist(int setlistIndex);
+
     /// \brief   Returns the number of rackspaces in the gig file.
     int getRackspaceCount();
 
@@ -195,6 +247,9 @@ class GigPerformerFunctions
 
     /// \brief   Get the rackspace currently in use.
     int getCurrentRackspaceIndex();
+
+    /// \brief   Get the uuid for the rackspace at the given index.
+    std::string getRackspaceUuid(int atIndex);
 
     /// \brief   Get the rackspace currently in use.
     int getCurrentVariationIndex();
@@ -212,6 +267,10 @@ class GigPerformerFunctions
     /// \brief   Switch to the named rackspace and variation.
     /// \return  true if successful, false else
     bool switchToRackspaceName(const std::string &rackspace, const std::string &variation = "");
+
+    /// \brief   Switch to the variation.
+    /// \return  true if successful, false else
+    bool switchToVariation(int variationIndex = 0);
 
     /// \brief   Move to previous variation or rackspace.
     void previous();
@@ -247,6 +306,18 @@ class GigPerformerFunctions
     ///          in the currently active rackspace or in the global rackspace.
     std::string getPluginParameterName(const std::string &pluginHandle, int parameterIndex, bool useGlobalRackspace);
 
+    /// \brief   Returns the current text value of the parameter at the specified parameter number of the plugin with
+    ///          the given handle in the currently active rackspace or in the global rackspace.
+    std::string getPluginParameterText(const std::string &pluginHandle, int parameterIndex, bool useGlobalRackspace);
+
+    /// \brief   Returns the user-defined caption name of the plugin with
+    ///          the given handle in the currently active rackspace or in the global rackspace.
+    std::string getPluginCaption(const std::string &pluginHandle, bool useGlobalRackspace);
+
+    /// \brief   Returns the vendor-defined name of the plugin with
+    ///          the given handle in the currently active rackspace or in the global rackspace.
+    std::string getPluginName(const std::string &pluginHandle, bool useGlobalRackspace);
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with gig files
 
@@ -272,11 +343,17 @@ class GigPerformerFunctions
     /// \brief   Same as clicking the global "Tap Tempo" button.
     void tap();
 
+    /// \brief   Stop all notes in the current rackspace.
+    void panic();
+
     /// \brief   Set the global tempo in Gig Performer.
     void setBPM(double bpm);
 
     /// \brief   Get the global tempo in Gig Performer.
     double getBPM();
+
+    /// \brief   Get the current time signature in Gig Performer.
+    void getCurrentTimeSignature(int &numerator, int &denominator);
 
     /// \brief   Send the message to the console output (works only when Xcode is open).
     void consoleLog(const char *message);
@@ -285,6 +362,9 @@ class GigPerformerFunctions
     /// \brief   Display the message in the Script Logger window, possibly opening the window if it is not already open.
     void scriptLog(const char *message, bool openLogWindow);
     void scriptLog(const std::string &message, bool openLogWindow);
+
+    /// \brief   Returns the GP instance name
+    std::string getInstanceName();
 
     /// \brief   Returns the folder path where your library is installed.
     /// \details This is useful when you need to access other resource files installed in the same or a relative

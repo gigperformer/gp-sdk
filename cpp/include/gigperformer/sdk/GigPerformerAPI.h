@@ -119,9 +119,9 @@ class GigPerformerAPI : public GigPerformerFunctions
     /// \details The library must register its interest in listening for such changes.
     virtual void OnWidgetCaptionChanged(const std::string &widgetName, const std::string &newCaption);
 
-    /// \brief   Called when the global play state changes
-    /// \param   playing true if playing, false if stopped
-    virtual void OnGlobalPlayStateChanged(bool playing);
+    /// \brief   Called when the global play state changes.
+    /// \param   0.0 => off, 1.0 => on, 0.5 => on via Ableton Link.
+    virtual void OnGlobalPlayStateChanged(double playing);
 
     /// \brief   Called when the user switches in or out of tuner mode.
     virtual void OnTunerModeChanged(bool visible);
