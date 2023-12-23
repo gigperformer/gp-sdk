@@ -1,6 +1,6 @@
 # Changelog
 
-# 46
+# Gig Performer 4.7 (v46)
 
 Extensions built with this SDK will be **compatible with Gig Performer 4.7**.
 
@@ -74,7 +74,7 @@ Extensions built with this SDK will be **compatible with Gig Performer 4.7**.
   - `GP_GetCurrentSetlistIndex()` (C) and `GigPerformerFunctions::getCurrentSetlistIndex()` (C++)
   - `GP_SwitchToSetlist()` (C) and `GigPerformerFunctions::switchToSetlist(int setlistIndex)` (C++)
 
-# 44
+# Gig Performer 4.5.8 (v44)
 
 Extensions built with this SDK will be **compatible to Gig Performer 4.5.8**.
 
