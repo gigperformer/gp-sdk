@@ -44,36 +44,36 @@ For each library that it finds, the following sequence of steps will be performe
 4. For all libraries that the user chooses to load, GP will then open the library again and will look for a function called GPRegister.
 5. If the function is found, it will be called with two parameters:
 
-    1. `void* (*TGetGPFunctionType)(void* handle, const char* functionName)`
-       The first parameter is the address of a function that the library can use to call back into GP to request the address of each function that GP exposes to the API.
-    2. The second parameter, `void* handle`, is an opaque handle whose value should be stored and included as a parameter in all subsequent calls into Gig Performer.
+   1. `void* (*TGetGPFunctionType)(void* handle, const char* functionName)`
+      The first parameter is the address of a function that the library can use to call back into GP to request the address of each function that GP exposes to the API.
+   2. The second parameter, `void* handle`, is an opaque handle whose value should be stored and included as a parameter in all subsequent calls into Gig Performer.
 
-    The function should return a string that represents the name of the control surface or whatever product this library supports.
-    That name will show up in a list that the user can view and choose to enable or disable.
+   The function should return a string that represents the name of the control surface or whatever product this library supports.
+   That name will show up in a list that the user can view and choose to enable or disable.
 
 6. Your implementation of this function should include calls to get the addresses of all the other available functions exposed by GP so that you can use them later.
    Note that the C++ wrapper will do this automatically.
    Here is an example of the raw GPRegister function in raw C along with a single callback:
 
-    ```c
-    static LibraryHandle Handle;
+   ```c
+   static LibraryHandle Handle;
 
-    extern "C" void GPRegister(TGetGPFunctionType getGPFunctionAddress, void *handle)
-    {
-       Handle = handle; // Store the handle for future use
-       InitializeImportedFunctions(handle, getGPFunctionAddress);
+   extern "C" void GPRegister(TGetGPFunctionType getGPFunctionAddress, void *handle)
+   {
+      Handle = handle; // Store the handle for future use
+      InitializeImportedFunctions(handle, getGPFunctionAddress);
 
-       // You will need to register callbacks to be informed of changes
-       GP_RegisterCallback(handle, "OnSongChanged");
-    }
+      // You will need to register callbacks to be informed of changes
+      GP_RegisterCallback(handle, "OnSongChanged");
+   }
 
-    extern "C" void OnSongChanged(int oldIndex, int newIndex)
-    {
-       char str[255];
-       sprintf(str, "Song changed from: %d, to: %d", oldIndex, newIndex);
-       GP_Log(Handle, str);
-    }
-    ```
+   extern "C" void OnSongChanged(int oldIndex, int newIndex)
+   {
+      char str[255];
+      sprintf(str, "Song changed from: %d, to: %d", oldIndex, newIndex);
+      GP_Log(Handle, str);
+   }
+   ```
 
 7. Register for whatever other callbacks your library will need.
    However, to keep your library mean and lean, please don't just arbitrarily register for all callbacks.
