@@ -159,4 +159,6 @@ If you do not perform the three "pops" at the beginning (in the reverse order of
 ### GP Script supported function types
 
 Currently, the only types that are available are the basic scalar types, i.e, `Integer`, `Double`, `Boolean` and `String`.
-A future version will provide support for arrays and other objects.
+So you can push or pop any of these types.
+Also, when a `String` parameter is expected, you can query the size of the string before popping it so that you can make sure that you have allocated a sufficiently large buffer to fit the string.
+You must make sure to only call this function when you know that there is a string on top of the stack, using `GP_VM_TopStringLength()`.
