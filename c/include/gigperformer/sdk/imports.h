@@ -152,6 +152,7 @@ extern "C"
     typedef void (*TGP_VM_PushInteger)(GPRuntimeEngine *vm, int value);
     typedef double (*TGP_VM_PopDouble)(GPRuntimeEngine *vm);
     typedef void (*TGP_VM_PushDouble)(GPRuntimeEngine *vm, double value);
+    typedef int (*TGP_VM_TopStringLength)(GPRuntimeEngine *vm);
     typedef void (*TGP_VM_PopString)(GPRuntimeEngine *vm, char *buffer, int bufferLength);
     typedef void (*TGP_VM_PushString)(GPRuntimeEngine *vm, const char *buffer);
     typedef bool (*TGP_VM_PopBoolean)(GPRuntimeEngine *vm);
@@ -171,6 +172,9 @@ extern "C"
 
     /// \brief   Push a double associated with function return value.
     extern TGP_VM_PushDouble GP_VM_PushDouble;
+
+    /// \brief   Get the length of the string on top of the stack
+    extern TGP_VM_TopStringLength GP_VM_TopStringLength;
 
     /// \brief   Pop a string associated with function argument.
     extern TGP_VM_PopString GP_VM_PopString;

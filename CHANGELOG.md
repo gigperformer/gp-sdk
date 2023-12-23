@@ -1,5 +1,11 @@
 # Changelog
 
+# Gig Performer 4.8 (v47)
+
+## New APIs
+
+- You can now peek the length of the topmost string on the GP Script runtime stack via `GP_VM_TopStringLength`
+
 # Gig Performer 4.7 (v46)
 
 Extensions built with this SDK will be **compatible with Gig Performer 4.7**.
