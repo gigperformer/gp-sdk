@@ -12,7 +12,7 @@
 // If this is newer than the version expected by GP then a crash may occur. Do NOT change this information.
 // In particular, whenever we add new functions into GP that can be called from this SDK
 // We need to update this version so we can check that it's safe to call GP
-#define GPSDK_VERSION 48
+#define GPSDK_VERSION 60
 
 // This is an EXPORT from the DLL but it's here for convenience so it can be picked up by both C and C++ projects
 EXPORTED int GetGPSDKVersion(void)
