@@ -324,6 +324,10 @@ class GigPerformerFunctions
     ///          the given handle in the currently active rackspace or in the global rackspace.
     std::string getPluginName(const std::string &pluginHandle, bool useGlobalRackspace);
 
+    /// \brief   Loads a GP Preset with a given name for a plugin with
+    ///          the given handle in the currently active rackspace or in the global rackspace.
+    bool loadGPPreset(const std::string &pluginHandle, const std::string &presetName, bool useGlobalRackspace);
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with gig files
 

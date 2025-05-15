@@ -41,6 +41,7 @@ extern "C"
     DeclareFunc(GP_GetPluginParameterText);
     DeclareFunc(GP_GetPluginCaption);
     DeclareFunc(GP_GetPluginName);
+    DeclareFunc(GP_LoadGPPreset);
 
     DeclareFunc(GP_SetWidgetHideOnPresentation);
     DeclareFunc(GP_GetWidgetHideState);
@@ -205,6 +206,7 @@ extern "C"
         R(GP_GetPluginParameterText);
         R(GP_GetPluginCaption);
         R(GP_GetPluginName);
+        R(GP_LoadGPPreset);
 
         R(GP_MapWidgetToPluginParameter);
         R(GP_GetWidgetList);

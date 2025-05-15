@@ -131,6 +131,14 @@ std::string GigPerformerFunctions::getPluginName(const std::string &pluginHandle
     return result;
 }
 
+bool GigPerformerFunctions::loadGPPreset(const std::string &pluginHandle, const std::string &presetName, bool useGlobalRackspace)
+{
+    bool ok = false;
+    if (GP_LoadGPPreset != nullptr)
+       ok = GP_LoadGPPreset(fHandle, pluginHandle.c_str(), presetName.c_str(), useGlobalRackspace);
+    return ok;
+}
+
 bool GigPerformerFunctions::setWidgetValue(const std::string &widgetName, double newValue)
 {
     return GP_SetWidgetValue(fHandle, widgetName.c_str(), newValue);

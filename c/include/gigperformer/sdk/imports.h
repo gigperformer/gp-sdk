@@ -34,6 +34,8 @@ extern "C"
                                         bool useGlobalRackspace);
     typedef int (*TGP_GetPluginName)(LibraryHandle h, const char *pluginHandle, char *returnBuffer, int bufferLength,
                                      bool useGlobalRackspace);
+    typedef bool (*TGP_LoadGPPreset)(LibraryHandle h, const char* pluginHandle, const char* presetName,
+                                     bool useGlobalRackspace);
     typedef void (*TGP_MapWidgetToPluginParameter)(LibraryHandle h, const char *widgetName, const char *pluginHandle,
                                                    int parameterNumber, bool useGlobalRackspace);
 
@@ -267,6 +269,10 @@ extern "C"
     /// \brief   Returns the vendor-defined name of the plugin with
     ///          the given handle in the currently active rackspace or in the global rackspace.
     extern TGP_GetPluginName GP_GetPluginName;
+
+    /// \brief   Loads a GP Preset with a given name for a plugin with
+    ///          the given handle in the currently active rackspace or in the global rackspace.
+    extern TGP_LoadGPPreset GP_LoadGPPreset;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with Widgets

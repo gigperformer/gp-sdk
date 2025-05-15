@@ -1,5 +1,13 @@
 # Changelog
 
+# Gig Performer 5.0.40 (v60)
+
+## New APIs
+
+- New API for loading a GP Preset for a given plugin:
+
+  - `GP_LoadGPPreset` (C) and `GigPerformerFunctions::loadGPPreset` (C++)
+
 # Gig Performer 4.8 (v47)
 
 ## New APIs
