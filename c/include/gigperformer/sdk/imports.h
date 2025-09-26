@@ -326,6 +326,9 @@ extern "C"
     /// \brief   Query GP to see if you are listening for widget changes.
     extern TGP_ListeningForWidget GP_ListeningForWidget;
 
+        /// \brief   Set the text color of widgets that support it.
+    extern TGP_SetWidgetTextColor GP_SetWidgetTextColor;
+
     /// \brief   Set the fill color of widgets that support it.
     extern TGP_SetWidgetFillColor GP_SetWidgetFillColor;
 
@@ -337,6 +340,9 @@ extern "C"
 
     /// \brief   Set the outline roundness of widgets that support it.
     extern TGP_SetWidgetOutlineRoundness GP_SetWidgetOutlineRoundness;
+
+    /// \brief   Get the text color of widgets that support it.
+    extern TGP_GetWidgetTextColor GP_GetWidgetTextColor;
 
     /// \brief   Get the fill color of widgets that support it.
     extern TGP_GetWidgetFillColor GP_GetWidgetFillColor;

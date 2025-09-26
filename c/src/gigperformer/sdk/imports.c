@@ -224,10 +224,12 @@ extern "C"
         R(GP_ListenForWidget);
         R(GP_ListeningForWidget);
 
+        R(GP_SetWidgetTextColor);
         R(GP_SetWidgetFillColor);
         R(GP_SetWidgetOutlineColor);
         R(GP_SetWidgetOutlineThickness);
         R(GP_SetWidgetOutlineRoundness);
+        R(GP_GetWidgetTextColor);
         R(GP_GetWidgetFillColor);
         R(GP_GetWidgetOutlineColor);
         R(GP_GetWidgetOutlineThickness);
