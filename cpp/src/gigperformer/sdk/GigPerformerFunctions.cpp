@@ -248,6 +248,11 @@ bool GigPerformerFunctions::listeningForWidget(const std::string &widgetName)
     return GP_ListeningForWidget(fHandle, widgetName.c_str());
 }
 
+void GigPerformerFunctions::setWidgetTextColor(const std::string &widgetName, int color)
+{
+    GP_SetWidgetTextColor(fHandle, widgetName.c_str(), color);
+}
+
 void GigPerformerFunctions::setWidgetFillColor(const std::string &widgetName, int color)
 {
     GP_SetWidgetFillColor(fHandle, widgetName.c_str(), color);
@@ -266,6 +271,11 @@ void GigPerformerFunctions::setWidgetOutlineThickness(const std::string &widgetN
 void GigPerformerFunctions::setWidgetOutlineRoundness(const std::string &widgetName, int roundness)
 {
     GP_SetWidgetOutlineRoundness(fHandle, widgetName.c_str(), roundness);
+}
+
+int GigPerformerFunctions::getWidgetTextColor(const std::string &widgetName)
+{
+    return GP_GetWidgetTextColor(fHandle, widgetName.c_str());
 }
 
 int GigPerformerFunctions::getWidgetFillColor(const std::string &widgetName)

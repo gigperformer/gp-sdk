@@ -97,6 +97,9 @@ class GigPerformerFunctions
     void mapWidgetToPluginParameter(const std::string &widgetName, const std::string &pluginHandle, int parameterNumber,
                                     bool useGlobalRackspace);
 
+    /// \brief   Set the text color of widgets that support it.
+    void setWidgetTextColor(const std::string &widgetName, int color);
+
     /// \brief   Set the fill color of widgets that support it.
     void setWidgetFillColor(const std::string &widgetName, int color);
 
@@ -108,6 +111,9 @@ class GigPerformerFunctions
 
     /// \brief   Set the outline roundness of widgets that support it.
     void setWidgetOutlineRoundness(const std::string &widgetName, int roundness);
+
+    /// \brief   Get the text color of widgets that support it.
+    int getWidgetTextColor(const std::string &widgetName);
 
     /// \brief   Get the fill color of widgets that support it.
     int getWidgetFillColor(const std::string &widgetName);

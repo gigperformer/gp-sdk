@@ -12,7 +12,7 @@
 // If this is newer than the version expected by GP then a crash may occur. Do NOT change this information.
 // In particular, whenever we add new functions into GP that can be called from this SDK
 // We need to update this version so we can check that it's safe to call GP
-#define GPSDK_VERSION 60
+#define GPSDK_VERSION 62
 
 // This is an EXPORT from the DLL but it's here for convenience so it can be picked up by both C and C++ projects
 EXPORTED int GetGPSDKVersion(void)
@@ -55,10 +55,12 @@ extern "C"
     DeclareFunc(GP_GetWidgetCaption);
     DeclareFunc(GP_ListenForWidget);
     DeclareFunc(GP_ListeningForWidget);
+    DeclareFunc(GP_SetWidgetTextColor);
     DeclareFunc(GP_SetWidgetFillColor);
     DeclareFunc(GP_SetWidgetOutlineColor);
     DeclareFunc(GP_SetWidgetOutlineThickness);
     DeclareFunc(GP_SetWidgetOutlineRoundness);
+    DeclareFunc(GP_GetWidgetTextColor);
     DeclareFunc(GP_GetWidgetFillColor);
     DeclareFunc(GP_GetWidgetOutlineColor);
     DeclareFunc(GP_GetWidgetOutlineThickness);
