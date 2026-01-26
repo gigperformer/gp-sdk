@@ -51,10 +51,12 @@ extern "C"
     typedef bool (*TGP_GetWidgetHideState)(LibraryHandle h, const char *widgetName);
     typedef bool (*TGP_ListenForWidget)(LibraryHandle h, const char *widgetName, bool listen);
     typedef bool (*TGP_ListeningForWidget)(LibraryHandle h, const char *widgetName);
+    typedef void (*TGP_SetWidgetTextColor)(LibraryHandle h, const char *widgetName, int color);
     typedef void (*TGP_SetWidgetFillColor)(LibraryHandle h, const char *widgetName, int color);
     typedef void (*TGP_SetWidgetOutlineColor)(LibraryHandle h, const char *widgetName, int color);
     typedef void (*TGP_SetWidgetOutlineThickness)(LibraryHandle h, const char *widgetName, int thickness);
     typedef void (*TGP_SetWidgetOutlineRoundness)(LibraryHandle h, const char *widgetName, int roundness);
+    typedef int (*TGP_GetWidgetTextColor)(LibraryHandle h, const char *widgetName);
     typedef int (*TGP_GetWidgetFillColor)(LibraryHandle h, const char *widgetName);
     typedef int (*TGP_GetWidgetOutlineColor)(LibraryHandle h, const char *widgetName);
     typedef int (*TGP_GetWidgetOutlineThickness)(LibraryHandle h, const char *widgetName);
@@ -324,6 +326,9 @@ extern "C"
     /// \brief   Query GP to see if you are listening for widget changes.
     extern TGP_ListeningForWidget GP_ListeningForWidget;
 
+        /// \brief   Set the text color of widgets that support it.
+    extern TGP_SetWidgetTextColor GP_SetWidgetTextColor;
+
     /// \brief   Set the fill color of widgets that support it.
     extern TGP_SetWidgetFillColor GP_SetWidgetFillColor;
 
@@ -335,6 +340,9 @@ extern "C"
 
     /// \brief   Set the outline roundness of widgets that support it.
     extern TGP_SetWidgetOutlineRoundness GP_SetWidgetOutlineRoundness;
+
+    /// \brief   Get the text color of widgets that support it.
+    extern TGP_GetWidgetTextColor GP_GetWidgetTextColor;
 
     /// \brief   Get the fill color of widgets that support it.
     extern TGP_GetWidgetFillColor GP_GetWidgetFillColor;

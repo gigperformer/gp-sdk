@@ -27,10 +27,10 @@ GPMidiMessage::~GPMidiMessage()
 
 const uint8_t NoteOffEvent = 0x80;
 const uint8_t NoteOnEvent = 0x90;
-const uint8_t AftertouchEvent = 0xA0;
+const uint8_t AftertouchEvent = 0xD0;
 const uint8_t ControllerEvent = 0xB0;
 const uint8_t ProgramChangeEvent = 0xC0;
-const uint8_t PolytouchEvent = 0xD0;
+const uint8_t PolytouchEvent = 0xA0;
 const uint8_t PitchbendEvent = 0xE0;
 const uint8_t SysexStartByte = 0xF0;
 const uint8_t SysexEndByte = 0xF7;
@@ -126,13 +126,42 @@ GPMidiMessage GPMidiMessage::makeProgramChangeMessage(int pcValue, int channel)
 GPMidiMessage GPMidiMessage::makeAftertouchMessage(int pressure, int channel)
 {
     GPMidiMessage result;
-    uint8_t *bytes = result.createSpaceForMessage(3); // Three bytes
+    uint8_t *bytes = result.createSpaceForMessage(2); // Two bytes
     bytes[0] = AftertouchEvent | (channel & 0x0f);
     bytes[1] = pressure & 0x7f;
 
     return result;
 }
 
+GPMidiMessage GPMidiMessage::makeMidiMessage(uint8_t byte0)
+{
+    GPMidiMessage result;
+    uint8_t *bytes = result.createSpaceForMessage(1); // One byte
+    bytes[0] = byte0;
+
+    return result;
+}
+
+GPMidiMessage GPMidiMessage::makeMidiMessage(uint8_t byte0, uint8_t byte1)
+{
+    GPMidiMessage result;
+    uint8_t *bytes = result.createSpaceForMessage(2); // Two bytes
+    bytes[0] = byte0;
+    bytes[1] = byte1;
+
+    return result;
+}
+
+GPMidiMessage GPMidiMessage::makeMidiMessage(uint8_t byte0, uint8_t byte1, uint8_t byte2)
+{
+    GPMidiMessage result;
+    uint8_t *bytes = result.createSpaceForMessage(3); // Three bytes
+    bytes[0] = byte0;
+    bytes[1] = byte1;
+    bytes[2] = byte2;
+
+    return result;
+}
 GPMidiMessage::GPMidiMessage(const char *bytes, int length)
 {
     uint8_t *thisTarget = createSpaceForMessage(length);
