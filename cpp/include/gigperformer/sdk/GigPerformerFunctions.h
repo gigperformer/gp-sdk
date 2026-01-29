@@ -387,6 +387,19 @@ class GigPerformerFunctions
     ///          location to the library.
     std::string getPathToMe();
 
+    /*External state*/
+
+   void clearExtensionState(bool global); 
+   void storeStateAtName(const std::string & name, const std::string & state, bool global);
+   std::string recallStateAtName(const std::string & name, bool global);
+
+   void storeBinaryStateAtName(const std::string & name, const std::string & state, bool global);
+   std::string recallBinaryStateAtName(const std::string & name, bool global);
+
+   bool nameExists(const std::string & name, bool global);
+   void removeName(const std::string & name, bool global);
+   int  sizeofStateAtName(const std::string & name, bool global);
+
   private:
     LibraryHandle fHandle;
 };

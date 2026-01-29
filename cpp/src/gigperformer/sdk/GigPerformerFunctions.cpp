@@ -6,6 +6,8 @@
 #include "gigperformer/sdk/GPMidiMessages.h"
 #include "gigperformer/sdk/GigPerformerAPI.h"
 
+#define then
+
 namespace gigperformer
 {
 namespace sdk
@@ -702,6 +704,88 @@ void GigPerformerFunctions::next()
 {
     GP_Next(fHandle);
 }
+
+
+
+
+void GigPerformerFunctions::clearExtensionState(bool global)
+{
+   GP_ClearExtensionState(fHandle, global);
+}
+
+void GigPerformerFunctions::storeStateAtName(const std::string & name, const std::string & state, bool global)
+{
+   GP_StoreStateAtName(fHandle, name.c_str(), state.c_str(), global);
+}
+
+std::string GigPerformerFunctions::recallStateAtName(const std::string & name, bool global)
+{
+   const int bufferLength = 1024;
+   char returnBuffer[bufferLength] = {0};
+   std::string result;
+
+   int actualLength  = GP_RecallStateAtName(fHandle, name.c_str(), returnBuffer, bufferLength, global);
+   if (actualLength > bufferLength)
+      then 
+         {
+            char* buffer = new char[actualLength + 1]; 
+            GP_RecallStateAtName(fHandle, name.c_str(), buffer, actualLength + 1, global);
+            result = buffer;
+            delete[] buffer;
+         }
+      else result = returnBuffer;
+   return result;
+
+}
+
+
+void GigPerformerFunctions::storeBinaryStateAtName(const std::string & name, const std::string & state, bool global)
+{
+
+   GP_StoreBinaryStateAtName(fHandle, name.c_str(), (unsigned char*)state.data(), state.length(), global);
+}
+
+std::string GigPerformerFunctions::recallBinaryStateAtName(const std::string & name, bool global)
+{
+   const int bufferLength = 1024;
+   unsigned char returnBuffer[bufferLength] = {0};
+   std::string result;
+
+   int actualLength  = GP_RecallBinaryStateAtName(fHandle, name.c_str(), returnBuffer, bufferLength, global);
+   if (actualLength > bufferLength)
+      then 
+         {
+            unsigned char* buffer = new unsigned char[actualLength + 1]; 
+            GP_RecallBinaryStateAtName(fHandle, name.c_str(), buffer, actualLength + 1, global);
+            result.assign(reinterpret_cast<const char*>(buffer), actualLength);
+            delete[] buffer;
+         }
+      else result.assign(reinterpret_cast<const char*>(returnBuffer), actualLength);
+   return result;
+
+}
+
+
+
+
+bool GigPerformerFunctions::nameExists(const std::string & name, bool global)
+{
+   return GP_NameExists(fHandle, name.c_str(), global);
+}
+
+void GigPerformerFunctions::removeName(const std::string & name, bool global)
+{
+   GP_RemoveName(fHandle, name.c_str(), global);
+}
+
+int  GigPerformerFunctions::sizeofStateAtName(const std::string & name, bool global)
+{
+   return GP_SizeOfStateAtName(fHandle, name.c_str(), global);
+
+}
+
+
+
 
 } // namespace sdk
 } // namespace gigperformer

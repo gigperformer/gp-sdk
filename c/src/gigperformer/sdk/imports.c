@@ -142,6 +142,15 @@ extern "C"
     DeclareFunc(GP_RegisterCallback);
     DeclareFunc(GP_UnregisterCallback);
 
+    DeclareFunc(GP_ClearExtensionState);
+    DeclareFunc(GP_StoreStateAtName);
+    DeclareFunc(GP_RecallStateAtName);
+    DeclareFunc(GP_StoreBinaryStateAtName);
+    DeclareFunc(GP_RecallBinaryStateAtName);
+    DeclareFunc(GP_NameExists);
+    DeclareFunc(GP_RemoveName);
+    DeclareFunc(GP_SizeOfStateAtName);
+
     DeclareFunc(GP_VM_PopInteger);
     DeclareFunc(GP_VM_PushInteger);
     DeclareFunc(GP_VM_PopDouble);
@@ -297,6 +306,17 @@ extern "C"
         R(GP_Next);
 
         R(GP_ResetWidgetToDefault);
+
+        R(GP_ClearExtensionState);
+        R(GP_StoreStateAtName);
+        R(GP_RecallStateAtName);
+        R(GP_StoreBinaryStateAtName);
+        R(GP_RecallBinaryStateAtName);
+        R(GP_NameExists);
+        R(GP_RemoveName);
+        R(GP_SizeOfStateAtName);
+        R(GP_RegisterCallback);
+        R(GP_UnregisterCallback);
 
         R(GP_RegisterCallback);
         R(GP_UnregisterCallback);
