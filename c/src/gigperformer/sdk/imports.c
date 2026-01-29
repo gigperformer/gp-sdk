@@ -142,14 +142,15 @@ extern "C"
     DeclareFunc(GP_RegisterCallback);
     DeclareFunc(GP_UnregisterCallback);
 
-    DeclareFunc(GP_ClearExtensionState);
-    DeclareFunc(GP_StoreStateAtName);
-    DeclareFunc(GP_RecallStateAtName);
-    DeclareFunc(GP_StoreBinaryStateAtName);
-    DeclareFunc(GP_RecallBinaryStateAtName);
-    DeclareFunc(GP_NameExists);
-    DeclareFunc(GP_RemoveName);
-    DeclareFunc(GP_SizeOfStateAtName);
+    DeclareFunc(GP_ClearAllPersistentVariables);
+    DeclareFunc(GP_StorePersistentStringVariable);
+    DeclareFunc(GP_RecallPersistentStringVariable);
+    DeclareFunc(GP_StorePersistentBinaryVariable);
+    DeclareFunc(GP_RecallPersistentBinaryVariable);
+    DeclareFunc(GP_PersistentVariableExists);
+    DeclareFunc(GP_RemovePersistentVariable);
+    DeclareFunc(GP_GetPersistentVariableSize);
+
 
     DeclareFunc(GP_VM_PopInteger);
     DeclareFunc(GP_VM_PushInteger);
@@ -307,14 +308,15 @@ extern "C"
 
         R(GP_ResetWidgetToDefault);
 
-        R(GP_ClearExtensionState);
-        R(GP_StoreStateAtName);
-        R(GP_RecallStateAtName);
-        R(GP_StoreBinaryStateAtName);
-        R(GP_RecallBinaryStateAtName);
-        R(GP_NameExists);
-        R(GP_RemoveName);
-        R(GP_SizeOfStateAtName);
+        R(GP_ClearAllPersistentVariables);
+        R(GP_StorePersistentStringVariable);
+        R(GP_RecallPersistentStringVariable);
+        R(GP_StorePersistentBinaryVariable);
+        R(GP_RecallPersistentBinaryVariable);
+        R(GP_PersistentVariableExists);
+        R(GP_RemovePersistentVariable);
+        R(GP_GetPersistentVariableSize);
+
         R(GP_RegisterCallback);
         R(GP_UnregisterCallback);
 

@@ -154,14 +154,14 @@ extern "C"
     typedef bool (*TGP_ResetWidgetToDefault)(LibraryHandle h, const char *widgetName, double newDefault);
 
    /*Types for dealing with extension state*/
-    typedef void (*TGP_ClearExtensionState)(LibraryHandle h, bool global);
-    typedef void (*TGP_StoreStateAtName)(LibraryHandle h, const char* name, const char* state, bool global);
-    typedef int (*TGP_RecallStateAtName)(LibraryHandle h, const char* name, char* returnBuffer, int bufferLength, bool global);
-    typedef void (*TGP_StoreBinaryStateAtName)(LibraryHandle h, const char* name, const unsigned char* state, int stateLength, bool global);
-    typedef int (*TGP_RecallBinaryStateAtName)(LibraryHandle h, const char* name, unsigned char* returnBuffer, int bufferLength, bool global);
-    typedef bool (*TGP_NameExists)(LibraryHandle h, const char* name, bool global);
-    typedef void (*TGP_RemoveName)(LibraryHandle h, const char* name, bool global);
-    typedef int (*TGP_SizeOfStateAtName)(LibraryHandle h, const char* name, bool global);
+    typedef void (*TGP_ClearAllPersistentVariables)(LibraryHandle h, bool global);
+    typedef void (*TGP_StorePersistentStringVariable)(LibraryHandle h, const char* name, const char* state, bool global);
+    typedef int (*TGP_RecallPersistentStringVariable)(LibraryHandle h, const char* name, char* returnBuffer, int bufferLength, bool global);
+    typedef void (*TGP_StorePersistentBinaryVariable)(LibraryHandle h, const char* name, const unsigned char* state, int stateLength, bool global);
+    typedef int (*TGP_RecallPersistentBinaryVariable)(LibraryHandle h, const char* name, unsigned char* returnBuffer, int bufferLength, bool global);
+    typedef bool (*TGP_PersistentVariableExists)(LibraryHandle h, const char* name, bool global);
+    typedef void (*TGP_RemovePersistentVariable)(LibraryHandle h, const char* name, bool global);
+    typedef int (*TGP_GetPersistentVariableSize)(LibraryHandle h, const char* name, bool global);
 
     typedef bool (*TGP_RegisterCallback)(LibraryHandle h, const char *callbackName);
     typedef bool (*TGP_UnregisterCallback)(LibraryHandle h, const char *callbackName);
@@ -582,14 +582,14 @@ extern "C"
     extern TGP_GetPathToMe GP_GetPathToMe;
 
     /*External state*/
-    extern TGP_ClearExtensionState                   GP_ClearExtensionState;
-    extern TGP_StoreStateAtName                      GP_StoreStateAtName;
-    extern TGP_RecallStateAtName                     GP_RecallStateAtName;
-    extern TGP_StoreBinaryStateAtName                GP_StoreBinaryStateAtName;
-    extern TGP_RecallBinaryStateAtName               GP_RecallBinaryStateAtName;
-    extern TGP_NameExists                            GP_NameExists;
-    extern TGP_RemoveName                            GP_RemoveName;
-    extern TGP_SizeOfStateAtName                     GP_SizeOfStateAtName;
+    extern TGP_ClearAllPersistentVariables           GP_ClearAllPersistentVariables;
+    extern TGP_StorePersistentStringVariable         GP_StorePersistentStringVariable;
+    extern TGP_RecallPersistentStringVariable        GP_RecallPersistentStringVariable;
+    extern TGP_StorePersistentBinaryVariable         GP_StorePersistentBinaryVariable;
+    extern TGP_RecallPersistentBinaryVariable        GP_RecallPersistentBinaryVariable;
+    extern TGP_PersistentVariableExists              GP_PersistentVariableExists;
+    extern TGP_RemovePersistentVariable              GP_RemovePersistentVariable;
+    extern TGP_GetPersistentVariableSize             GP_GetPersistentVariableSize;
 
 #ifdef __cplusplus
 }
