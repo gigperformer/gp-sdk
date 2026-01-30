@@ -801,7 +801,7 @@ GigPerformerFunctions::PersistentVariable & GigPerformerFunctions::PersistentVar
 {
     if (fBinary)
        then fOwner->storePersistentBinaryVariable(fVariableName, value, fGlobal);
-       else fOwner->storePersistentBinaryVariable(fVariableName, value, fGlobal);
+       else fOwner->storePersistentStringVariable(fVariableName, value, fGlobal);
 
     return *this;   
 }
