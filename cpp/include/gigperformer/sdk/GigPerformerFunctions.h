@@ -389,7 +389,7 @@ class GigPerformerFunctions
 
     /*External state*/
 
-#pragma External state
+
    public:
       void clearAllPersistentVariables(bool global); 
       void storePersistentStringVariable(const std::string & name, const std::string & state, bool global);
