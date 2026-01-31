@@ -782,8 +782,6 @@ int  GigPerformerFunctions::getPersistentVariableSize(const std::string & name, 
 }
 
 
-#pragma mark Persistent Variables 
-
 GigPerformerFunctions::PersistentVariable::PersistentVariable(GigPerformerFunctions* owner, std::string variableName, bool binary, bool global) :
                                                               fOwner(owner),
                                                               fVariableName(variableName),
