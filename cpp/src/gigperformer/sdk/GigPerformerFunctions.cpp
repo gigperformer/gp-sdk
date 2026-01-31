@@ -705,6 +705,10 @@ void GigPerformerFunctions::next()
     GP_Next(fHandle);
 }
 
+void GigPerformerFunctions::displayTemporaryMessage(const std::string & message, int argbBackgroundColor, bool displayImmediately)
+{
+    GP_DisplayTemporaryMessage(fHandle, message.c_str(), argbBackgroundColor, displayImmediately);
+}
 
 
 

@@ -18,7 +18,8 @@ extern "C"
     /// \name    Function type definitions
 
     typedef int (*TGP_GetPathToMe)(LibraryHandle h, char *returnBuffer, int bufferLength);
-
+    
+    typedef void (*TGP_DisplayTemporaryMessage)(LibraryHandle h, const char* message, int argbColor, bool displayImmediately);
     typedef int (*TGP_GetPluginList)(LibraryHandle h, char *returnBuffer, int bufferLength, bool useGlobalRackspace);
     typedef bool (*TGP_PluginExists)(LibraryHandle h, const char *pluginHandle, bool useGlobalRackspace);
     typedef void (*TGP_SetPluginParameter)(LibraryHandle h, const char *pluginHandle, int parameterIndex, double value,

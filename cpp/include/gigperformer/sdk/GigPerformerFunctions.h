@@ -386,7 +386,9 @@ class GigPerformerFunctions
     /// \details This is useful when you need to access other resource files installed in the same or a relative
     ///          location to the library.
     std::string getPathToMe();
+    void displayTemporaryMessage(const std::string & message, int argbBackgroundColor, bool displayImmediately);
 
+    
     /*External state*/
 
 

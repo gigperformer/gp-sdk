@@ -27,6 +27,7 @@ extern "C"
 #endif
 
     DeclareFunc(GP_GetPathToMe);
+    DeclareFunc(GP_DisplayTemporaryMessage);
 
     DeclareFunc(GP_SwitchToSetlistView);
     DeclareFunc(GP_SwitchToWiringView);
@@ -195,6 +196,7 @@ extern "C"
 #define R(name) name = (T##name)RequestAddress(handle, #name)
 
         R(GP_GetPathToMe);
+        R(GP_DisplayTemporaryMessage);
 
         R(GP_SwitchToSetlistView);
         R(GP_SwitchToWiringView);
