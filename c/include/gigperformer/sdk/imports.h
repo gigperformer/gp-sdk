@@ -582,6 +582,8 @@ extern "C"
     ///          to the library.
     extern TGP_GetPathToMe GP_GetPathToMe;
 
+    extern TGP_DisplayTemporaryMessage               GP_DisplayTemporaryMessage;
+
     /*External state*/
     extern TGP_ClearAllPersistentVariables           GP_ClearAllPersistentVariables;
     extern TGP_StorePersistentStringVariable         GP_StorePersistentStringVariable;
