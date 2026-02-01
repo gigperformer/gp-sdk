@@ -135,7 +135,9 @@ bool GigPerformerFunctions::loadGPPreset(const std::string &pluginHandle, const 
 {
     bool ok = false;
     if (GP_LoadGPPreset != nullptr)
+    {
        ok = GP_LoadGPPreset(fHandle, pluginHandle.c_str(), presetName.c_str(), useGlobalRackspace);
+    }
     return ok;
 }
 
@@ -724,7 +726,7 @@ std::string GigPerformerFunctions::recallPersistentStringVariable(const std::str
     char returnBuffer[bufferLength] = {0};
     std::string result;
 
-    int actualLength  = GP_RecallPersistentStringVariable(fHandle, name.c_str(), returnBuffer, bufferLength, global);
+    int actualLength = GP_RecallPersistentStringVariable(fHandle, name.c_str(), returnBuffer, bufferLength, global);
     if (actualLength > bufferLength)
     {
         char *buffer = new char[actualLength + 1]; 
@@ -792,7 +794,7 @@ GigPerformerFunctions::PersistentVariable::~PersistentVariable()
 {    
 }
 
-GigPerformerFunctions::PersistentVariable & GigPerformerFunctions::PersistentVariable::operator=(const std::string &value)
+GigPerformerFunctions::PersistentVariable &GigPerformerFunctions::PersistentVariable::operator=(const std::string &value)
 {
     if (fBinary)
     {

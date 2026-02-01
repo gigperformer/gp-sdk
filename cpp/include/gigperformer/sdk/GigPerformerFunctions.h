@@ -395,12 +395,12 @@ class GigPerformerFunctions
 
     /// \brief   Clear all persistent variables in the current gig file or globally.
     void clearAllPersistentVariables(bool global);
-    
-    /// \brief   Store a persistent variable as a string with the given name 
+
+    /// \brief   Store a persistent variable as a string with the given name
     ///          in the current gig file or stored globally.
     void storePersistentStringVariable(const std::string &name, const std::string &state, bool global);
 
-    /// \brief   Recall a persistent variable that had been stored as a string with the given name 
+    /// \brief   Recall a persistent variable that had been stored as a string with the given name
     ///          in the current gig file or globally.
     std::string recallPersistentStringVariable(const std::string &name, bool global);
 
@@ -422,7 +422,7 @@ class GigPerformerFunctions
 
     /// \brief   Get the size of the persistent variable with the given name
     ///          in the current gig file or globally.
-    int  getPersistentVariableSize(const std::string &name, bool global);
+    int getPersistentVariableSize(const std::string &name, bool global);
 
   friend class PersistentVariable;
   class PersistentVariable
@@ -432,7 +432,7 @@ class GigPerformerFunctions
         ~PersistentVariable();
 
         // Assign a value to the persistent variable
-        PersistentVariable &operator = (const std::string &value);
+        PersistentVariable &operator=(const std::string &value);
         // Access a persistent variable value
         operator std::string() const;
         // Size of the value of this variable
@@ -441,16 +441,14 @@ class GigPerformerFunctions
         bool exists();
         // Remove a variable from persistent state
         void remove();
-
-      public:    
         // Clear all saved persistent variables
         static void clearAll(GigPerformerFunctions *owner, bool global = false);
-        
+
       private:
         GigPerformerFunctions *fOwner;
-        std::string fVariableName;  
-        bool fBinary { false };
-        bool fGlobal { false };  
+        std::string fVariableName;
+        bool fBinary{false};
+        bool fGlobal{false};
   };
 
   private:
