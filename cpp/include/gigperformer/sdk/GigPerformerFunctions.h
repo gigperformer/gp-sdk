@@ -427,8 +427,9 @@ class GigPerformerFunctions
     friend class PersistentVariable;
     class PersistentVariable
     {
-      public: 
-        explicit PersistentVariable(GigPerformerFunctions *owner, std::string variableName, bool binary = false, bool global = false);
+      public:
+        explicit PersistentVariable(GigPerformerFunctions *owner, std::string variableName,
+                                    bool binary = false, bool global = false);
         ~PersistentVariable();
 
         // Assign a value to the persistent variable

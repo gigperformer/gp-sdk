@@ -165,7 +165,7 @@ extern "C"
     typedef void (*TGP_StorePersistentBinaryVariable)(LibraryHandle h, const char *name,
                                                       const unsigned char *state, int stateLength, bool global);
     typedef int (*TGP_RecallPersistentBinaryVariable)(LibraryHandle h, const char *name,
-                                                      unsigned char *returnBuffer,int bufferLength, bool global);
+                                                      unsigned char *returnBuffer, int bufferLength, bool global);
     typedef bool (*TGP_PersistentVariableExists)(LibraryHandle h, const char *name, bool global);
     typedef void (*TGP_RemovePersistentVariable)(LibraryHandle h, const char *name, bool global);
     typedef int (*TGP_GetPersistentVariableSize)(LibraryHandle h, const char *name, bool global);
