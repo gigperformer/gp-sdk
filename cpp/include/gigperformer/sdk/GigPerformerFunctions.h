@@ -387,6 +387,56 @@ class GigPerformerFunctions
     ///          location to the library.
     std::string getPathToMe();
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// \name    Working with external state
+  #pragma External state
+  public:
+    void clearAllPersistentVariables(bool global); 
+    void storePersistentStringVariable(const std::string & name, const std::string & state, bool global);
+    std::string recallPersistentStringVariable(const std::string & name, bool global);
+
+    void storePersistentBinaryVariable(const std::string & name, const std::string & state, bool global);
+    std::string recallPersistentBinaryVariable(const std::string & name, bool global);
+
+    bool persistentVariableExists(const std::string & name, bool global);
+    void removePersistentVariable(const std::string & name, bool global);
+    int  getPersistentVariableSize(const std::string & name, bool global);
+
+  friend class PersistentVariable;
+  public:
+    class PersistentVariable
+    {
+        public: 
+          explicit PersistentVariable(GigPerformerFunctions* owner, std::string variableName, bool binary = false, bool global = false);
+          ~PersistentVariable();
+
+          /**Assign a value to the persistent variable */ 
+          PersistentVariable & operator = (const std::string & value);
+          /**Access a persistent variable value */
+          operator std::string() const;
+          /**Size of the value of this variable */
+          int size();
+          /**Return whether a particular variable is defined */
+          bool exists();
+          /**Remove a variable from persistent state */
+          void remove();
+
+        public:    
+          /**Clear all saved persistent variables */
+          static void clearAll(GigPerformerFunctions* owner, bool global = false);
+          
+        private:
+          std::string fVariableName;  
+          bool fGlobal { false };  
+          bool fBinary { false };
+          GigPerformerFunctions * fOwner;
+    };
+
+  #pragma Configuration   
+
+   bool registerCallback(const std::string & callbackName);   
+   bool unregisterCallback(const std::string & callbackName);
+
   private:
     LibraryHandle fHandle;
 };

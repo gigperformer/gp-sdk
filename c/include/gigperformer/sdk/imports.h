@@ -155,6 +155,15 @@ extern "C"
     typedef bool (*TGP_RegisterCallback)(LibraryHandle h, const char *callbackName);
     typedef bool (*TGP_UnregisterCallback)(LibraryHandle h, const char *callbackName);
 
+    typedef void (*TGP_ClearAllPersistentVariables)(LibraryHandle h, bool global);
+    typedef void (*TGP_StorePersistentStringVariable)(LibraryHandle h, const char *name, const char *state, bool global);
+    typedef int (*TGP_RecallPersistentStringVariable)(LibraryHandle h, const char *name, char *returnBuffer, int bufferLength, bool global);
+    typedef void (*TGP_StorePersistentBinaryVariable)(LibraryHandle h, const char *name, const unsigned char *state, int stateLength, bool global);
+    typedef int (*TGP_RecallPersistentBinaryVariable)(LibraryHandle h, const char *name, unsigned char *returnBuffer, int bufferLength, bool global);
+    typedef bool (*TGP_PersistentVariableExists)(LibraryHandle h, const char *name, bool global);
+    typedef void (*TGP_RemovePersistentVariable)(LibraryHandle h, const char *name, bool global);
+    typedef int (*TGP_GetPersistentVariableSize)(LibraryHandle h, const char *name, bool global);
+
     typedef int (*TGP_VM_PopInteger)(GPRuntimeEngine *vm);
     typedef void (*TGP_VM_PushInteger)(GPRuntimeEngine *vm, int value);
     typedef double (*TGP_VM_PopDouble)(GPRuntimeEngine *vm);
@@ -531,6 +540,33 @@ extern "C"
     /// \brief   Look for a gigfile in a special folder (TBD) that has the prefix indexNumber and try to load it.
     /// \warning Not yet implemented.
     extern TGP_LoadGigByIndex GP_LoadGigByIndex;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// \name    Working with external state
+
+    /// \brief   Clear all persistent variables
+    extern TGP_ClearAllPersistentVariables GP_ClearAllPersistentVariables;
+
+    /// \brief   Store a persistent variable as a string with the given name
+    extern TGP_StorePersistentStringVariable GP_StorePersistentStringVariable;
+
+    /// \brief   Recall a persistent variable that had been stored as a string with the given name
+    extern TGP_RecallPersistentStringVariable GP_RecallPersistentStringVariable;
+
+    /// \brief   Store a persistent variable as a binary object with the given name
+    extern TGP_StorePersistentBinaryVariable GP_StorePersistentBinaryVariable;
+
+    /// \brief   Recall a persistent variable that had been stored as a binary object with the given name
+    extern TGP_RecallPersistentBinaryVariable GP_RecallPersistentBinaryVariable;
+
+    /// \brief   Check whether a persistent variable with the given name exists
+    extern TGP_PersistentVariableExists GP_PersistentVariableExists;
+
+    /// \brief   Remove the persistent variable with the given name
+    extern TGP_RemovePersistentVariable GP_RemovePersistentVariable;
+
+    /// \brief  Get the size of the persistent variable with the given name
+    extern TGP_GetPersistentVariableSize GP_GetPersistentVariableSize;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Miscellaneous
