@@ -18,6 +18,7 @@ extern "C"
     /// \name    Function type definitions
 
     typedef int (*TGP_GetPathToMe)(LibraryHandle h, char *returnBuffer, int bufferLength);
+    typedef void (*TGP_DisplayTemporaryMessage)(LibraryHandle h, const char *message, int argbColor, bool displayImmediately);
 
     typedef int (*TGP_GetPluginList)(LibraryHandle h, char *returnBuffer, int bufferLength, bool useGlobalRackspace);
     typedef bool (*TGP_PluginExists)(LibraryHandle h, const char *pluginHandle, bool useGlobalRackspace);
@@ -335,7 +336,7 @@ extern "C"
     /// \brief   Query GP to see if you are listening for widget changes.
     extern TGP_ListeningForWidget GP_ListeningForWidget;
 
-        /// \brief   Set the text color of widgets that support it.
+    /// \brief   Set the text color of widgets that support it.
     extern TGP_SetWidgetTextColor GP_SetWidgetTextColor;
 
     /// \brief   Set the fill color of widgets that support it.
@@ -542,7 +543,7 @@ extern "C"
     extern TGP_LoadGigByIndex GP_LoadGigByIndex;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// \name    Working with external state
+    /// \name    Working with persistent variables
 
     /// \brief   Clear all persistent variables
     extern TGP_ClearAllPersistentVariables GP_ClearAllPersistentVariables;
@@ -605,6 +606,9 @@ extern "C"
     /// \details It is useful when you need to access other resource files installed in the same or a relative location
     ///          to the library.
     extern TGP_GetPathToMe GP_GetPathToMe;
+
+    /// \brief   Displays a temporary message at the top of the Gig Performer window.
+    extern TGP_DisplayTemporaryMessage GP_DisplayTemporaryMessage;
 
 #ifdef __cplusplus
 }

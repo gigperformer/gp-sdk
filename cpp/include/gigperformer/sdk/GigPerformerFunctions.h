@@ -379,7 +379,7 @@ class GigPerformerFunctions
     void scriptLog(const char *message, bool openLogWindow);
     void scriptLog(const std::string &message, bool openLogWindow);
 
-    /// \brief   Returns the GP instance name
+    /// \brief   Returns the GP instance name.
     std::string getInstanceName();
 
     /// \brief   Returns the folder path where your library is installed.
@@ -387,47 +387,70 @@ class GigPerformerFunctions
     ///          location to the library.
     std::string getPathToMe();
 
+    /// \brief   Displays a temporary message at the top of the Gig Performer window.
+    void displayTemporaryMessage(const std::string &message, int argbBackgroundColor, bool displayImmediately);
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// \name    Working with external state
+    /// \name    Working with persistent variables
 
-    void clearAllPersistentVariables(bool global); 
-    void storePersistentStringVariable(const std::string & name, const std::string & state, bool global);
-    std::string recallPersistentStringVariable(const std::string & name, bool global);
+    /// \brief   Clear all persistent variables in the current gig file or globally.
+    void clearAllPersistentVariables(bool global);
+    
+    /// \brief   Store a persistent variable as a string with the given name 
+    ///          in the current gig file or stored globally.
+    void storePersistentStringVariable(const std::string &name, const std::string &state, bool global);
 
-    void storePersistentBinaryVariable(const std::string & name, const std::string & state, bool global);
-    std::string recallPersistentBinaryVariable(const std::string & name, bool global);
+    /// \brief   Recall a persistent variable that had been stored as a string with the given name 
+    ///          in the current gig file or globally.
+    std::string recallPersistentStringVariable(const std::string &name, bool global);
 
-    bool persistentVariableExists(const std::string & name, bool global);
-    void removePersistentVariable(const std::string & name, bool global);
-    int  getPersistentVariableSize(const std::string & name, bool global);
+    /// \brief   Store a persistent variable as a binary object with the given name
+    ///          in the current gig file or globally.
+    void storePersistentBinaryVariable(const std::string &name, const std::string &state, bool global);
+
+    /// \brief   Recall a persistent variable that had been stored as a binary object with the given name
+    ///          in the current gig file or globally.
+    std::string recallPersistentBinaryVariable(const std::string &name, bool global);
+
+    /// \brief   Check whether a persistent variable with the given name exists
+    ///          in the current gig file or globally.
+    bool persistentVariableExists(const std::string &name, bool global);
+
+    /// \brief   Remove the persistent variable with the given name
+    ///          in the current gig file or globally.
+    void removePersistentVariable(const std::string &name, bool global);
+
+    /// \brief   Get the size of the persistent variable with the given name
+    ///          in the current gig file or globally.
+    int  getPersistentVariableSize(const std::string &name, bool global);
 
   friend class PersistentVariable;
   class PersistentVariable
   {
       public: 
-        explicit PersistentVariable(GigPerformerFunctions* owner, std::string variableName, bool binary = false, bool global = false);
+        explicit PersistentVariable(GigPerformerFunctions *owner, std::string variableName, bool binary = false, bool global = false);
         ~PersistentVariable();
 
-        /**Assign a value to the persistent variable */ 
-        PersistentVariable & operator = (const std::string & value);
-        /**Access a persistent variable value */
+        // Assign a value to the persistent variable
+        PersistentVariable &operator = (const std::string &value);
+        // Access a persistent variable value
         operator std::string() const;
-        /**Size of the value of this variable */
+        // Size of the value of this variable
         int size();
-        /**Return whether a particular variable is defined */
+        // Return whether a particular variable is defined
         bool exists();
-        /**Remove a variable from persistent state */
+        // Remove a variable from persistent state
         void remove();
 
       public:    
-        /**Clear all saved persistent variables */
-        static void clearAll(GigPerformerFunctions* owner, bool global = false);
+        // Clear all saved persistent variables
+        static void clearAll(GigPerformerFunctions *owner, bool global = false);
         
       private:
-        GigPerformerFunctions * fOwner;
+        GigPerformerFunctions *fOwner;
         std::string fVariableName;  
-        bool fGlobal { false };  
         bool fBinary { false };
+        bool fGlobal { false };  
   };
 
   private:

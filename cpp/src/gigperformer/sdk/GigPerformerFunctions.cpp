@@ -220,6 +220,11 @@ std::string GigPerformerFunctions::getPathToMe()
     return result;
 }
 
+void GigPerformerFunctions::displayTemporaryMessage(const std::string &message, int argbBackgroundColor, bool displayImmediately)
+{
+    GP_DisplayTemporaryMessage(fHandle, message.c_str(), argbBackgroundColor, displayImmediately);
+}
+
 std::string GigPerformerFunctions::getWidgetCaption(const std::string &widgetName)
 {
     const int bufferLength = 1024;
@@ -708,12 +713,12 @@ void GigPerformerFunctions::clearAllPersistentVariables(bool global)
     GP_ClearAllPersistentVariables(fHandle, global);
 }
 
-void GigPerformerFunctions::storePersistentStringVariable(const std::string & name, const std::string & state, bool global)
+void GigPerformerFunctions::storePersistentStringVariable(const std::string &name, const std::string &state, bool global)
 {
     GP_StorePersistentStringVariable(fHandle, name.c_str(), state.c_str(), global);
 }
 
-std::string GigPerformerFunctions::recallPersistentStringVariable(const std::string & name, bool global)
+std::string GigPerformerFunctions::recallPersistentStringVariable(const std::string &name, bool global)
 {
     const int bufferLength = 1024;
     char returnBuffer[bufferLength] = {0};
@@ -722,7 +727,7 @@ std::string GigPerformerFunctions::recallPersistentStringVariable(const std::str
     int actualLength  = GP_RecallPersistentStringVariable(fHandle, name.c_str(), returnBuffer, bufferLength, global);
     if (actualLength > bufferLength)
     {
-        char* buffer = new char[actualLength + 1]; 
+        char *buffer = new char[actualLength + 1]; 
         GP_RecallPersistentStringVariable(fHandle, name.c_str(), buffer, actualLength + 1, global);
         result = buffer;
         delete[] buffer;
@@ -734,12 +739,12 @@ std::string GigPerformerFunctions::recallPersistentStringVariable(const std::str
     return result;
 }
 
-void GigPerformerFunctions::storePersistentBinaryVariable(const std::string & name, const std::string & state, bool global)
+void GigPerformerFunctions::storePersistentBinaryVariable(const std::string &name, const std::string &state, bool global)
 {
-    GP_StorePersistentBinaryVariable(fHandle, name.c_str(), (unsigned char*)state.data(), state.length(), global);
+    GP_StorePersistentBinaryVariable(fHandle, name.c_str(), (unsigned char *)state.data(), state.length(), global);
 }
 
-std::string GigPerformerFunctions::recallPersistentBinaryVariable(const std::string & name, bool global)
+std::string GigPerformerFunctions::recallPersistentBinaryVariable(const std::string &name, bool global)
 {
     const int bufferLength = 1024;
     unsigned char returnBuffer[bufferLength] = {0};
@@ -748,36 +753,34 @@ std::string GigPerformerFunctions::recallPersistentBinaryVariable(const std::str
     int actualLength  = GP_RecallPersistentBinaryVariable(fHandle, name.c_str(), returnBuffer, bufferLength, global);
     if (actualLength > bufferLength)
     {
-        unsigned char* buffer = new unsigned char[actualLength]; 
+        unsigned char *buffer = new unsigned char[actualLength]; 
         GP_RecallPersistentBinaryVariable(fHandle, name.c_str(), buffer, actualLength, global);
-        result.assign(reinterpret_cast<const char*>(buffer), actualLength);
+        result.assign(reinterpret_cast<const char *>(buffer), actualLength);
         delete[] buffer;
     }
     else
     {
-        result.assign(reinterpret_cast<const char*>(returnBuffer), actualLength);
+        result.assign(reinterpret_cast<const char *>(returnBuffer), actualLength);
     } 
     return result;
 }
 
-bool GigPerformerFunctions::persistentVariableExists(const std::string & name, bool global)
+bool GigPerformerFunctions::persistentVariableExists(const std::string &name, bool global)
 {
     return GP_PersistentVariableExists(fHandle, name.c_str(), global);
 }
 
-void GigPerformerFunctions::removePersistentVariable(const std::string & name, bool global)
+void GigPerformerFunctions::removePersistentVariable(const std::string &name, bool global)
 {
     GP_RemovePersistentVariable(fHandle, name.c_str(), global);
 }
 
-int  GigPerformerFunctions::getPersistentVariableSize(const std::string & name, bool global)
+int  GigPerformerFunctions::getPersistentVariableSize(const std::string &name, bool global)
 {
     return GP_GetPersistentVariableSize(fHandle, name.c_str(), global);
 }
 
-#pragma mark Persistent Variables 
-
-GigPerformerFunctions::PersistentVariable::PersistentVariable(GigPerformerFunctions* owner, std::string variableName, bool binary, bool global) :
+GigPerformerFunctions::PersistentVariable::PersistentVariable(GigPerformerFunctions *owner, std::string variableName, bool binary, bool global) :
                                                               fOwner(owner),
                                                               fVariableName(variableName),
                                                               fBinary(binary),
@@ -789,7 +792,7 @@ GigPerformerFunctions::PersistentVariable::~PersistentVariable()
 {    
 }
 
-GigPerformerFunctions::PersistentVariable & GigPerformerFunctions::PersistentVariable::operator=(const std::string & value)
+GigPerformerFunctions::PersistentVariable & GigPerformerFunctions::PersistentVariable::operator=(const std::string &value)
 {
     if (fBinary)
     {
@@ -822,7 +825,7 @@ int GigPerformerFunctions::PersistentVariable::size()
     return result;
 }
 
-void GigPerformerFunctions::PersistentVariable::clearAll(GigPerformerFunctions* owner, bool global)
+void GigPerformerFunctions::PersistentVariable::clearAll(GigPerformerFunctions *owner, bool global)
 {
     owner->clearAllPersistentVariables(global);
 }
