@@ -18,7 +18,8 @@ extern "C"
     /// \name    Function type definitions
 
     typedef int (*TGP_GetPathToMe)(LibraryHandle h, char *returnBuffer, int bufferLength);
-    typedef void (*TGP_DisplayTemporaryMessage)(LibraryHandle h, const char *message, int argbColor, bool displayImmediately);
+    typedef void (*TGP_DisplayTemporaryMessage)(LibraryHandle h, const char *message, int argbBackgroundColor,
+                                                bool displayImmediately);
 
     typedef int (*TGP_GetPluginList)(LibraryHandle h, char *returnBuffer, int bufferLength, bool useGlobalRackspace);
     typedef bool (*TGP_PluginExists)(LibraryHandle h, const char *pluginHandle, bool useGlobalRackspace);
@@ -35,7 +36,7 @@ extern "C"
                                         bool useGlobalRackspace);
     typedef int (*TGP_GetPluginName)(LibraryHandle h, const char *pluginHandle, char *returnBuffer, int bufferLength,
                                      bool useGlobalRackspace);
-    typedef bool (*TGP_LoadGPPreset)(LibraryHandle h, const char* pluginHandle, const char* presetName,
+    typedef bool (*TGP_LoadGPPreset)(LibraryHandle h, const char *pluginHandle, const char *presetName,
                                      bool useGlobalRackspace);
     typedef void (*TGP_MapWidgetToPluginParameter)(LibraryHandle h, const char *widgetName, const char *pluginHandle,
                                                    int parameterNumber, bool useGlobalRackspace);
@@ -157,10 +158,14 @@ extern "C"
     typedef bool (*TGP_UnregisterCallback)(LibraryHandle h, const char *callbackName);
 
     typedef void (*TGP_ClearAllPersistentVariables)(LibraryHandle h, bool global);
-    typedef void (*TGP_StorePersistentStringVariable)(LibraryHandle h, const char *name, const char *state, bool global);
-    typedef int (*TGP_RecallPersistentStringVariable)(LibraryHandle h, const char *name, char *returnBuffer, int bufferLength, bool global);
-    typedef void (*TGP_StorePersistentBinaryVariable)(LibraryHandle h, const char *name, const unsigned char *state, int stateLength, bool global);
-    typedef int (*TGP_RecallPersistentBinaryVariable)(LibraryHandle h, const char *name, unsigned char *returnBuffer, int bufferLength, bool global);
+    typedef void (*TGP_StorePersistentStringVariable)(LibraryHandle h, const char *name, const char *state,
+                                                      bool global);
+    typedef int (*TGP_RecallPersistentStringVariable)(LibraryHandle h, const char *name, char *returnBuffer,
+                                                      int bufferLength, bool global);
+    typedef void (*TGP_StorePersistentBinaryVariable)(LibraryHandle h, const char *name,
+                                                      const unsigned char *state, int stateLength, bool global);
+    typedef int (*TGP_RecallPersistentBinaryVariable)(LibraryHandle h, const char *name,
+                                                      unsigned char *returnBuffer,int bufferLength, bool global);
     typedef bool (*TGP_PersistentVariableExists)(LibraryHandle h, const char *name, bool global);
     typedef void (*TGP_RemovePersistentVariable)(LibraryHandle h, const char *name, bool global);
     typedef int (*TGP_GetPersistentVariableSize)(LibraryHandle h, const char *name, bool global);

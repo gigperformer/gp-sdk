@@ -424,9 +424,9 @@ class GigPerformerFunctions
     ///          in the current gig file or globally.
     int getPersistentVariableSize(const std::string &name, bool global);
 
-  friend class PersistentVariable;
-  class PersistentVariable
-  {
+    friend class PersistentVariable;
+    class PersistentVariable
+    {
       public: 
         explicit PersistentVariable(GigPerformerFunctions *owner, std::string variableName, bool binary = false, bool global = false);
         ~PersistentVariable();
@@ -449,7 +449,7 @@ class GigPerformerFunctions
         std::string fVariableName;
         bool fBinary{false};
         bool fGlobal{false};
-  };
+    };
 
   private:
     LibraryHandle fHandle;
