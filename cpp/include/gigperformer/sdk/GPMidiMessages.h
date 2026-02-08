@@ -72,7 +72,7 @@ class GPMidiMessage
     void setValue(int offset, uint16_t value);
 
     // Prevent any other type conversions
-    template <class T> void setValue(int offset, T value) = delete;
+    template <class T>void setValue(int offset, T value) = delete;
 
   private:
     union MidiData {
