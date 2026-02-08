@@ -158,6 +158,7 @@ extern "C"
     typedef bool (*TGP_UnregisterCallback)(LibraryHandle h, const char *callbackName);
 
     typedef void (*TGP_ClearAllPersistentVariables)(LibraryHandle h, bool global);
+    typedef void (*TGP_SaveAllGlobalPersistentVariables)(LibraryHandle h);
     typedef void (*TGP_StorePersistentStringVariable)(LibraryHandle h, const char *name, const char *state,
                                                       bool global);
     typedef int (*TGP_RecallPersistentStringVariable)(LibraryHandle h, const char *name, char *returnBuffer,
@@ -552,6 +553,9 @@ extern "C"
 
     /// \brief   Clear all persistent variables
     extern TGP_ClearAllPersistentVariables GP_ClearAllPersistentVariables;
+
+    /// \brief   Save all global persistent variables (independent of the gig file save)
+    extern TGP_SaveAllGlobalPersistentVariables GP_SaveAllGlobalPersistentVariables;
 
     /// \brief   Store a persistent variable as a string with the given name
     extern TGP_StorePersistentStringVariable GP_StorePersistentStringVariable;

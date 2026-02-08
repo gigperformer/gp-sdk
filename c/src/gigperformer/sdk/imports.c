@@ -144,6 +144,7 @@ extern "C"
     DeclareFunc(GP_UnregisterCallback);
 
     DeclareFunc(GP_ClearAllPersistentVariables);
+    DeclareFunc(GP_SaveAllGlobalPersistentVariables);
     DeclareFunc(GP_StorePersistentStringVariable);
     DeclareFunc(GP_RecallPersistentStringVariable);
     DeclareFunc(GP_StorePersistentBinaryVariable);
@@ -313,6 +314,7 @@ extern "C"
         R(GP_UnregisterCallback);
 
         R(GP_ClearAllPersistentVariables);
+        R(GP_SaveAllGlobalPersistentVariables);
         R(GP_StorePersistentStringVariable);
         R(GP_RecallPersistentStringVariable);
         R(GP_StorePersistentBinaryVariable);

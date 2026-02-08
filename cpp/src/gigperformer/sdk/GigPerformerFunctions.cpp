@@ -717,6 +717,11 @@ void GigPerformerFunctions::clearAllPersistentVariables(bool global)
     GP_ClearAllPersistentVariables(fHandle, global);
 }
 
+void GigPerformerFunctions::saveAllGlobalPersistentVariables()
+{
+    GP_SaveAllGlobalPersistentVariables(fHandle);
+}
+
 void GigPerformerFunctions::storePersistentStringVariable(const std::string &name, const std::string &state,
                                                           bool global)
 {
@@ -836,6 +841,11 @@ int GigPerformerFunctions::PersistentVariable::size()
 void GigPerformerFunctions::PersistentVariable::clearAll(GigPerformerFunctions *owner, bool global)
 {
     owner->clearAllPersistentVariables(global);
+}
+
+void GigPerformerFunctions::PersistentVariable::saveAllGlobals(GigPerformerFunctions *owner)
+{
+    owner->saveAllGlobalPersistentVariables();
 }
 
 bool GigPerformerFunctions::PersistentVariable::exists()

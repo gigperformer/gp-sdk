@@ -396,6 +396,9 @@ class GigPerformerFunctions
     /// \brief   Clear all persistent variables in the current gig file or globally.
     void clearAllPersistentVariables(bool global);
 
+    /// \brief   Save all global persistent variables independently of the gig file save.
+    void saveAllGlobalPersistentVariables();
+
     /// \brief   Store a persistent variable as a string with the given name
     ///          in the current gig file or stored globally.
     void storePersistentStringVariable(const std::string &name, const std::string &state, bool global);
@@ -444,6 +447,8 @@ class GigPerformerFunctions
         void remove();
         // Clear all saved persistent variables
         static void clearAll(GigPerformerFunctions *owner, bool global = false);
+        // Save all global persistent variablles
+        static void saveAllGlobals(GigPerformerFunctions *owner);
 
       private:
         GigPerformerFunctions *fOwner;
