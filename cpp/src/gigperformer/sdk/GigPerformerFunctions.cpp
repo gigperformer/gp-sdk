@@ -791,7 +791,8 @@ int GigPerformerFunctions::getPersistentVariableSize(const std::string &name, bo
     return GP_GetPersistentVariableSize(fHandle, name.c_str(), global);
 }
 
-GigPerformerFunctions::PersistentVariable::PersistentVariable(GigPerformerFunctions *owner, std::string variableName, bool binary, bool global) : fOwner(owner),
+GigPerformerFunctions::PersistentVariable::PersistentVariable(GigPerformerFunctions *owner, std::string variableName, bool binary, bool global) :
+                                                              fOwner(owner),
                                                               fVariableName(variableName),
                                                               fBinary(binary),
                                                               fGlobal(global)
