@@ -18,6 +18,8 @@ extern "C"
     /// \name    Function type definitions
 
     typedef int (*TGP_GetPathToMe)(LibraryHandle h, char *returnBuffer, int bufferLength);
+    typedef void (*TGP_DisplayTemporaryMessage)(LibraryHandle h, const char *message, int argbBackgroundColor,
+                                                bool displayImmediately);
 
     typedef int (*TGP_GetPluginList)(LibraryHandle h, char *returnBuffer, int bufferLength, bool useGlobalRackspace);
     typedef bool (*TGP_PluginExists)(LibraryHandle h, const char *pluginHandle, bool useGlobalRackspace);
@@ -34,7 +36,7 @@ extern "C"
                                         bool useGlobalRackspace);
     typedef int (*TGP_GetPluginName)(LibraryHandle h, const char *pluginHandle, char *returnBuffer, int bufferLength,
                                      bool useGlobalRackspace);
-    typedef bool (*TGP_LoadGPPreset)(LibraryHandle h, const char* pluginHandle, const char* presetName,
+    typedef bool (*TGP_LoadGPPreset)(LibraryHandle h, const char *pluginHandle, const char *presetName,
                                      bool useGlobalRackspace);
     typedef void (*TGP_MapWidgetToPluginParameter)(LibraryHandle h, const char *widgetName, const char *pluginHandle,
                                                    int parameterNumber, bool useGlobalRackspace);
@@ -154,6 +156,20 @@ extern "C"
     typedef bool (*TGP_ResetWidgetToDefault)(LibraryHandle h, const char *widgetName, double newDefault);
     typedef bool (*TGP_RegisterCallback)(LibraryHandle h, const char *callbackName);
     typedef bool (*TGP_UnregisterCallback)(LibraryHandle h, const char *callbackName);
+
+    typedef void (*TGP_ClearAllPersistentVariables)(LibraryHandle h, bool global);
+    typedef void (*TGP_SaveAllGlobalPersistentVariables)(LibraryHandle h);
+    typedef void (*TGP_StorePersistentStringVariable)(LibraryHandle h, const char *name, const char *state,
+                                                      bool global);
+    typedef int (*TGP_RecallPersistentStringVariable)(LibraryHandle h, const char *name, char *returnBuffer,
+                                                      int bufferLength, bool global);
+    typedef void (*TGP_StorePersistentBinaryVariable)(LibraryHandle h, const char *name,
+                                                      const unsigned char *state, int stateLength, bool global);
+    typedef int (*TGP_RecallPersistentBinaryVariable)(LibraryHandle h, const char *name,
+                                                      unsigned char *returnBuffer, int bufferLength, bool global);
+    typedef bool (*TGP_PersistentVariableExists)(LibraryHandle h, const char *name, bool global);
+    typedef void (*TGP_RemovePersistentVariable)(LibraryHandle h, const char *name, bool global);
+    typedef int (*TGP_GetPersistentVariableSize)(LibraryHandle h, const char *name, bool global);
 
     typedef int (*TGP_VM_PopInteger)(GPRuntimeEngine *vm);
     typedef void (*TGP_VM_PushInteger)(GPRuntimeEngine *vm, int value);
@@ -326,7 +342,7 @@ extern "C"
     /// \brief   Query GP to see if you are listening for widget changes.
     extern TGP_ListeningForWidget GP_ListeningForWidget;
 
-        /// \brief   Set the text color of widgets that support it.
+    /// \brief   Set the text color of widgets that support it.
     extern TGP_SetWidgetTextColor GP_SetWidgetTextColor;
 
     /// \brief   Set the fill color of widgets that support it.
@@ -533,6 +549,36 @@ extern "C"
     extern TGP_LoadGigByIndex GP_LoadGigByIndex;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// \name    Working with persistent variables
+
+    /// \brief   Clear all persistent variables
+    extern TGP_ClearAllPersistentVariables GP_ClearAllPersistentVariables;
+
+    /// \brief   Save all global persistent variables (independent of the gig file save)
+    extern TGP_SaveAllGlobalPersistentVariables GP_SaveAllGlobalPersistentVariables;
+
+    /// \brief   Store a persistent variable as a string with the given name
+    extern TGP_StorePersistentStringVariable GP_StorePersistentStringVariable;
+
+    /// \brief   Recall a persistent variable that had been stored as a string with the given name
+    extern TGP_RecallPersistentStringVariable GP_RecallPersistentStringVariable;
+
+    /// \brief   Store a persistent variable as a binary object with the given name
+    extern TGP_StorePersistentBinaryVariable GP_StorePersistentBinaryVariable;
+
+    /// \brief   Recall a persistent variable that had been stored as a binary object with the given name
+    extern TGP_RecallPersistentBinaryVariable GP_RecallPersistentBinaryVariable;
+
+    /// \brief   Check whether a persistent variable with the given name exists
+    extern TGP_PersistentVariableExists GP_PersistentVariableExists;
+
+    /// \brief   Remove the persistent variable with the given name
+    extern TGP_RemovePersistentVariable GP_RemovePersistentVariable;
+
+    /// \brief  Get the size of the persistent variable with the given name
+    extern TGP_GetPersistentVariableSize GP_GetPersistentVariableSize;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Miscellaneous
 
     /// \brief   Enable or disable the global playhead.
@@ -569,6 +615,9 @@ extern "C"
     /// \details It is useful when you need to access other resource files installed in the same or a relative location
     ///          to the library.
     extern TGP_GetPathToMe GP_GetPathToMe;
+
+    /// \brief   Displays a temporary message at the top of the Gig Performer window.
+    extern TGP_DisplayTemporaryMessage GP_DisplayTemporaryMessage;
 
 #ifdef __cplusplus
 }

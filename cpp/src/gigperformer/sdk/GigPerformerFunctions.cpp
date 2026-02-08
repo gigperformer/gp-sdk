@@ -131,11 +131,14 @@ std::string GigPerformerFunctions::getPluginName(const std::string &pluginHandle
     return result;
 }
 
-bool GigPerformerFunctions::loadGPPreset(const std::string &pluginHandle, const std::string &presetName, bool useGlobalRackspace)
+bool GigPerformerFunctions::loadGPPreset(const std::string &pluginHandle, const std::string &presetName,
+                                         bool useGlobalRackspace)
 {
     bool ok = false;
     if (GP_LoadGPPreset != nullptr)
+    {
        ok = GP_LoadGPPreset(fHandle, pluginHandle.c_str(), presetName.c_str(), useGlobalRackspace);
+    }
     return ok;
 }
 
@@ -218,6 +221,12 @@ std::string GigPerformerFunctions::getPathToMe()
     /* int actualLength =  */ GP_GetPathToMe(fHandle, returnBuffer, bufferLength);
     std::string result(returnBuffer);
     return result;
+}
+
+void GigPerformerFunctions::displayTemporaryMessage(const std::string &message, int argbBackgroundColor,
+                                                    bool displayImmediately)
+{
+    GP_DisplayTemporaryMessage(fHandle, message.c_str(), argbBackgroundColor, displayImmediately);
 }
 
 std::string GigPerformerFunctions::getWidgetCaption(const std::string &widgetName)
@@ -701,6 +710,150 @@ void GigPerformerFunctions::previous()
 void GigPerformerFunctions::next()
 {
     GP_Next(fHandle);
+}
+
+void GigPerformerFunctions::clearAllPersistentVariables(bool global)
+{
+    GP_ClearAllPersistentVariables(fHandle, global);
+}
+
+void GigPerformerFunctions::saveAllGlobalPersistentVariables()
+{
+    GP_SaveAllGlobalPersistentVariables(fHandle);
+}
+
+void GigPerformerFunctions::storePersistentStringVariable(const std::string &name, const std::string &state,
+                                                          bool global)
+{
+    GP_StorePersistentStringVariable(fHandle, name.c_str(), state.c_str(), global);
+}
+
+std::string GigPerformerFunctions::recallPersistentStringVariable(const std::string &name, bool global)
+{
+    const int bufferLength = 1024;
+    char returnBuffer[bufferLength] = {0};
+    std::string result;
+
+    int actualLength = GP_RecallPersistentStringVariable(fHandle, name.c_str(), returnBuffer, bufferLength, global);
+    if (actualLength > bufferLength)
+    {
+        char *buffer = new char[actualLength + 1];
+        GP_RecallPersistentStringVariable(fHandle, name.c_str(), buffer, actualLength + 1, global);
+        result = buffer;
+        delete[] buffer;
+    }
+    else
+    {
+        result = returnBuffer;
+    }
+    return result;
+}
+
+void GigPerformerFunctions::storePersistentBinaryVariable(const std::string &name, const std::string &state,
+                                                          bool global)
+{
+    GP_StorePersistentBinaryVariable(fHandle, name.c_str(), (unsigned char *)state.data(), state.length(), global);
+}
+
+std::string GigPerformerFunctions::recallPersistentBinaryVariable(const std::string &name, bool global)
+{
+    const int bufferLength = 1024;
+    unsigned char returnBuffer[bufferLength] = {0};
+    std::string result;
+
+    int actualLength = GP_RecallPersistentBinaryVariable(fHandle, name.c_str(), returnBuffer, bufferLength, global);
+    if (actualLength > bufferLength)
+    {
+        unsigned char *buffer = new unsigned char[actualLength];
+        GP_RecallPersistentBinaryVariable(fHandle, name.c_str(), buffer, actualLength, global);
+        result.assign(reinterpret_cast<const char *>(buffer), actualLength);
+        delete[] buffer;
+    }
+    else
+    {
+        result.assign(reinterpret_cast<const char *>(returnBuffer), actualLength);
+    }
+    return result;
+}
+
+bool GigPerformerFunctions::persistentVariableExists(const std::string &name, bool global)
+{
+    return GP_PersistentVariableExists(fHandle, name.c_str(), global);
+}
+
+void GigPerformerFunctions::removePersistentVariable(const std::string &name, bool global)
+{
+    GP_RemovePersistentVariable(fHandle, name.c_str(), global);
+}
+
+int GigPerformerFunctions::getPersistentVariableSize(const std::string &name, bool global)
+{
+    return GP_GetPersistentVariableSize(fHandle, name.c_str(), global);
+}
+
+GigPerformerFunctions::PersistentVariable::PersistentVariable(GigPerformerFunctions *owner, std::string variableName, bool binary, bool global) :
+                                                              fOwner(owner),
+                                                              fVariableName(variableName),
+                                                              fBinary(binary),
+                                                              fGlobal(global)
+{
+}
+
+GigPerformerFunctions::PersistentVariable::~PersistentVariable()
+{
+}
+
+GigPerformerFunctions::PersistentVariable &GigPerformerFunctions::PersistentVariable::operator=(const std::string &value)
+{
+    if (fBinary)
+    {
+        fOwner->storePersistentBinaryVariable(fVariableName, value, fGlobal);
+    }
+    else
+    {
+        fOwner->storePersistentStringVariable(fVariableName, value, fGlobal);
+    }
+    return *this;
+}
+
+GigPerformerFunctions::PersistentVariable::operator std::string() const
+{
+    std::string result;
+    if (fBinary)
+    {
+        result = fOwner->recallPersistentBinaryVariable(fVariableName, fGlobal);
+    }
+    else
+    {
+        result = fOwner->recallPersistentStringVariable(fVariableName, fGlobal);
+    }
+    return result;
+}
+
+int GigPerformerFunctions::PersistentVariable::size()
+{
+    int result = fOwner->getPersistentVariableSize(fVariableName, fGlobal);
+    return result;
+}
+
+void GigPerformerFunctions::PersistentVariable::clearAll(GigPerformerFunctions *owner, bool global)
+{
+    owner->clearAllPersistentVariables(global);
+}
+
+void GigPerformerFunctions::PersistentVariable::saveAllGlobals(GigPerformerFunctions *owner)
+{
+    owner->saveAllGlobalPersistentVariables();
+}
+
+bool GigPerformerFunctions::PersistentVariable::exists()
+{
+    return fOwner->persistentVariableExists(fVariableName, fGlobal);
+}
+
+void GigPerformerFunctions::PersistentVariable::remove()
+{
+    fOwner->removePersistentVariable(fVariableName, fGlobal);
 }
 
 } // namespace sdk
