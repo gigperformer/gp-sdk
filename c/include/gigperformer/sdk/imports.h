@@ -156,6 +156,7 @@ extern "C"
 
    /*Types for dealing with extension state*/
     typedef void (*TGP_ClearAllPersistentVariables)(LibraryHandle h, bool global);
+    typedef void (*TGP_SaveAllGlobalPersistentVariables)(LibraryHandle h);
     typedef void (*TGP_StorePersistentStringVariable)(LibraryHandle h, const char* name, const char* state, bool global);
     typedef int (*TGP_RecallPersistentStringVariable)(LibraryHandle h, const char* name, char* returnBuffer, int bufferLength, bool global);
     typedef void (*TGP_StorePersistentBinaryVariable)(LibraryHandle h, const char* name, const unsigned char* state, int stateLength, bool global);
@@ -586,6 +587,7 @@ extern "C"
 
     /*External state*/
     extern TGP_ClearAllPersistentVariables           GP_ClearAllPersistentVariables;
+    extern TGP_SaveAllGlobalPersistentVariables      GP_SaveAllGlobalPersistentVariables;
     extern TGP_StorePersistentStringVariable         GP_StorePersistentStringVariable;
     extern TGP_RecallPersistentStringVariable        GP_RecallPersistentStringVariable;
     extern TGP_StorePersistentBinaryVariable         GP_StorePersistentBinaryVariable;
