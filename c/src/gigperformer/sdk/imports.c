@@ -323,9 +323,6 @@ extern "C"
         R(GP_RegisterCallback);
         R(GP_UnregisterCallback);
 
-        R(GP_RegisterCallback);
-        R(GP_UnregisterCallback);
-
         R(GP_VM_PopInteger);
         R(GP_VM_PushInteger);
         R(GP_VM_PopDouble);

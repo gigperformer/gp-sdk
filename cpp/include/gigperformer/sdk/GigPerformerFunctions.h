@@ -391,8 +391,6 @@ class GigPerformerFunctions
     
     /*External state*/
 
-
-   public:
       void clearAllPersistentVariables(bool global); 
       void saveAllGlobalPersistentVariables();
       void storePersistentStringVariable(const std::string & name, const std::string & state, bool global);
@@ -424,7 +422,6 @@ class GigPerformerFunctions
             /**Remove a variable from persistent state */
             void remove();
 
-         public:    
             /**Clear all saved persistent variables */
             static void clearAll(GigPerformerFunctions* owner, bool global = false);
             static void saveAllGlobals(GigPerformerFunctions* owner);
