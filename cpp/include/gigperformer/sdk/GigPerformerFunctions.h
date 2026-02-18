@@ -386,6 +386,52 @@ class GigPerformerFunctions
     /// \details This is useful when you need to access other resource files installed in the same or a relative
     ///          location to the library.
     std::string getPathToMe();
+    void displayTemporaryMessage(const std::string & message, int argbBackgroundColor, bool displayImmediately);
+
+    
+    /*External state*/
+
+      void clearAllPersistentVariables(bool global); 
+      void saveAllGlobalPersistentVariables();
+      void storePersistentStringVariable(const std::string & name, const std::string & state, bool global);
+      std::string recallPersistentStringVariable(const std::string & name, bool global);
+
+      void storePersistentBinaryVariable(const std::string & name, const std::string & state, bool global);
+      std::string recallPersistentBinaryVariable(const std::string & name, bool global);
+
+      bool persistentVariableExists(const std::string & name, bool global);
+      void removePersistentVariable(const std::string & name, bool global);
+      int  getPersistentVariableSize(const std::string & name, bool global);
+
+   friend class PersistentVariable;
+   public:
+      class PersistentVariable
+      {
+         public: 
+            explicit PersistentVariable(GigPerformerFunctions* owner, std::string variableName, bool binary = false, bool global = false);
+            ~PersistentVariable();
+
+            /**Assign a value to the persistent variable */ 
+            PersistentVariable & operator = (const std::string & value);
+            /**Access a persistent variable value */
+            operator std::string() const;
+            /**Size of the value of this variable */
+            int size();
+            /**Return whether a particular variable is defined */
+            bool exists();
+            /**Remove a variable from persistent state */
+            void remove();
+
+            /**Clear all saved persistent variables */
+            static void clearAll(GigPerformerFunctions* owner, bool global = false);
+            static void saveAllGlobals(GigPerformerFunctions* owner);
+
+         private:
+            std::string fVariableName;  
+            bool fGlobal { false };  
+            bool fBinary { false };
+            GigPerformerFunctions * fOwner;
+      };
 
   private:
     LibraryHandle fHandle;
