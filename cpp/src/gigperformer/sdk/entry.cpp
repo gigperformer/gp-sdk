@@ -224,3 +224,9 @@ extern "C" EXPORTED void OnWidgetStateChanged(const char *widgetName, int newSta
     std::string name = widgetName;
     subclass->OnWidgetStateChanged(name, newState);
 }
+
+// Tell Gig Performer 5+ what API version this extension supports
+extern "C" EXPORTED int GetAPIVersion()
+{
+    return 2; // Value '2' matches the Gig Performer 5 framework level
+}
