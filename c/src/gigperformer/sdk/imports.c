@@ -72,9 +72,6 @@ extern "C"
     DeclareFunc(GP_RGBAToColor);
     DeclareFunc(GP_ColorToRGBA);
 
-    DeclareFunc(GP_SetWidgetHideOnPresentation);
-    DeclareFunc(GP_GetWidgetHideState);
-
     DeclareFunc(GP_SetBPM);
     DeclareFunc(GP_GetBPM);
     DeclareFunc(GP_GetCurrentTimeSignature);
