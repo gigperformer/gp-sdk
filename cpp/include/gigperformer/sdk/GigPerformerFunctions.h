@@ -457,8 +457,22 @@ class GigPerformerFunctions
         bool fGlobal{false};
     };
 
+    /** Pass in a lambda to handle the response for each osc message that you want to handle */
+    void AddOSCCallback(const std::string oscAddress, std::function<void(void *oscMessage)> callback, /*void* optionalObjectReference, */ int portIndex = 0);
+    void RemoveOSCCallback(const std::string oscAddress);
+    void RemoveAllOSCCallbacks();
+
   private:
     LibraryHandle fHandle;
+
+  private:
+    // OscAddress, message arrived callback, handle for cancelling listening
+    using OSCHandle = uint64_t; // This handle is NOT related to GP widget handles
+    using OscAddressToHandleType = std::map<std::string, std::pair<std::function<void(void *oscMessage)>, OSCHandle>>;
+    OscAddressToHandleType fOscAddressToOscHandle;
+
+    static void OSCMessageReceived(void *oscMessage, void *optionalObjectReference);
+
 };
 
 } // namespace sdk

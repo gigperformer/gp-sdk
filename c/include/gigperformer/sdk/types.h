@@ -54,6 +54,8 @@ extern "C"
 
     /// Signature of the C implementations for functions exported to GPScript
     typedef void (*TGPScriptExecutableFunctionSignature)(GPRuntimeEngine *vm);
+    
+    typedef void *GP_OSCMessage;
 
     typedef struct
     {
