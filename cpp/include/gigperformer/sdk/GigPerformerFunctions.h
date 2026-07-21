@@ -12,8 +12,6 @@
 #include "gigperformer/sdk/GPMidiMessages.h"
 #include "gigperformer/sdk/imports.h"
 
-#define then
-
 namespace gigperformer
 {
 namespace sdk

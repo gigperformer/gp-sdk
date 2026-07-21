@@ -875,7 +875,6 @@ void GigPerformerFunctions::OSCMessageReceived(void *oscMessage, void *optionalO
     GigPerformerFunctions::OscAddressToHandleType &ref = gpFunctions->fOscAddressToOscHandle;
 
     if (ref.count(oscAddress) > 0)
-        then
         {
             assert(ref[oscAddress].second != unitializedHandle); // Sanity check
             ref[oscAddress].first(oscMessage);
@@ -895,7 +894,6 @@ void GigPerformerFunctions::AddOSCCallback(const std::string oscAddress, std::fu
 void GigPerformerFunctions::RemoveOSCCallback(const std::string oscAddress)
 {
     if (fOscAddressToOscHandle.count(oscAddress) > 0)
-        then
         {
             OSCHandle h = fOscAddressToOscHandle[oscAddress].second;
             assert(h != unitializedHandle);
