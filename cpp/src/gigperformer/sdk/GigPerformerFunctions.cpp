@@ -17,10 +17,6 @@ GigPerformerFunctions::GigPerformerFunctions(LibraryHandle handle) : fHandle(han
 
 GigPerformerFunctions::~GigPerformerFunctions()
 {
-}
-
-GigPerformerFunctions::~GigPerformerFunctions()
-{
     RemoveAllOSCCallbacks();
 }
 

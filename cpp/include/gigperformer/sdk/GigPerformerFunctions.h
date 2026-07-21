@@ -5,9 +5,14 @@
 
 #include <string>
 #include <vector>
+#include <functional>
+#include <map>
+#include <cassert>
 
 #include "gigperformer/sdk/GPMidiMessages.h"
 #include "gigperformer/sdk/imports.h"
+
+#define then
 
 namespace gigperformer
 {
