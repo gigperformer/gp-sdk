@@ -17,6 +17,7 @@ GigPerformerFunctions::GigPerformerFunctions(LibraryHandle handle) : fHandle(han
 
 GigPerformerFunctions::~GigPerformerFunctions()
 {
+    RemoveAllOSCCallbacks();
 }
 
 bool GigPerformerFunctions::registerCallback(const std::string &callbackName)
@@ -855,6 +856,62 @@ void GigPerformerFunctions::PersistentVariable::remove()
 {
     fOwner->removePersistentVariable(fVariableName, fGlobal);
 }
+
+/**We have to delay storing the handle until we actually get one back */
+const int unitializedHandle{-1};
+
+void GigPerformerFunctions::OSCMessageReceived(void *oscMessage, void *optionalObjectReference)
+{
+    assert(optionalObjectReference != nullptr);
+    GP_ConsoleLog(optionalObjectReference, "Received message");
+
+    GigPerformerFunctions *gpFunctions = static_cast<GigPerformerFunctions *>(optionalObjectReference);
+
+    const int bufferLength = 10000; // Enough for a huge address
+    char returnBuffer[bufferLength] = {0};
+    int actualLength = GP_OSC_GetAddress(oscMessage, returnBuffer, bufferLength);
+    std::string oscAddress(returnBuffer);
+
+    GigPerformerFunctions::OscAddressToHandleType &ref = gpFunctions->fOscAddressToOscHandle;
+
+    if (ref.count(oscAddress) > 0)
+        {
+            assert(ref[oscAddress].second != unitializedHandle); // Sanity check
+            ref[oscAddress].first(oscMessage);
+        }
+}
+
+#pragma OSC Callbacks
+void GigPerformerFunctions::AddOSCCallback(const std::string oscAddress, std::function<void(void *oscMessage)> callback, /*void* optionalObjectReference,*/ int portIndex)
+{
+    fOscAddressToOscHandle[oscAddress] = {callback, unitializedHandle};
+
+    OSCHandle handle = GP_OSC_AddCallback(oscAddress.c_str(), portIndex, &OSCMessageReceived, (void *)this);
+
+    fOscAddressToOscHandle[oscAddress].second = handle;
+}
+
+void GigPerformerFunctions::RemoveOSCCallback(const std::string oscAddress)
+{
+    if (fOscAddressToOscHandle.count(oscAddress) > 0)
+        {
+            OSCHandle h = fOscAddressToOscHandle[oscAddress].second;
+            assert(h != unitializedHandle);
+            GP_OSC_RemoveCallback(h);
+            fOscAddressToOscHandle.erase(oscAddress);
+        }
+}
+
+void GigPerformerFunctions::RemoveAllOSCCallbacks()
+{
+    for (auto x : fOscAddressToOscHandle)
+    {
+        OSCHandle h = fOscAddressToOscHandle[x.first].second;
+        GP_OSC_RemoveCallback(h);
+    }
+    fOscAddressToOscHandle.clear();
+}
+
 
 } // namespace sdk
 } // namespace gigperformer

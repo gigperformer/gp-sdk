@@ -12,7 +12,7 @@
 // If this is newer than the version expected by GP then a crash may occur. Do NOT change this information.
 // In particular, whenever we add new functions into GP that can be called from this SDK
 // We need to update this version so we can check that it's safe to call GP
-#define GPSDK_VERSION 62
+#define GPSDK_VERSION 64
 
 // This is an EXPORT from the DLL but it's here for convenience so it can be picked up by both C and C++ projects
 EXPORTED int GetGPSDKVersion(void)
@@ -162,6 +162,32 @@ extern "C"
     DeclareFunc(GP_VM_PushString);
     DeclareFunc(GP_VM_PopBoolean);
     DeclareFunc(GP_VM_PushBoolean);
+
+    /* OSC functions */
+    DeclareFunc(GP_OSC_CreateMessage);
+    DeclareFunc(GP_OSC_DeleteMessage);
+    DeclareFunc(GP_OSC_AppendIntArg);
+    DeclareFunc(GP_OSC_AppendDoubleArg);
+    DeclareFunc(GP_OSC_AppendStringArg);
+    DeclareFunc(GP_OSC_GetAddress);
+    DeclareFunc(GP_OSC_ClearArgs);
+    DeclareFunc(GP_OSC_GetArgCount);
+    DeclareFunc(GP_OSC_IsIntArg);
+    DeclareFunc(GP_OSC_IsDoubleArg);
+    DeclareFunc(GP_OSC_IsStringArg);
+    DeclareFunc(GP_OSC_GetIntArg);
+    DeclareFunc(GP_OSC_GetDoubleArg);
+    DeclareFunc(GP_OSC_GetStringArg);
+    DeclareFunc(GP_OSC_Send);
+    DeclareFunc(GP_OSC_SendTo);
+    DeclareFunc(GP_OSC_SendMessage);
+    DeclareFunc(GP_OSC_SendMessageTo);
+    DeclareFunc(GP_OSC_GetListeningPortIndexCount);
+    DeclareFunc(GP_OSC_GetPortNumerForPortIndex);
+    DeclareFunc(GP_OSC_GetGPListeningPort);
+
+    DeclareFunc(GP_OSC_AddCallback);
+    DeclareFunc(GP_OSC_RemoveCallback);
 
     static TGetGPFunctionType RequestGPFunctionByName;
 
@@ -332,6 +358,33 @@ extern "C"
         R(GP_VM_PushString);
         R(GP_VM_PopBoolean);
         R(GP_VM_PushBoolean);
+
+          R(GP_OSC_CreateMessage);
+        R(GP_OSC_DeleteMessage);
+        R(GP_OSC_AppendIntArg);
+        R(GP_OSC_AppendDoubleArg);
+        R(GP_OSC_AppendStringArg);
+        R(GP_OSC_GetAddress);
+        R(GP_OSC_ClearArgs);
+        R(GP_OSC_GetArgCount);
+        R(GP_OSC_IsIntArg);
+        R(GP_OSC_IsDoubleArg);
+        R(GP_OSC_IsStringArg);
+        R(GP_OSC_GetIntArg);
+        R(GP_OSC_GetDoubleArg);
+        R(GP_OSC_GetStringArg);
+
+        R(GP_OSC_Send);
+        R(GP_OSC_SendTo);
+        R(GP_OSC_SendMessage);
+        R(GP_OSC_SendMessageTo);
+        R(GP_OSC_GetGPListeningPort);
+
+        R(GP_OSC_GetPortNumerForPortIndex);
+        R(GP_OSC_GetGPListeningPort);
+
+        R(GP_OSC_AddCallback);
+        R(GP_OSC_RemoveCallback);
 
 #undef R
     }

@@ -181,6 +181,55 @@ extern "C"
     typedef bool (*TGP_VM_PopBoolean)(GPRuntimeEngine *vm);
     typedef void (*TGP_VM_PushBoolean)(GPRuntimeEngine *vm, bool value);
 
+    /* OSC functions */
+    typedef GP_OSCMessage (*TGP_OSC_CreateMessage)(LibraryHandle h, const char *address);
+
+    typedef void (*TGP_OSC_DeleteMessage)(LibraryHandle h, GP_OSCMessage oscMessage);
+
+    typedef void (*TGP_OSC_AppendIntArg)(GP_OSCMessage oscMessage, int value);
+
+    typedef void (*TGP_OSC_AppendDoubleArg)(GP_OSCMessage oscMessage, double value);
+
+    typedef void (*TGP_OSC_AppendStringArg)(GP_OSCMessage oscMessage, const char *value);
+
+    typedef void (*TGP_OSC_ClearArgs)(GP_OSCMessage oscMessage);
+
+    typedef int (*TGP_OSC_GetArgCount)(GP_OSCMessage oscMessage);
+
+    typedef bool (*TGP_OSC_IsIntArg)(GP_OSCMessage oscMessage, int index);
+
+    typedef bool (*TGP_OSC_IsDoubleArg)(GP_OSCMessage oscMessage, int index);
+
+    typedef bool (*TGP_OSC_IsStringArg)(GP_OSCMessage oscMessage, int index);
+
+    typedef int (*TGP_OSC_GetIntArg)(GP_OSCMessage oscMessage, int index);
+
+    typedef double (*TGP_OSC_GetDoubleArg)(GP_OSCMessage oscMessage, int index);
+
+    typedef int (*TGP_OSC_GetStringArg)(GP_OSCMessage oscMessage, int index, char *buffer, int bufferLength);
+
+    typedef int (*TGP_OSC_GetAddress)(GP_OSCMessage oscMessage, char *buffer, int bufferLength);
+
+    typedef void (*TGP_OSC_Send)(GP_OSCMessage oscMessage);
+
+    typedef void (*TGP_OSC_SendTo)(GP_OSCMessage oscMessage, const char *ipAddress, int portNumber);
+
+    typedef void (*TGP_OSC_SendMessage)(const char *message);
+
+    typedef void (*TGP_OSC_SendMessageTo)(const char *message, const char *ipAddress, int portNumber);
+
+    typedef int (*TGP_OSC_GetGPListeningPort)();
+
+    typedef int (*TGP_OSC_GetListeningPortIndexCount)(); // Returns the number of defined ports (NB - GP listening port is at index 0
+
+    typedef int (*TGP_OSC_GetPortNumerForPortIndex)(int index);
+
+    typedef void (*C_StyleOSCCallbackFunction)(GP_OSCMessage, void *optionalObjectInstance); // Standard C function callback
+
+    typedef uint64_t (*TGP_OSC_AddCallback)(const char *address, int portIndex, C_StyleOSCCallbackFunction func, void *optionalObjectReference);
+
+    typedef void (*TGP_OSC_RemoveCallback)(uint64_t handle);
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \name    Interacting with the GPScript runtime
 
@@ -618,6 +667,35 @@ extern "C"
 
     /// \brief   Displays a temporary message at the top of the Gig Performer window.
     extern TGP_DisplayTemporaryMessage GP_DisplayTemporaryMessage;
+
+
+    
+    /*OSC functions*/
+    /// \brief   Create an OSC message with the given address
+    extern TGP_OSC_CreateMessage GP_OSC_CreateMessage;
+    extern TGP_OSC_DeleteMessage GP_OSC_DeleteMessage;
+    extern TGP_OSC_AppendIntArg GP_OSC_AppendIntArg;
+    extern TGP_OSC_AppendDoubleArg GP_OSC_AppendDoubleArg;
+    extern TGP_OSC_AppendStringArg GP_OSC_AppendStringArg;
+    extern TGP_OSC_GetAddress GP_OSC_GetAddress;
+    extern TGP_OSC_ClearArgs GP_OSC_ClearArgs;
+    extern TGP_OSC_GetArgCount GP_OSC_GetArgCount;
+    extern TGP_OSC_IsIntArg GP_OSC_IsIntArg;
+    extern TGP_OSC_IsDoubleArg GP_OSC_IsDoubleArg;
+    extern TGP_OSC_IsStringArg GP_OSC_IsStringArg;
+    extern TGP_OSC_GetIntArg GP_OSC_GetIntArg;
+    extern TGP_OSC_GetDoubleArg GP_OSC_GetDoubleArg;
+    extern TGP_OSC_GetStringArg GP_OSC_GetStringArg;
+    extern TGP_OSC_Send GP_OSC_Send;
+    extern TGP_OSC_SendTo GP_OSC_SendTo;
+    extern TGP_OSC_SendMessage GP_OSC_SendMessage;
+    extern TGP_OSC_SendMessageTo GP_OSC_SendMessageTo;
+    extern TGP_OSC_GetGPListeningPort GP_OSC_GetGPListeningPort;
+    extern TGP_OSC_GetListeningPortIndexCount GP_OSC_GetListeningPortIndexCount;
+    extern TGP_OSC_GetPortNumerForPortIndex GP_OSC_GetPortNumerForPortIndex;
+
+    extern TGP_OSC_AddCallback GP_OSC_AddCallback;
+    extern TGP_OSC_RemoveCallback GP_OSC_RemoveCallback;
 
 #ifdef __cplusplus
 }
